@@ -1,0 +1,105 @@
+import { Callout, KeyStats } from "@/components/article";
+import { BarChartCard, LineChartCard } from "@/components/charts";
+
+Data center electricity demand is on track to double by 2030. This report models the supply gap and asks which generators are best positioned to sign long-term contracts with hyperscalers. All figures below are illustrative placeholders — replace them with sourced desk research before publishing.
+
+<KeyStats
+  items={[
+    { label: "Demand growth", value: "2×", note: "US commercial power by 2030" },
+    { label: "Modeled gap", value: "38 GW", note: "Firm capacity shortfall" },
+    { label: "Our pick", value: "Nuclear", note: "Baseload + contracted cash flows" },
+  ]}
+/>
+
+## The short version
+
+Hyperscalers need **firm, carbon-free megawatts** on five-year timelines. Wind and solar are cheap but intermittent. Batteries cover hours, not weeks. That leaves one scalable answer for baseload: **nuclear**, plus gas peakers as a bridge.
+
+![Illustrative chart of rising data center power demand](/publications/grid-demand.svg)
+
+<Callout title="House view" tone="thesis">
+  We favor merchant nuclear fleets with site control and uprate optionality. Contracted hyperscaler load converts volatile merchant cash flows into bond-like revenue.
+</Callout>
+
+## Modeling the gap
+
+We model load growth as compound demand from AI training and inference clusters, offset by grid retirements. In steady state, required firm capacity $C$ follows:
+
+$$
+C = \frac{D \times (1 + r)^t}{1 - m}
+$$
+
+where $D$ is current peak demand, $r$ is the annual growth rate, $t$ is years, and $m$ is the retirement margin. At $r = 9\%$ and $t = 6$, the arithmetic gets uncomfortable fast.
+
+<LineChartCard
+  title="Illustrative US data center demand (GW)"
+  caption="Placeholder data. Replace with EIA / hyperscaler capex disclosures."
+  xKey="year"
+  series={[
+    { key: "hyperscale", label: "Hyperscale" },
+    { key: "enterprise", label: "Enterprise" },
+  ]}
+  data={[
+    { year: "2024", hyperscale: 22, enterprise: 14 },
+    { year: "2025", hyperscale: 28, enterprise: 15 },
+    { year: "2026", hyperscale: 36, enterprise: 16 },
+    { year: "2027", hyperscale: 45, enterprise: 17 },
+    { year: "2028", hyperscale: 54, enterprise: 18 },
+    { year: "2029", hyperscale: 63, enterprise: 19 },
+    { year: "2030", hyperscale: 72, enterprise: 20 },
+  ]}
+/>
+
+## Who captures the rent?
+
+Not every generator benefits equally. The table below sketches our ranking logic — **edit every cell** with your own diligence.
+
+| Generator type | Firm? | Contract-ready | Our stance |
+| -------------- | ----- | -------------- | ---------- |
+| Operating nuclear | Yes | Yes | Overweight |
+| Nuclear uprates | Yes | 12–24 mo | Overweight |
+| Gas peakers | Yes | Yes | Neutral |
+| Solar + 4h storage | Partial | Yes | Selective |
+| Uncontracted wind | No | No | Avoid |
+
+<BarChartCard
+  title="Illustrative firm capacity additions (GW)"
+  caption="Placeholder mix. Tie each bar to a named project in your final draft."
+  xKey="source"
+  series={[{ key: "gw", label: "GW" }]}
+  data={[
+    { source: "Nuclear", gw: 12 },
+    { source: "Gas", gw: 18 },
+    { source: "Solar+storage", gw: 24 },
+    { source: "Wind", gw: 20 },
+  ]}
+/>
+
+## How we sized the shortfall
+
+The screening script is intentionally simple — clone it, point it at real EIA tables, and extend:
+
+```python
+def shortfall(demand_gw: float, firm_gw: float, margin: float = 0.15) -> float:
+    """Return GW of firm capacity still needed at target reserve margin."""
+    required = demand_gw * (1 + margin)
+    return max(0.0, required - firm_gw)
+
+
+print(shortfall(demand_gw=92.0, firm_gw=68.0))
+# -> 37.8
+```
+
+<Callout title="Risks" tone="risk">
+  Permitting delays, interconnection queues, and uranium price spikes can each erase the modeled margin. Size positions against the delivery timeline, not the headline GW.
+</Callout>
+
+## What would change our mind
+
+- **Three consecutive quarters** of hyperscaler capex cuts.
+- A licensed, financed SMR reaching commercial operation ahead of schedule.
+- Gas turbine delivery times compressing back under two years.
+
+---
+
+*Methodology, sources, and model appendix go here. List every dataset with vintage and URL so the next analyst class can reproduce the work.*

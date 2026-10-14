@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Illustrative chart of rising data center power demand">
+  <rect width="1200" height="630" fill="#00043A"/>
+  <circle cx="960" cy="140" r="72" fill="#E9D3B4"/>
+  <path d="M0 470 C 180 440, 320 450, 470 430 C 640 408, 760 340, 900 300 C 1000 275, 1100 268, 1200 260 L1200 630 L0 630 Z" fill="#141A63"/>
+  <path d="M0 540 C 200 520, 380 535, 560 520 C 760 503, 950 480, 1200 470 L1200 630 L0 630 Z" fill="#0A0E4C"/>
+  <polyline points="80,480 260,440 440,445 620,370 800,330 990,230 1120,200" fill="none" stroke="#C9A57A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#F6F1E8">
+    <circle cx="80" cy="480" r="10"/>
+    <circle cx="260" cy="440" r="10"/>
+    <circle cx="440" cy="445" r="10"/>
+    <circle cx="620" cy="370" r="10"/>
+    <circle cx="800" cy="330" r="10"/>
+    <circle cx="990" cy="230" r="10"/>
+    <circle cx="1120" cy="200" r="12" fill="#C9A57A"/>
+  </g>
+  <g font-family="monospace" font-size="28" fill="#8D8CAB" letter-spacing="4">
+    <text x="80" y="570">2024</text>
+    <text x="560" y="570">2027</text>
+    <text x="990" y="570">2030</text>
+  </g>
+  <g font-family="monospace" font-size="28" fill="#C9A57A" letter-spacing="4">
+    <text x="80" y="100">DATA CENTER DEMAND · GW</text>
+  </g>
+</svg>

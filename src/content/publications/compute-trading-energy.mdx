@@ -1,0 +1,35 @@
+import { Callout, KeyStats } from "@/components/article";
+import { BarChartCard, LineChartCard } from "@/components/charts";
+
+Compute Futures Are Not FTRs: A Quantitative Comparison of AI Compute and Power Market Hedging
+
+# Compute as a commodity
+
+# FTRs and CRRs
+
+
+# Pricing Implications
+
+# Price Dynamics
+
+# Basis and Spread
+
+# Placing a Trade
+
+# Conclusion
+
+1. Compute has basis risk that nobody can hedge. Price differences between regions (latency, data sovereignty, power availability), chip generations (H100 vs B200), and cluster types (InfiniBand-connected vs standalone) are compute’s “congestion.” Designing an FTR-style compute basis swap (paying, say, OCPI B200 − k × OCPI H100, or Region A − Region B) and asking whether it could work is a real contribution.
+2. The physical link runs through power. Data centers are huge loads in congested zones, e.g. PJM’s Dominion zone in Northern Virginia, so an operator’s margin looks like a spark spread:
+
+> Compute spread = $/GPU-hour − (kW per GPU at the meter × nodal $/MWh) − capital recovery
+
+- An operator could hedge the GPU-hour price with compute futures and the location-specific power cost with FTRs. That’s where the two instruments actually meet.
+- Power is a small share of the GPU-hour price, which is a quantitative finding in itself. Illustrative numbers you should verify: an H100 draws roughly 1.4–1.7 kW at the meter including cooling and overhead. At $60/MWh that’s about $0.10 per hour, or roughly 5% of a $2 rental. So compute futures are mostly a bet on GPU scarcity and depreciation, not energy. That’s a direct argument with NATIVX’s “energy-normalized” framing.
+
+
+## My Analysis I can run
+1. Payoff replication. Write out both payoffs formally, then show a compute future replicates a hub swap and that an FTR needs a spread construction. This is mostly math, with no data needed.
+2. Price-dynamics comparison. Fit mean reversion, jumps and volatility to the H100 GPU-hour index against PJM/CAISO congestion spreads and a Baltic freight index. Compare half-lives and how prices jump.
+3. Risk premium and auction bias. FTR research finds auction prices differ systematically from realized payouts, transferring value from load to financial traders (Gordon Leslie’s work on NYISO TCC auctions is a good start). Set up the same test for compute, to run once futures trade.
+4. Hedge effectiveness. Simulate a GPU cloud with fixed lease costs hedging with futures. Estimate the minimum-variance hedge ratio and how much basis risk is left between its own realized rental price and the index.
+5. Cost decomposition. Split the GPU-hour price into capital recovery, power, operating cost and a scarcity rent, then run sensitivities on power prices and depreciation life.
