@@ -3,6 +3,9 @@ import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  experimental: {
+    agentUpgrade: "security",
+  },
   cacheComponents: true,
   partialPrefetching: true,
   // Allow MDX imports. Content lives in src/content (not routed);
