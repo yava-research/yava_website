@@ -1,0 +1,190 @@
+---
+name: YAMF — Sonoran editorial
+description: Warm paper, navy ink, and precise financial exhibits.
+colors:
+  navy: "#00043a"
+  navy-deep: "#00022a"
+  night-1: "#141a63"
+  night-2: "#0a0e4c"
+  night-rule: "#23275a"
+  night-text: "#b9b8d0"
+  sand: "#f6f1e8"
+  sand-2: "#ece3d4"
+  sand-3: "#dccdb5"
+  paper: "#fffdf9"
+  sun: "#e9d3b4"
+  sandstone: "#c9a57a"
+  ochre: "#80603d"
+  sage: "#5f6b52"
+  rust: "#8f3f30"
+  border: "#d8ccb8"
+  border-soft: "#e0d6c5"
+  ink: "#00043a"
+  ink-2: "#2a2b4a"
+  ink-3: "#3b3a52"
+  ink-4: "#4a4960"
+  muted: "#6b6a7e"
+  placeholder: "#6b6a7e"
+typography:
+  display:
+    fontFamily: "STIX Two Text, serif"
+    fontSize: "clamp(48px, 7.2vw, 96px)"
+    fontWeight: 400
+    lineHeight: 1
+    letterSpacing: "-0.025em"
+  body:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "18px"
+    fontWeight: 300
+    lineHeight: "32px"
+  label:
+    fontFamily: "Fira Mono, monospace"
+    fontSize: "12px"
+    fontWeight: 400
+    lineHeight: "16px"
+    letterSpacing: "0.1em"
+  step-8-5:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "8.5px"
+  step-10-5:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "10.5px"
+  step-12:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "12px"
+  step-13:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "13px"
+  step-14:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "14px"
+  step-15:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "15px"
+  step-16:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "16px"
+  step-17:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "17px"
+  step-18:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "18px"
+  step-19:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "19px"
+  step-20:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "20px"
+  step-21:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "21px"
+  step-22:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "22px"
+  step-24:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "24px"
+  step-26:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "26px"
+  step-28:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "28px"
+  step-30:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "30px"
+  step-32:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "32px"
+  step-34:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "34px"
+  step-40:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "40px"
+  step-44:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "44px"
+  step-48:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "48px"
+  step-52:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "52px"
+  step-64:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "64px"
+  step-72:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "72px"
+  step-88:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "88px"
+  step-96:
+    fontFamily: "Fira Sans, sans-serif"
+    fontSize: "96px"
+rounded:
+  square: "0px"
+spacing:
+  small: "8px"
+  medium: "16px"
+  group: "24px"
+  section: "64px"
+components:
+  button-primary:
+    backgroundColor: "{colors.navy}"
+    textColor: "{colors.sand}"
+    rounded: "{rounded.square}"
+    padding: "17px 29px"
+  button-secondary:
+    backgroundColor: "transparent"
+    textColor: "{colors.navy}"
+    rounded: "{rounded.square}"
+    padding: "17px 29px"
+---
+
+## Overview
+
+**Creative North Star: "Sonoran editorial"**
+
+The incumbent identity combines Arizona landscape geometry with the clarity of a research journal. Preserve the dawn and night illustrations, paper surfaces, serif headlines, and ruled data exhibits. Refinement improves evidence, reading, and task completion within that identity.
+
+**Key Characteristics:**
+- Warm paper and deep navy.
+- Expressive headlines, quiet controls.
+- Financial data organized by rules and alignment.
+
+## Colors
+
+Navy carries primary text and actions; sand is the default page surface. Paper distinguishes forms and exhibits. Sandstone belongs in illustrations and borders; the darker ochre supports readable small accents. Sage and rust accompany signed gains, never replace their signs. Muted text remains legible on sand and paper.
+
+## Typography
+
+STIX Two Text carries titles; Fira Sans carries prose and controls. Fira Mono is reserved for concise metadata, tickers, dates, and measurements. Form labels use sentence-case sans. Readable HTML metadata has a 12px floor; smaller SVG ornament labels are secondary cartographic annotations; phone tracking tightens to 0.04em. Long-form articles use a narrow reading column and visible paragraph separation.
+
+## Layout
+
+Containers stop at 1440px with 64px gutters, falling to 32px below 960px and 16px below 600px. The Join layout stacks below 1200px to protect field widths. Team rosters use four, three, two, then one column; absent photographs become compact initials. Profile identity appears before imagery. Performance precedes the holdings index in source and visual order.
+
+## Elevation & Depth
+
+Flat surfaces and thin rules carry most separation. The performance exhibit uses a paper plate and ruled summary rather than elevation. Avoid decorative glow elsewhere. State transitions are brief; reduced-motion preferences disable nonessential movement.
+
+## Shapes
+
+Controls and editorial containers have square corners. Circles belong to the logo and the landscape sun. Empty portraits use compact monograms rather than large human silhouettes.
+
+## Components
+
+Buttons use navy fill or a thin outline and clear hover/focus states. Form inputs use sand against paper, visible native checkboxes, and associated errors. Chips expose selection with pressed state. Publication discovery stores search/filter/page state in the URL; results follow controls directly. Article headings have anchor targets and substantial reports offer a contents disclosure. Charts include tabular alternatives. The email application prepares an explicit draft and never claims delivery.
+
+## Do's and Don'ts
+
+- Do preserve the incumbent Arizona identity.
+- Do label synthetic profiles and keep draft research out of public routes.
+- Do give readers direct access to research and accurate dates, units, sources, and formats.
+- Do retain visible focus and generous touch targets.
+- Don't invent member credentials, research findings, or application receipt.
+- Don't fill missing photography with oversized repeated silhouettes.
+- Don't insert promotional content between active filters and their results.

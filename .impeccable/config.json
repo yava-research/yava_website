@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "brand-identity/brand-sheet.html"
+        ],
+        "createdAt": "2026-10-29T01:26:14.484Z",
+        "reason": "Claude: DESIGN.md documents sand #F6F1E8 as the Sonoran identity's default surface; the brand sheet must show it"
+      }
+    ]
+  }
+}

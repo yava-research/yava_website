@@ -1,0 +1,37 @@
+import { Callout } from "@/components/article";
+
+Arizona summers are a stress test most grids never face: triple-digit heat, evening solar ramp-down, and air conditioners that all switch on at once. Here is what the desert grid gets right about storage — and what it means for our coverage.
+
+## Lesson 1: duration beats power
+
+Most headlines quote megawatts. Operators care about **megawatt-hours**. A 100 MW battery with two hours of storage covers the evening ramp; the same 100 MW with thirty minutes of storage does not.
+
+![Illustrative chart of rising data center power demand](/publications/grid-demand.svg)
+
+| Duration | Covers | Desert verdict |
+| -------- | ------ | -------------- |
+| 30 min | Frequency response | Useful, not sufficient |
+| 2–4 h | Evening ramp | The workhorse |
+| 8 h+ | Overnight load | Rare, expensive, watch this space |
+
+<Callout title="Takeaway" tone="note">
+  When you read a storage announcement, divide the MWh by the MW first. Duration is the spec that matters.
+</Callout>
+
+## Lesson 2: heat derates everything
+
+Nameplate capacity assumes lab conditions. At 45°C, inverters throttle and cell degradation accelerates. Our back-of-the-envelope derating:
+
+$$
+P_{actual} = P_{nameplate} \times (1 - 0.004 \times (T - 25))
+$$
+
+At $T = 45$°C that is an 8% haircut before any other losses — material for project returns.
+
+## What we are watching
+
+1. **Long-duration pilots** in the Southwest — 8-hour chemistries moving from demo to PPA.
+2. **Interconnection reform** — queue delays matter more than cell prices now.
+3. **Monsoon-season performance data** — heat plus humidity is the real test.
+
+Short post, simple point: cover the evening ramp first, and always read the duration spec.

@@ -1,0 +1,297 @@
+import { Callout, KeyStats } from "@/components/article";
+import { BarChartCard, LineChartCard } from "@/components/charts";
+
+Designing a mid-frequency market-neutral strategy across `RELX` (RELX PLC), `PSO` (Pearson PLC), `WLY` (John Wiley & Sons), `MH` (McGraw Hill), and `SCHL` (Scholastic Corp.) requires exploiting the structural asymmetries inside educational and academic publishing rather than treating the five equities as a homogeneous industry group. While the basket shares macro drivers—university library budgets, higher-education enrollment, state K–12 curriculum adoptions, and generative-AI training-data licensing—a hundredfold gap in market capitalization (\$0.68B to \$70.3B) creates measurable lead-lag propagation, currency noise, and seasonal volatility clustering.
+
+<KeyStats
+  items={[
+    { label: "5-stock gross / net Sharpe", value: "1.08 / 0.56", note: "Kalman + seasonal model (Sep 2025 – Nov 2026)" },
+    { label: "Realized SPY beta", value: "0.00", note: "Dollar- and factor-neutral construction" },
+    { label: "SCHL Q3 vol spike", value: "51.5%", note: "Up from 31.9% in Q2 back-to-school cycle" },
+  ]}
+/>
+
+<Callout title="Empirical finding" tone="thesis">
+  Across 1,169 trading days (March 2022 – November 2026), unconditioned daily statistical arbitrage generates positive gross alpha (+1.38% full sample; +6.55% after McGraw Hill's July 2025 IPO) but loses money net of spread costs (-4.94% and -1.04%) due to 141x–156x annual turnover and Scholastic's structural decoupling from B2B peers. Replacing static 60-day OLS with an online Kalman state-space filter, a seasonal billing regime filter, a 0.15 peer-correlation gate on `SCHL`, and a 12% no-trade buffer lifts net performance in the full five-stock regime to **+4.94% annualized (Net Sharpe 0.56, Max Drawdown -8.28%)** while maintaining zero market beta.
+</Callout>
+
+## Structural and factor profile of the basket
+
+Although standard GICS and ICB classifications group academic research publishers alongside K–12 textbook and children's trade publishers, daily return data from Yahoo Finance (November 15, 2021 through November 13, 2026) divides the five-stock universe into three distinct liquidity and factor tiers:
+
+| Ticker | Company | Market Cap | 60d ADV | Realized Ann. Vol | Core Business Mix | Role in Quant Basket |
+| --- | --- | --- | --- | --- | --- | --- |
+| `RELX` | RELX PLC (ADR) | \$70.3B | \$80.4M | 24.4% | Scientific/medical journals (Elsevier), legal & risk analytics | **Sector Anchor / Low-Vol Leader** |
+| `PSO` | Pearson PLC (ADR) | \$10.5B | \$11.6M | 27.8% | Assessments, qualifications, higher-ed digital courseware | **Liquid Mid-Cap Leader** |
+| `WLY` | John Wiley & Sons | \$2.54B | \$22.5M | 34.2% | Academic journals, research platforms, AI corpus licensing | **High-Beta Research Follower** |
+| `MH` | McGraw Hill, Inc. | \$2.22B | \$7.6M | 60.1% | K–12 state adoptions and higher-education digital platforms | **Curriculum & Enrollment Beta** |
+| `SCHL` | Scholastic Corp. | \$0.68B | \$14.4M | 42.1% | Children's trade publishing, school book clubs and book fairs | **Seasonal Small-Cap Outlier** |
+
+Three structural features govern cross-sectional price formation in this universe:
+
+- **Two-tier correlation and small-cap decoupling:** After stripping `GBP/USD` currency fluctuations from UK-domiciled ADRs, `RELX` and `PSO` co-move tightly ($\rho = 0.57$), and both anchor `WLY` ($\rho = 0.41$ and $0.38$) and `MH` ($\rho = 0.37$ and $0.34$). By contrast, `SCHL` exhibits near-zero unconditional correlation with `RELX` ($0.03$), `PSO` ($0.07$), and `MH` ($0.09$), co-moving primarily with domestic small-cap beta (`IWM`) and `WLY` ($0.22$).
+- **ADR foreign-exchange contamination:** Because `RELX` and `PSO` trade on the NYSE as American Depositary Receipts representing London Stock Exchange ordinary shares (`REL.L` and `PSON.L`), raw USD returns embed **8.54% to 8.56% annualized `GBP/USD` tracking variance**. Without currency stripping, a sterling sell-off mechanically makes `RELX` and `PSO` appear oversold relative to US-domiciled `WLY` and `MH`.
+- **Predictable fiscal-calendar clustering:** `SCHL` realized volatility jumps from **31.9% in Q2** to **51.5% in Q3** around back-to-school book-fair preparation and fiscal Q4/Q1 earnings releases. Meanwhile, `MH` exhibits sharp H1 versus H2 cash-flow seasonality—averaging -23.7 bps/day in Q1 and -52.5 bps/day in Q2 during off-peak textbook ordering before inflecting to +8.9 bps/day in Q3 and +23.0 bps/day in Q4 during fall semester billings—while `PSO` and `RELX` volatility peaks in Q1 (35.5% and 28.2%) around February UK preliminary results.
+
+![Two-panel exhibit showing the sterling-adjusted pairwise correlation heatmap of RELX, PSO, WLY, MH, and SCHL on the left and quarterly realized annualized volatility across fiscal cycles on the right](/publications/educational-services-structure.svg)
+
+## Baseline strategy architecture
+
+Our baseline model combines two market-neutral cross-sectional signals evaluated daily near the US close (**15:55 ET Limit-on-Close**), targeting holding horizons of **3 to 15 trading days** without look-ahead bias (signals formed from day $t$ closes execute against day $t+1$ realized USD returns).
+
+### Currency normalization and leave-one-out peer benchmark
+
+Before computing signals, we strip daily sterling moves $R_{\text{GBPUSD}, t}$ from the NYSE ADR returns of `RELX` and `PSO` so cross-sectional comparisons reflect local equity repricing:
+
+$$
+R^{\text{loc}}_{i,t} = \frac{1 + R^{\text{USD}}_{i,t}}{1 + R_{\text{GBPUSD}, t}} - 1, \quad i \in \{\text{RELX}, \text{PSO}\}
+$$
+
+Rather than regressing a stock on a sector index that contains its own return—which biases $\beta_{\text{RELX}}$ upward given `RELX`'s 45% base weight—we construct a **leave-one-out liquidity-weighted peer factor** $R_{\text{peer}, -i, t}$ from base weights $w^{\text{bmk}} = \{0.45\text{ RELX}, 0.30\text{ PSO}, 0.15\text{ WLY}, 0.10\text{ MH}\}$, excluding `SCHL` from benchmark construction to prevent small-cap noise contamination and renormalizing dynamically prior to `MH`'s July 24, 2025 listing:
+
+$$
+R_{\text{peer}, -i, t} = \frac{\sum_{j \neq i, \, j \notin \{\text{SCHL}\}} w^{\text{bmk}}_j \, R^{\text{loc}}_{j,t}}{\sum_{j \neq i, \, j \notin \{\text{SCHL}\}} w^{\text{bmk}}_j}
+$$
+
+### Signal A: Beta-adjusted residual mean reversion
+
+Over a trailing 60-trading-day OLS window, we decompose each stock's local return into peer-sector sensitivity, broad market (`SPY`) sensitivity, and idiosyncratic residual $\epsilon_{i,t}$:
+
+$$
+R^{\text{loc}}_{i,t} = \alpha_i + \beta_{i,\text{peer}} R_{\text{peer}, -i, t} + \beta_{i,\text{SPY}} R_{\text{SPY}, t} + \epsilon_{i,t}
+$$
+
+We accumulate the 5-day idiosyncratic residual and standardize by its trailing 20-day standard deviation $\sigma_{\epsilon, i, 20}$:
+
+$$
+Z^{\text{MR}}_{i,t} = -\frac{\sum_{s=0}^{4} \epsilon_{i, t-s}}{\sigma_{\epsilon, i, 20}}
+$$
+
+When `WLY` or `MH` sells off over a trading week without a commensurate drop in `RELX`, `PSO`, or `SPY`—and outside an earnings window—$Z^{\text{MR}}_{i,t} > 0$ flags a temporary liquidity dislocation.
+
+### Signal B: Institutional lead-lag drift
+
+Institutional capital reprices sector-wide catalysts (such as academic AI corpus licensing deals or interest-rate shifts) first in `RELX` and `PSO`. We measure the 3-day volatility-normalized impulse of the two liquid leaders:
+
+$$
+L_t = \frac{1}{2} \left( \frac{R^{\text{3d}}_{\text{RELX}, t}}{\sigma_{\text{RELX}, 20}} + \frac{R^{\text{3d}}_{\text{PSO}, t}}{\sigma_{\text{PSO}, 20}} \right)
+$$
+
+For the three smaller names $i \in \{\text{WLY}, \text{MH}, \text{SCHL}\}$, the laggard catch-up score measures the normalized gap relative to the leaders (setting $Z^{\text{LL}}_{i,t} = 0$ for `RELX` and `PSO`):
+
+$$
+Z^{\text{LL}}_{i,t} = L_t - \frac{R^{\text{3d}}_{i, t}}{\sigma_{i, 20}}
+$$
+
+### Signal combination, event filters, and risk constraints
+
+We form a 60/40 composite score $S_{i,t} = 0.60 \, Z^{\text{MR}}_{i,t} + 0.40 \, Z^{\text{LL}}_{i,t}$, subject to three risk guards and inverse-volatility sizing:
+
+1. **Earnings blackout:** Flatten stock $i$ ($w_{i,t} = 0$) from `T-2` trading days before through `T+1` trading days after quarterly or half-year earnings announcements (merging NYSE ADR calendars with LSE announcements for `REL.L` and `PSON.L`).
+2. **News-shock circuit breaker:** Whenever $\lvert R^{\text{loc}}_{i,t} \rvert > 3.5 \, \sigma_{i,20}$ on a single day—typical of M&A rumors, activist filings, or guidance resets—freeze entries in stock $i$ for 5 trading days to avoid fading structural repricings.
+3. **Dollar-neutral inverse-volatility weights:** Cross-sectionally demean active scores $\tilde{S}_{i,t} = S_{i,t} - \bar{S}_t$, scale by $1/\sigma_{i,20}$, normalize to unit gross exposure ($\sum_i \lvert w_{i,t} \rvert = 1$), cap single-name exposure at **35%** (**15%** for `SCHL`), and hedge residual index beta with `SPY` whenever $\lvert \sum_i w_{i,t} \beta_{i,\text{SPY}} \rvert > 0.10$.
+
+## Technical extensions: Kalman hedging and seasonal conditioning
+
+Testing the baseline specification on 2021–2026 market data exposes three structural weaknesses in a naive rolling-OLS implementation:
+
+- **OLS window lag during regime shifts:** When `WLY` signed generative-AI training-data agreements in 2024–2025 and when `MH` entered price discovery following its July 2025 IPO, 60-day unweighted OLS betas lagged true factor sensitivities by several weeks.
+- **Unconditional `SCHL` noise:** Trading `SCHL` as a sector mean-reversion candidate when its 60-day peer correlation drops near zero injects unhedged consumer/retail book-fair risk at a steep **30 bps** round-trip spread cost.
+- **Excessive daily churn:** A narrow 3% rebalance buffer triggers **141x–156x annualized turnover**, allowing mid/small-cap bid-ask spreads to consume more than 100% of gross alpha.
+
+We address all three defects with two model extensions and a hysteresis execution rule.
+
+### State-space Kalman filter dynamic hedging
+
+We replace the 60-day rolling OLS regression with an online linear Gaussian state-space model in which stock $i$'s time-varying parameter vector $\theta_{i,t} = [\alpha_{i,t}, \, \beta_{i,\text{peer},t}, \, \beta_{i,\text{mkt},t}]^\top$ evolves as a random walk, pairing `SCHL` with the Russell 2000 (`IWM`) rather than `SPY` to isolate small-cap factor exposure:
+
+$$
+\begin{aligned}
+\theta_{i,t} &= \theta_{i,t-1} + \eta_{i,t}, \quad \eta_{i,t} \sim \mathcal{N}(0, Q) \\
+R^{\text{loc}}_{i,t} &= F_{i,t}^\top \theta_{i,t} + \nu_{i,t}, \quad \nu_{i,t} \sim \mathcal{N}(0, R_{i,t})
+\end{aligned}
+$$
+
+Here $F_{i,t} = [1, \, R_{\text{peer}, -i, t}, \, R_{\text{mkt}, t}]^\top$, state drift covariance is set to $Q = \text{diag}(10^{-7}, \, 1.5 \times 10^{-4}, \, 1.5 \times 10^{-4})$ so intercept drift stays anchored near zero while hedge ratios adapt smoothly, and observation variance $R_{i,t}$ updates recursively via an EWMA ($\lambda = 0.96$) of one-step-ahead pre-fit innovations $e_{i,t} = R^{\text{loc}}_{i,t} - F_{i,t}^\top \hat{\theta}_{i, t\mid t-1}$:
+
+$$
+K_{i,t} = \frac{P_{i, t\mid t-1} F_{i,t}}{F_{i,t}^\top P_{i, t\mid t-1} F_{i,t} + R_{i,t}}, \quad \hat{\theta}_{i, t\mid t} = \hat{\theta}_{i, t\mid t-1} + K_{i,t} e_{i,t}
+$$
+
+Using the causal pre-fit innovation $e_{i,t}$ in place of static OLS residuals eliminates look-ahead bias while adapting immediately to post-IPO and AI-licensing beta shifts.
+
+### Calendar seasonality filter and peer-correlation gate
+
+To align signal conviction with institutional calendar cycles and cross-sectional breadth, we apply three structural conditioners prior to portfolio construction:
+
+1. **`SCHL` correlation decoupling gate:** Compute the trailing 60-day correlation $\rho_{60}(\text{SCHL}, R_{\text{peer}})$. Whenever $\rho_{60} < 0.15$, set $S_{\text{SCHL}, t} = 0$ so the book does not trade `SCHL` against B2B publishers during decoupled retail regimes.
+2. **Book-fair and adoption seasonality:** Attenuate `SCHL` composite scores (0.35× multiplier) during peak book-fair and fiscal jump months (July, September, December), and scale down contrarian short signals (0.50× multiplier) on `MH` and `PSO` during the August–November fall semester billing window.
+3. **Hysteresis entry and 12% no-trade band:** Require cross-sectionally demeaned signal dispersion $\max_i \lvert \tilde{S}_{i,t} \rvert \ge 0.80$ to initiate a fresh book, hold active positions until their score crosses zero, and rebalance existing weights only when $\lvert w^{\text{target}}_{i,t} - w^{\text{curr}}_{i,t} \rvert > 0.12$.
+
+## Empirical backtest and diagnostic results
+
+We evaluate all specifications over **March 22, 2022 – November 13, 2026** (1,169 trading days after initial 85-day factor and residual warm-up), modeling tiered round-trip execution costs of **5 bps** for `RELX` and `PSO`, **12.5 bps** for `WLY` and `MH`, **30 bps** for `SCHL`, **1 bp** for `SPY`, and **2 bps** for `IWM`. Because `MH` listed on July 24, 2025 and completed its warm-up window in mid-September 2025, we report both the full 4.6-year sample (which runs on a narrow 4-stock universe prior to September 2025) and the **full 5-stock regime (September 15, 2025 – November 13, 2026; 295 trading days)**.
+
+| Strategy Specification | Window | Gross Ann. | Net Ann. | Ann. Vol | Gross Sharpe | Net Sharpe | Max Drawdown | SPY Beta | Ann. Turnover |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Baseline 60d OLS (3% band)** | Full (2022–2026) | +1.38% | -4.94% | 9.81% | +0.19 | -0.47 | -35.68% | 0.00 | 140.9x |
+| **Kalman + Hysteresis (12% band)** | Full (2022–2026) | -1.17% | -5.71% | 8.56% | -0.09 | -0.64 | -33.72% | 0.00 | 99.3x |
+| **Kalman + Seasonal + Corr Gate** | Full (2022–2026) | +1.66% | -2.44% | 8.20% | +0.24 | -0.26 | -25.34% | 0.00 | 91.1x |
+| **Baseline 60d OLS (3% band)** | 5-Stock (2025–2026) | +6.55% | -1.04% | 11.52% | +0.61 | -0.03 | -17.59% | -0.01 | 155.7x |
+| **Kalman + Hysteresis (12% band)** | 5-Stock (2025–2026) | +4.26% | -1.64% | 9.48% | +0.49 | -0.13 | -12.76% | 0.00 | 114.2x |
+| **Kalman + Seasonal + Corr Gate** | **5-Stock (2025–2026)** | **+10.26%** | **+4.94%** | **9.43%** | **+1.08** | **+0.56** | **-8.28%** | **+0.01** | **104.1x** |
+
+![Two-panel diagnostic exhibit showing market-neutral cumulative return curves in the full five-stock regime at top and WLY state-space Kalman peer beta versus 60-day OLS alongside the SCHL 0.15 correlation gate at bottom](/publications/educational-services-backtest.svg)
+
+### Why breadth and conditioning decide net profitability
+
+Comparing the 4-stock pre-`MH` period against the 5-stock post-`MH` window highlights a fundamental rule of cross-sectional statistical arbitrage: **effective breadth cannot fall below four correlated assets**. Prior to September 2025, whenever `SCHL` decoupled from B2B publishing, the active book collapsed to just three names (`RELX`, `PSO`, and `WLY`), leaving insufficient cross-sectional dispersion to overcome bid-ask spread drag. Once `MH` entered the active set alongside `WLY`, gross annualized return rose from +1.38% to +6.55% in the baseline model and +10.26% (Sortino 0.78) in the Kalman + Seasonal specification.
+
+<LineChartCard
+  title="Indexed NAV in the full 5-stock regime (Sep 2025 = 100)"
+  caption="Source: YAMF backtest on Yahoo Finance daily total-return series (Sep 15, 2025 – Nov 13, 2026). Net series deduct tiered slippage of 5–30 bps round-trip."
+  xKey="period"
+  series={[
+    { key: "enhancedGross", label: "Kalman + Seasonal (Gross)", color: "#C9A57A" },
+    { key: "enhancedNet", label: "Kalman + Seasonal (Net)", color: "#00043A" },
+    { key: "baselineNet", label: "Baseline OLS (Net)", color: "#8F3F30" },
+  ]}
+  data={[
+    { period: "Sep 25", enhancedGross: 100.0, enhancedNet: 100.0, baselineNet: 100.0 },
+    { period: "Nov 25", enhancedGross: 99.8, enhancedNet: 99.1, baselineNet: 101.5 },
+    { period: "Jan 26", enhancedGross: 100.9, enhancedNet: 99.7, baselineNet: 93.6 },
+    { period: "Mar 26", enhancedGross: 98.4, enhancedNet: 96.3, baselineNet: 88.6 },
+    { period: "May 26", enhancedGross: 97.5, enhancedNet: 94.7, baselineNet: 86.6 },
+    { period: "Jul 26", enhancedGross: 107.1, enhancedNet: 102.9, baselineNet: 93.2 },
+    { period: "Sep 26", enhancedGross: 110.3, enhancedNet: 105.0, baselineNet: 96.2 },
+    { period: "Nov 26", enhancedGross: 112.1, enhancedNet: 105.8, baselineNet: 98.8 },
+  ]}
+/>
+
+### Stock-level alpha and transaction-cost attribution
+
+Decomposing full-sample annualized P&L by constituent reveals exactly where the strategy earns its return—and where cross-sectional neutrality imposes a structural cost:
+
+<BarChartCard
+  title="Full-sample annualized stock attribution (bps / year)"
+  caption="Source: YAMF attribution across 1,169 trading days (Mar 2022 – Nov 2026; MH active from Sep 2025). Positive bars add gross alpha; cost drag shows one-way slippage paid."
+  xKey="ticker"
+  series={[
+    { key: "baselineGross", label: "Baseline Gross (bps)", color: "#C9A57A" },
+    { key: "enhancedGross", label: "Kalman + Seasonal Gross (bps)", color: "#00043A" },
+    { key: "enhancedCost", label: "Enhanced Cost Drag (bps)", color: "#8F3F30" },
+  ]}
+  data={[
+    { ticker: "RELX", baselineGross: -230, enhancedGross: -250, enhancedCost: 50 },
+    { ticker: "PSO", baselineGross: -88, enhancedGross: -316, enhancedCost: 47 },
+    { ticker: "WLY", baselineGross: 645, enhancedGross: 583, enhancedCost: 137 },
+    { ticker: "MH", baselineGross: 111, enhancedGross: 171, enhancedCost: 29 },
+    { ticker: "SCHL", baselineGross: -256, enhancedGross: 115, enhancedCost: 138 },
+  ]}
+/>
+
+<Callout title="Attribution takeaway: follower alpha vs. leader funding drag" tone="note">
+  `WLY` (**+583 bps/yr** full sample; **+1,884 bps/yr** in 2025–2026) and `MH` (**+171 bps/yr** full sample; **+676 bps/yr** while active) generate all of the basket's gross alpha, confirming that `RELX`/`PSO` moves propagate into higher-beta research and curriculum followers. Gating `SCHL` on peer correlation and Q3 seasonality flips its gross contribution from **-256 bps/yr** to **+115 bps/yr** while cutting its slippage drag from 235 bps/yr to 138 bps/yr. Conversely, `RELX` and `PSO` show negative gross attribution because internal dollar neutrality forces short positions in low-volatility leaders to fund laggard longs—suggesting that hedging follower longs against an external sector/market basket (`SPY` + `IWM`) rather than shorting trending leaders is the highest-value structural upgrade.
+</Callout>
+
+### Signal decay across holding horizons
+
+Testing forward cross-sectional spread returns across holding horizons from 1 to 20 trading days explains why turnover discipline must preserve short-horizon responsiveness:
+
+| Horizon | Signal A: OLS Residual MR | Signal B: Lead-Lag Drift | 60/40 Composite | Economic Interpretation |
+| --- | --- | --- | --- | --- |
+| **1 day** | +2.4 bps | +1.5 bps (+4.3 bps post-MH) | +3.1 bps | Initial liquidity bounce and leader propagation |
+| **3 days** | -2.2 bps | **+4.6 bps (+8.7 bps post-MH)** | +2.4 bps | Peak institutional lead-lag catch-up in `WLY` and `SCHL` |
+| **5 days** | -9.7 bps | -3.6 bps | -6.2 bps | Lead-lag impulse exhausted; fundamental drift dominates |
+| **10 days** | -14.1 bps | -3.3 bps | -11.5 bps | Post-announcement momentum persists in `MH` and `WLY` |
+| **20 days** | **+22.7 bps** | +6.3 bps | +14.2 bps | Slower monthly valuation reversion re-emerges |
+
+Signal B (`RELX`/`PSO` lead-lag) is strictly a **1-to-3-day propagation effect** that decays by day 5, whereas unconditioned 5-day return residuals face adverse momentum drift over 5–15 days before reverting at monthly horizons. Using hysteresis thresholds ($\lvert \tilde{S} \rvert \ge 0.80$ entry, zero-crossing exit, 12% no-trade band) captures the initial impulse without churning positions daily.
+
+## Reference Python implementation
+
+Below is the core state-space Kalman filter and seasonal portfolio construction loop used to generate the empirical results above. The complete runnable script and daily backtest series are attached underneath.
+
+```python
+import numpy as np
+import pandas as pd
+
+def kalman_dynamic_residuals(
+    rets_loc: pd.DataFrame,
+    loo_peer: dict[str, pd.Series],
+    spy_ret: pd.Series,
+    iwm_ret: pd.Series,
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Causal 1-step-ahead Kalman innovations and time-varying factor betas."""
+    idx, stocks = rets_loc.index, list(rets_loc.columns)
+    eps = pd.DataFrame(np.nan, index=idx, columns=stocks)
+    beta_spy = pd.DataFrame(0.0, index=idx, columns=stocks)
+    beta_iwm = pd.DataFrame(0.0, index=idx, columns=stocks)
+
+    for s in stocks:
+        mkt = iwm_ret.values if s == "SCHL" else spy_ret.values
+        y, x_peer = rets_loc[s].values, loo_peer[s].values
+        theta = np.array([0.0, 0.5, 0.5])
+        P = np.eye(3) * 0.20
+        Q = np.diag([1e-7, 1.5e-4, 1.5e-4])
+        R_var, active = 0.02**2, 0
+
+        for t in range(1, len(idx)):
+            if np.isnan(y[t]) or np.isnan(x_peer[t]) or np.isnan(mkt[t]):
+                continue
+            active += 1
+            F = np.array([1.0, x_peer[t], mkt[t]])
+            P_pred = P + Q
+            innov = y[t] - float(F @ theta)          # pre-fit innovation (causal)
+            S_var = float(F @ P_pred @ F.T) + R_var
+            K = (P_pred @ F) / S_var
+            theta = theta + K * innov
+            P = (np.eye(3) - np.outer(K, F)) @ P_pred
+            R_var = 0.96 * R_var + 0.04 * (innov**2)
+
+            if active >= 30:
+                eps.iat[t, eps.columns.get_loc(s)] = innov
+                if s == "SCHL":
+                    beta_iwm.iat[t, beta_iwm.columns.get_loc(s)] = theta[2]
+                    beta_spy.iat[t, beta_spy.columns.get_loc(s)] = theta[1] * 0.32
+                else:
+                    beta_spy.iat[t, beta_spy.columns.get_loc(s)] = theta[2] + theta[1] * 0.32
+
+    return eps, beta_spy, beta_iwm
+```
+
+<Download
+  files={[
+    {
+      href: "/publications/files/educational-services/backtest-results.csv",
+      title: "Daily backtest return and turnover series (CSV)",
+      description: "1,169 trading days (Mar 2022 – Nov 2026) comparing Baseline 60d OLS against Kalman + Seasonal + Correlation Gate.",
+    },
+    {
+      href: "/publications/files/educational-services/strategy-code.zip",
+      title: "Reproducible Python backtest & summary metrics (ZIP)",
+      description: "Standalone Yahoo Finance data loader, Kalman filter engine, earnings blackout builder, and JSON attribution dump.",
+    },
+  ]}
+/>
+
+## Execution risks and what would change our view
+
+<Callout title="Live deployment constraints" tone="risk">
+  **Small-breadth and borrow-fee sensitivity:** Five stocks sit at the absolute lower bound of cross-sectional statistical arbitrage. If M&A, privatization, or prolonged earnings blackouts shrink the active book below four names—as occurred prior to `MH`'s July 2025 listing—spread costs overwhelm gross alpha. In addition, `MH` (\$7.6M ADV, 60.1% realized vol) and `SCHL` (\$0.68B cap) can experience episodic short-borrow fee spikes around Q3/Q4 adoption announcements, and 15:55 ET Limit-on-Close signals approximate 16:00 ET closing auction clears to within intraday auction imbalance slippage.
+</Callout>
+
+Three developments would materially alter our assessment of this strategy:
+
+- **Universe expansion (constructive):** Adding liquid adjacent information-services and ed-tech peers—such as Wolters Kluwer (`WKL.AS`), Informa (`INF.L`), Coursera (`COUR`), or Stride (`LRN`)—would raise cross-sectional breadth from 5 to 8–10 names, stabilizing demeaned z-scores and reducing leader-shorting drag on `RELX` and `PSO`.
+- **Asymmetric ETF funding (constructive):** Replacing internal `RELX`/`PSO` short legs during strong positive leader impulses ($L_t > 1.5$) with a beta-matched `SPY`/`IWM` hedge would preserve follower catch-up alpha in `WLY` and `MH` without stepping in front of institutional momentum in `RELX`.
+- **Wider post-close auction spreads (adverse):** If realized round-trip execution slippage in `WLY`, `MH`, and `SCHL` exceeds **1.75×** our modeled baseline (above 22 bps in `WLY`/`MH` and above 50 bps in `SCHL`), net Sharpe in the 5-stock regime compresses toward zero, confining these signals to execution-timing overlays for a fundamental book rather than standalone deployment.
+
+## Sources
+
+- [Yahoo Finance, *Historical Daily OHLCV & Split/Dividend-Adjusted Series (`RELX`, `PSO`, `WLY`, `MH`, `SCHL`, `SPY`, `IWM`, `GBPUSD=X`), Nov 2021 – Nov 2026*](https://finance.yahoo.com/)
+- [SEC EDGAR, *John Wiley & Sons, Inc. (`WLY`) Form 10-K & Quarterly Filings*](https://www.sec.gov/edgar/browse/?CIK=0000107140)
+- [SEC EDGAR, *McGraw Hill, Inc. (`MH`) Registration Statement & Periodic Filings*](https://www.sec.gov/edgar/searchedgar/companysearch)
+- [SEC EDGAR, *Scholastic Corporation (`SCHL`) Form 10-K — Seasonality & Book Fair Operations*](https://www.sec.gov/edgar/browse/?CIK=0000866729)
+- [SEC EDGAR, *RELX PLC (`RELX`) & Pearson PLC (`PSO`) Form 20-F Annual Reports*](https://www.sec.gov/edgar/browse/?CIK=0000929869)
+- [Avellaneda, M. & Lee, J.-H. (2010), *Statistical Arbitrage in the U.S. Equities Market*, Quantitative Finance](https://doi.org/10.1080/14697680903124632)

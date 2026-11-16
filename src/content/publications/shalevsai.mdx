@@ -1,0 +1,266 @@
+import { Callout, KeyStats } from "@/components/article";
+import { BarChartCard, LineChartCard } from "@/components/charts";
+
+I think AI will create real economic value. But the companies building out the infrastructure during this boom might not get the return on investment they are expecting.
+
+AI can create enormous economic value without guaranteeing attractive returns on the infrastructure built to support it.
+
+The shale gas revolution offers a useful lesson: a technology can expand supply, lower costs, and benefit consumers while the companies funding that expansion struggle to capture the full value they create. But AI demand may behave very differently from natural gas demand.
+
+The investment question is whether paying demand for AI services grows quickly enough—and at high enough margins—to justify the capital committed to chips, data centers, power, and models.
+
+## Part 1: Can we compare shale to tokens?
+
+Throughout the 2000s, shale gas production grew rapidly. Between 2000 and 2010, shale gas grew from a minor source of U.S. supply to a significant one, reaching approximately 23% of domestic natural gas production in 2010. Its continued growth would reshape U.S. energy markets in the years that followed.
+
+Here is what happened:
+
+- Large investments in shale production made natural gas cheaper.
+- Consumers who used the gas benefited.
+- Producers of the gas were not guaranteed a return.
+
+Companies invested in drilling, wells, pipelines, and all the surrounding infrastructure that shale production required. As supply increased, gas became much cheaper than it had been before the boom.
+
+{/* TODO: chart — BLS producer price index for natural gas falling from 2006 to 2014 alongside growth in domestic production. */}
+
+Since gas was now cheap, the benefit spread to everyone beyond the shale producers:
+
+- Power generators could use cheaper gas to produce electricity.
+- Fertilizer companies could use it as feedstock.
+- Lower natural gas prices reduced fuel costs for some power generators, industrial users, and households, although the timing and magnitude of the benefit varied by region and depended on how much of the savings reached end users.
+
+Between 2006 and 2014, U.S. marketed natural gas production rose by roughly 35\% (and dry shale gas surged more than sevenfold), driving the Henry Hub spot price down from peaks above \$8–\$13/MMBtu in 2005–2008 to around \$2–\$4/MMBtu throughout the 2010s.
+
+Between 2010 and 2020, the U.S. shale sector burned roughly \$300 billion in cumulative negative free cash flow (per Deloitte and McKinsey energy analyses), as drillers outspent operating cash flow to lease acreage and drill wells. According to Haynes and Boone's Oil Patch Bankruptcy Monitor, more than 250 North American oil and gas producers filed for Chapter 11 bankruptcy between 2015 and 2020, restructuring over $170 billion in debt.
+
+Cite the U.S. chemical and fertilizer renaissance. Companies like CF Industries (nitrogen fertilizer) and Dow Inc. (ethylene/plastics) gained a massive global cost advantage because U.S. natural gas (their primary feedstock and energy input) traded at a steep discount to European and Asian benchmarks. Similarly, electric utilities retired coal plants and shifted to cheap natural gas generation.
+
+
+{/*put charts here on all of the above three points */}
+
+<Callout title="Key takeaway">
+  The value created by a new source of supply can be much greater than the profits captured by the companies producing it.
+</Callout>
+
+That doesn't mean every producer lost money or every gas user came out ahead. Hedging positions and the upfront capex for the build-out decided who won and who lost.
+
+{/*For the investment story, add evidence such as:
+- Cumulative cash flow after capital expenditures for a defined group of shale producers.
+- Returns on invested capital over a clearly defined period.
+- Equity and debt investor outcomes, including bankruptcies or restructurings where relevant.
+- A comparison between the performance of shale producers and selected downstream beneficiaries. */}
+
+### How the shale revolution changed natural gas markets
+
+> - It shifted the geography of production, increased well productivity dramatically, and introduced a measurable change in supply responsiveness after 2009.
+> - It reversed long-standing expectations of U.S. import dependence and enabled the build-out of LNG export infrastructure beginning in 2016.
+> - It required substantial pipeline and midstream investment as new production centers outpaced existing transport capacity.
+> - And it introduced a durable linkage between domestic production, pricing and flows and the global gas market and its conditions.
+
+Source: [RBAC, *A Short History of the Shale Revolution*](https://rbac.com/a-short-history-of-the-shale-revolution/)
+
+### Addressing the elephant in the room
+
+![An elephant standing in an office among knocked-over chairs, captioned "Address me"](/publications/adressme.jpeg)
+
+The AI build-out could follow the same pattern:
+
+1. Capex pours into data centers, chips, GPUs, power, and everything else compute needs.
+2. AI compute and model capacity expand.
+3. Inference becomes cheaper.
+4. Consumers benefit from cheaper intelligence and automation.
+5. AI infrastructure owners and model providers may earn weaker returns.
+
+Cheaper compute means affordable access to GPUs, TPUs, memory, and the AI services built on them. Companies can use these as an input, the same way a chemical company uses natural gas as an input. AI services at a fixed level of capability have already become much cheaper.
+
+{/* TODO: cite the Stanford AI Index on falling token prices. */}
+
+#### Inferencing and Compute Costs
+
+The price of accessing a fixed level of AI capability has fallen sharply as models and infrastructure have become more efficient. But the cost of developing the most capable frontier models can still rise as labs use more computing power to push performance further.
+
+{/* TODO: show that compute has become cheaper and that frontier models are becoming less and less expensive. */}
+
+## Part 2: The new value chain
+
+**AI becomes cheaper → businesses and individuals use more of it → productivity and convenience improve → competition decides who keeps the financial benefit.**
+
+The benefits of AI could diffuse across consumers and industries rather than concentrate in a small number of suppliers like the frontier labs.
+
+### Why might AI infrastructure builders not see a good ROI?
+
+The hyperscalers are building massive data centers because they expect strong demand. Once all that compute comes online, they will be in the market with their AI products, competing for the same customers.
+
+If infrastructure capacity expands faster than paying demand, providers may compete more aggressively on price. That could reduce utilization and margins, particularly for services customers view as interchangeable. Revenue could still grow while returns on the underlying infrastructure disappoint.
+
+{/* TODO: add a visualization here. */}
+
+{/*The economics of a chip designer, a data-center landlord, a cloud operator, and a model provider are not identical. A decline in model API prices does not automatically mean chip manufacturers earn lower margins. */}
+
+#### Basic ROI Calculations
+
+$$
+Annual operating cash flow
+=
+AI \ revenue
+-
+power, labor, maintenance, and other cash costs
+$$
+
+Then compare the present value of cash flows over the asset’s life with:
+- Initial construction and hardware costs.
+- Ongoing replacement and upgrade costs.
+- Financing costs.
+- The risk-adjusted return investors require.
+
+| Hypothetical data center | Strong utilization | Weak utilization |
+|---|---:|---:|
+| Annual available capacity | 1 million GPU-hours | 1 million GPU-hours |
+| Utilization | 80% | 50% |
+| Revenue per sold GPU-hour | $4.00 | $3.00 |
+| **Annual revenue** | **$3.2 million** | **$1.5 million** |
+
+## Part 3: The Counterargument
+
+There are a few places where the argument above falls apart.
+
+1. Natural gas and oil are not tokens.
+2. Falling supply costs weren't the only thing behind the 2014 oil price collapse.
+    - Rising U.S. oil production, weakening demand expectations, fewer supply disruptions, and OPEC's decision to maintain production all played a part.
+
+Shale gas entered an established market for heating, electricity, and industrial feedstocks. **AI compute is entering a much broader and less mature market.** As models improve and costs fall, tasks that were previously uneconomic—or impossible to perform at scale—may become viable. Demand for compute could therefore expand faster than the cost of serving each task falls.
+
+{/* TODO: add a visualization here. */}
+
+### Demand growth vs. price elasticity
+
+The bigger difference is how demand responds to price. Two separate ideas are easy to blur together:
+
+- **Demand growth** means people want more AI over time because its capabilities, adoption, or applications are expanding.
+- **Price elasticity** asks how much more AI people use because its price falls, holding other influences constant.
+
+{/*add economics style graphs here*/}
+
+AI could have both: rapid underlying demand growth and strong sensitivity to falling prices. But booming token use doesn't prove a particular elasticity by itself, because models are also getting better and being built into more products.
+
+Oil demand can grow with GDP, population, travel, and industrial activity while staying relatively price-inelastic in the short run. People can't immediately replace their cars or change their commutes when fuel prices move. The U.S. Energy Information Administration (EIA) notes that low short-run responsiveness of oil supply and demand contributes to price volatility.
+
+{/* TODO: link the EIA source and add it to Sources. */}
+
+With AI, falling prices might unlock entirely new workloads:
+
+- A company that could afford to analyze only a sample of customer interactions might analyze all of them.
+- A scientist might run thousands of hypotheses or simulations rather than a handful.
+- A software team might move from occasional coding assistance to agents that continuously test and maintain code.
+- A financial institution might analyze every filing, contract, and earnings call rather than only its highest-priority ones.
+
+That is a much broader demand response than driving a little more because gasoline is cheaper.
+
+### Researching the frontier
+
+I borrowed this argument from a post on X.
+
+{/* TODO: credit the original post, ideally with <Tweet url="…" />. */}
+
+With better models and more compute, a talented researcher, PhD student, or scientist can now do work that would have been impossible before. That sets off a cycle:
+
+1. Models improve.
+2. More things become easier and more feasible.
+3. Companies see these new possibilities and their strategic value.
+4. Those companies now need compute.
+5. Demand for compute increases.
+6. Infrastructure investment increases to meet that demand.
+7. Hardware and software have to keep up, because companies want the cheapest and most efficient way to serve the most capable model.
+8. Hardware and software manufacturing increases.
+9. With all of this combined, new things can be achieved, and the cycle starts again.
+
+{/* TODO: cite Epoch AI showing token demand growing faster than inference supply, creating a compute shortage. */}
+
+### FOMO
+Even if near-term AI revenue is uncertain, strategic competition may lead companies and governments to keep investing in compute because the cost of falling behind could be large.
+
+### Cheaper AI can lead to more overall compute demand
+
+Here is a simple illustration. Efficiency improves tenfold in both growth cases:
+
+| | Today | Base case | Bull case |
+|---|---:|---:|---:|
+| Useful AI tasks performed | 1 billion | 5 billion | 20 billion |
+| Compute required per task | 1 unit | 0.1 units | 0.1 units |
+| **Total compute required** | **1 billion units** | **0.5 billion units** | **2 billion units** |
+
+- In the base case, task volume grows fivefold, so total compute demand falls by half.
+- In the bull case, task volume grows twentyfold, so total compute demand doubles.
+
+Illustrative numbers, not forecasts.
+
+This example holds task complexity constant. In practice, the mix of tasks can change: more demanding reasoning, longer contexts, video, and multi-step agent workflows may each require different amounts of compute. At the same time, software and hardware improvements can reduce compute requirements. Total demand depends on both forces.
+
+If lower costs and better models unlock enough new demand, it can more than offset the efficiency gains. See Microsoft Research on [energy use of AI inference, efficiency pathways, and test-time scaling](https://www.microsoft.com/en-us/research/publication/energy-use-of-ai-inference-efficiency-pathways-and-test-time-scaling/).
+
+### Thoughts
+
+#### Fast demand growth does not prevent overbuilding
+
+Supply and demand can both grow rapidly, and supply can still grow faster.
+
+For example, if paying demand for AI compute grows 50% while usable capacity grows 100%, prices and utilization could come under pressure.
+
+Both supply and demand can be positive; what matters is their relationship between these two
+
+Conversely, if demand grows faster than capacity, prices and utilization can remain strong. The uncertainty is the timing as well as the eventual market size.
+
+## Part 4: Capturing Value
+
+### Beneficiaries of building AI infrastructure
+These businesses may benefit while capital is being spent:
+- Construction materials.
+- Equipment rentals.
+- Power systems and electrical equipment.
+- Cooling, controls, sensing, and monitoring.
+- Engineering and infrastructure services.
+
+The investment question is:
+> Can these companies earn attractive returns while data centers are being built, and how exposed are they if that spending slows?
+
+#### Nucor Inc.
+- Supplies steel products used in data-center construction.
+- How material data-center demand is relative to total sales; steel cyclicality; pricing; margins; valuation.
+- Nucor explicitly markets its products to data-center builders.
+![nucorchart](/publications/NUE_total_return_1y.svg)
+
+
+#### ITT
+As AI server racks transition from air cooling to direct-to-chip liquid cooling and rear-door heat exchangers (driven by high-density GPU thermal loads), data centers require massive chilled-water circulation, coolant distribution units (CDUs), and backup generator fuel-transfer pumps. ITT’s Industrial Process (IP) segment (including brands like Goulds Pumps and MP Pumps) supplies centrifugal and specialty pumps used in data center thermal management and power generation.
+
+What percentage of ITT’s Industrial Process backlog is tied to data center HVAC/liquid cooling versus traditional oil, gas, chemical, and mining end-markets; operating margin expansion vs. current P/E multiple.
+
+#### AYI
+- Potential exposure through building controls and data-center monitoring.
+- Revenue exposure, acquisition economics, competition, and integration risk.
+- In October 2026, Acuity announced an agreement to acquire Parameter Technologies, a data-center monitoring and leak-detection business; the deal had not yet closed when announced.
+
+
+#### Herc Holdings Inc.
+- Equipment rentals can benefit from large construction projects.
+- How much revenue comes from data centers, fleet utilization, equipment capex, leverage, and exposure to a construction slowdown.
+- Herc has identified data centers as one source of growth in its large-project pipeline.
+
+
+#### Itron Inc.
+- AI data centers are creating severe localized bottlenecks on the electric grid. Utilities cannot build transmission lines fast enough, forcing them to invest heavily in Grid Edge Intelligence, smart metering, and distributed load-management software/hardware—Itron's core business (specifically its Outcomes and Networked Solutions segments).
+- need to check = Utility capex approval timelines (public utility commissions move slowly compared to private hyperscalers), backlog conversion velocity, and hardware vs. recurring software revenue mix.
+
+![itrichart](/publications/ITRI_total_return_1y.svg)
+
+
+[1]: https://nucor.com/industries-served/data-centers/?utm_source=chatgpt.com "Nucor | Data Centers"
+
+[2]: https://investors.acuityinc.com/news-releases/news-release-details/acuity-announces-agreement-acquire-parameter-technologies?utm_source=chatgpt.com "Acuity Announces Agreement to Acquire Parameter Technologies"
+
+[3]: https://ir.hercrentals.com/news/news-details/2026/Herc-Holdings-Reports-Third-Quarter-2026-Results-and-Increases-2026-Full-Year-Guidance/default.aspx?utm_source=chatgpt.com "Herc Holdings Inc. - Herc Holdings Reports Third Quarter 2026 Results and Increases 2026 Full Year Guidance"
+
+## Sources
+
+- [RBAC, *A Short History of the Shale Revolution*](https://rbac.com/a-short-history-of-the-shale-revolution/)
+- [Microsoft Research, *Energy Use of AI Inference: Efficiency Pathways and Test-Time Scaling*](https://www.microsoft.com/en-us/research/publication/energy-use-of-ai-inference-efficiency-pathways-and-test-time-scaling/)
