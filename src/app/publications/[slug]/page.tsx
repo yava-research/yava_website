@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { formatDate, publications } from "@/data/publications";
 import { articleDetails, getArticleSlugs } from "@/lib/articles";
 import { members } from "@/data/members";
+import { showTeam } from "@/data/site";
 import { formatTradeDate } from "@/data/holdings";
 import { picksFor } from "@/data/publication-picks";
 import "katex/dist/katex.min.css";
@@ -89,7 +90,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         {entry && (
           <p className="article-header__meta meta-label">
             {formatDate(entry.date, true)} · {details.minutes} min read · By {entry.authors.map((author, index) => {
-              const member = members.find((person) => person.byline === author && !person.synthetic);
+              const member = showTeam && members.find((person) => person.byline === author && !person.synthetic);
               return <span key={author}>{index > 0 && ", "}{member ? <Link className="text-link" href={`/team/${member.slug}`}>{author}</Link> : author}</span>;
             })}
           </p>

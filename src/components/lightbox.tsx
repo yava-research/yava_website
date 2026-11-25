@@ -35,12 +35,16 @@ type LightboxProps = {
   open: boolean;
   onClose: () => void;
   title?: string;
+  /** Visible toolbar label, when it should differ from `title` (which still names the dialog). */
+  heading?: ReactNode;
+  /** Extra classes on the dialog, for variants such as a narrower panel. */
+  className?: string;
   /** Extra controls rendered in the toolbar (e.g. zoom buttons). */
   toolbar?: ReactNode;
   children: ReactNode;
 };
 
-export function Lightbox({ open, onClose, title, toolbar, children }: LightboxProps) {
+export function Lightbox({ open, onClose, title, heading, className, toolbar, children }: LightboxProps) {
   const ref = useRef<HTMLDialogElement>(null);
   const returnFocus = useRef<HTMLElement | null>(null);
   const [mounted, setMounted] = useState(open);
@@ -74,10 +78,13 @@ export function Lightbox({ open, onClose, title, toolbar, children }: LightboxPr
   return createPortal(
     <dialog
       ref={ref}
-      className="lightbox"
+      className={className ? `lightbox ${className}` : "lightbox"}
       data-closing={closing || undefined}
       aria-label={title ?? "Expanded view"}
       onCancel={(event) => {
+        // A nested lightbox (e.g. a zoomed image) is portaled inside this one's React
+        // tree, so its cancel arrives here too. Only close for our own.
+        if (event.target !== event.currentTarget) return;
         event.preventDefault();
         onClose();
       }}
@@ -87,7 +94,7 @@ export function Lightbox({ open, onClose, title, toolbar, children }: LightboxPr
     >
       <div className="lightbox__panel">
         <header className="lightbox__bar">
-          <p className="lightbox__title">{title}</p>
+          <p className="lightbox__title">{heading ?? title}</p>
           <div className="lightbox__tools">
             {toolbar}
             <button type="button" className="lightbox__button" onClick={onClose} aria-label="Close">

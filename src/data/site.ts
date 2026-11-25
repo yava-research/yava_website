@@ -11,9 +11,14 @@ export const site = {
   ],
 };
 
+// The team pages are hidden while the roster still includes synthetic profiles.
+// Set to true to restore the nav link, /team, member pages and byline links.
+export const showTeam: boolean = false;
+
 export const navLinks = [
   { label: "About", href: "/#about" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Publications", href: "/publications" },
-  { label: "Team", href: "/team" },
+  { label: "Good Reads", href: "/good-reads" },
+  ...(showTeam ? [{ label: "Team", href: "/team" }] : []),
 ];

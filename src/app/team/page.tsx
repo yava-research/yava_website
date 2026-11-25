@@ -2,13 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Portrait } from "@/components/Portrait";
 import { groups, members } from "@/data/members";
+import { showTeam } from "@/data/site";
+import { notFound } from "next/navigation";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = showTeam ? {
   title: "Team",
   description: "The analysts and portfolio managers behind the Yavapai Alternative Management Fund.",
-};
+} : {};
 
 export default function TeamPage() {
+  if (!showTeam) notFound();
   return (
     <>
       <header className="container page-header">

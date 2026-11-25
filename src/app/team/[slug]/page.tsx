@@ -6,6 +6,7 @@ import { PublicationRow } from "@/components/PublicationRow";
 import { getMember, members } from "@/data/members";
 import { publicationsBy } from "@/data/publications";
 import { getArticleSlugs } from "@/lib/articles";
+import { showTeam } from "@/data/site";
 
 export function generateStaticParams() {
   return members.map((m) => ({ slug: m.slug }));
@@ -18,13 +19,13 @@ export const instant = false;
 
 export async function generateMetadata({ params }: PageProps<"/team/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const member = getMember(slug);
+  const member = showTeam ? getMember(slug) : undefined;
   return member ? { title: member.name, description: member.bio[0] } : {};
 }
 
 export default async function MemberPage({ params }: PageProps<"/team/[slug]">) {
   const { slug } = await params;
-  const member = getMember(slug);
+  const member = showTeam ? getMember(slug) : undefined;
   if (!member) notFound();
 
   const firstName = member.name.split(" ")[0];
