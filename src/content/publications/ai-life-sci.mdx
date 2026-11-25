@@ -1,60 +1,71 @@
-import { Callout, KeyStats } from "@/components/article";
-import { BarChartCard, LineChartCard } from "@/components/charts";
+import { Callout } from "@/components/article";
 
-The AI + Lifesciences Trade, can humanity be cure everything?
+<Callout title="Publication Update" tone="note">
+  Revised November 24, 2026.
+</Callout>
 
-Precigenetics develops a biological foundational layer platform designed for healthcare providers, researchers, and biotechnology companies.
+The biggest bottleneck in AI drug discovery is not compute, and it is not model architecture—it is that conventional biology is measured by destroying it. Foundation models cannot learn cellular dynamics from static end-point "autopsies." **Precigenetics** is building a non-destructive, label-free bio-photonics and microfluidics layer designed to turn living cellular biology into continuous, machine-readable training data.
 
-The company's platform specializes in combining precision sensors, signal processing, and evolving algorithms to transform scattered biological markers into a coherent stream of understanding, helping healthcare researchers to integrate seamlessly into the continuum of care, and research, through adaptive machine intelligence.
+<Callout title="The thesis" tone="thesis">
+  AI in life sciences only compounds when paired with high-fidelity, repeatable biological data. Precigenetics targets the data-generation bottleneck via label-free optical measurement and its modular microfluidic chip (**MBOP**), while clinical proof points like Moderna's individualized mRNA cancer vaccine show where AI already adds measurable value—and where hype outpaces evidence.
+</Callout>
 
-Biology needs humans measurements to accelerate.
+## Why biological data is the bottleneck
 
-It's about capturing the analog into digital, and fighting disease with intelligence.
+Biological discovery still relies heavily on destructive, population-averaged assays that perturb or kill the sample at a single moment in time. Converting analog living systems into digital intelligence requires continuous, non-destructive measurement at single-cell resolution.
 
-The biggest bottleneck in AI drug discovery isn't compute. It isn't models. It's that biology is measured by destroying it.
+```mermaid
+flowchart LR
+  A["Conventional assays<br/>Destructive, labeled, sparse"] --> B["Static endpoint snapshots<br/>High noise, low repeatability"]
+  C["Precigenetics bio-photonics<br/>Label-free, continuous, single-cell"] --> D["Programmable cell-culture data<br/>via MBOP microfluidic chip"]
+  D --> E["High-fidelity training data<br/>for AI drug discovery"]
+```
 
+## Bio-photonics and the MBOP platform
 
-Foundation models can't learn from autopsies.
+Precigenetics develops a biological foundational layer combining precision optical sensors, signal processing, and adaptive algorithms to translate scattered biological markers into continuous data streams for researchers, biotech firms, and healthcare providers.
 
-Artificial Intelligence / Life Sciences
-Company is generating revenue
+Three technical pillars define the platform:
 
-## Products
-Precigenetics has built a proprietary optical measurement platform that generates chemically resolved, temporally continuous, single-cell data from living systems — without labels, without destruction, and at throughput scales relevant to drug discovery.
+- **Continuous single-cell measurement:** Captures molecular dynamics in living cells at sub-cellular resolution as they happen, rather than reconstructing them post-destruction.
+- **Label-free optical interrogation:** Probes native molecular bonds directly, avoiding probe-induced perturbation so the measured cell reflects its true biological state.
+- **Single-cell heterogeneity:** Extracts high-dimensional chemical signatures from individual cells rather than population averages, isolating the cellular heterogeneity that drives drug resistance.
 
-- Continuous molecular measurement of living cells at sub-cellular resolution, capturing chemical dynamics as they happen rather than reconstructing them after the fact.
-- Our optical platform interrogates native molecular bonds directly, eliminating probe-induced perturbation. The cell you measure is the cell that's actually there.
-- Population averages hide the biology that matters. We extract high-dimensional chemical signatures from individual cells, resolving the heterogeneity that drives drug resistance.
+On the hardware side, Precigenetics is fabricating **v.1 of MBOP (Modular Biological Observation Platform)**—a microfluidic initiative adapting commoditized semiconductor and microelectronics fabrication methods to integrate disease modeling and cell-culture protocols onto a modular chip. The goal is to turn cell culture and high-content imaging into a repeatable, programmable data source for model training.
 
-Never thought a chip could cure cancer, but here we are.
+<Tweet url="https://x.com/SasaanAShowghi/status/2023564914124877950" />
 
-For months, our hardware team at Precigenetics has been secretly working on MBOP: Modular Biological Observation Platform. We’re now fabricating v.1, and here’s why you should be excited.
+## Market validation: what Moderna's Phase 3 trial actually proves
 
-MBOP is the first microfluidic initiative from an AI drug discovery company.
+Outside of measurement hardware, **Moderna's** positive Phase 3 readout for its individualized mRNA cancer vaccine provides a concrete benchmark for how AI is being deployed in clinical pipelines today. Across more than 1,000 patients with high-risk melanoma whose tumors had been surgically removed, the therapy lengthened recurrence-free survival—marking the first positive Phase 3 result for an individualized mRNA cancer vaccine.
 
-By leveraging commoditized methods from the semiconductor and microelectronics industries, we’re integrating our entire disease modeling and cell-culture protocol into a modular chip format.
+The AI contribution is specific, not magical:
 
-This core building block will exponentially increase throughput of our high-content imaging, while making cell culture and cell imaging a repeatable, programmable, high-fidelity data source for our training models.
+- **Neoantigen selection:** Models predict which tumor-specific antigens, out of hundreds of mutations, are most likely to trigger an immune response.
+- **Sequence optimization and manufacturing logistics:** Algorithms assist with mRNA sequence design and coordinate custom patient-specific manufacturing on an approximately six-week turnaround.
 
-Our aim is simple: making data that actually answers the questions current methods lose.
+**Caveat:** This is not a general "AI cured cancer" moment. The result is in a single indication (resected high-risk melanoma) and validates AI as an optimization layer inside a broader clinical and manufacturing stack, rather than a standalone replacement for wet-lab and clinical execution.
 
-In an industry of sparsity, middlemen, and a repeatability crisis, we’re finding the needles in the haystack that make curing disease inevitable.
+## Financials and scenario framework
 
-https://x.com/SasaanAShowghi/status/2023564914124877950
+Precigenetics has announced a **\$2.3 million letter of intent (LOI)**—not a completed sale. Any allocation of **\$100,000** to licensing remains explicitly speculative. Until the underlying commercial documents are inspected, neither recognized revenue nor licensing revenue should be treated as established.
 
-## Market
+| Scenario | Core driver | What to verify |
+| --- | --- | --- |
+| **Bull** | \$2.3M LOI converts to binding commercial contracts; MBOP v.1 fabrication scales repeatable pharma/biotech data partnerships | Signed master service/supply agreements, cash collections, and multi-customer retention |
+| **Base** | Paid pilots convert slowly from LOI; MBOP v.1 validates throughput in-house while commercial licensing remains small | Pilot-to-contract conversion rate, gross margin on hardware + data delivery, and burn rate |
+| **Bear** | LOI fails to convert to recognized revenue; microfluidic fabrication or optical reproducibility bottlenecks delay commercial rollout | Absence of audited revenue recognition, customer churn, or dilutive bridge financing |
 
-### Moderna
-Moderna recently met its goals in its phase 3 trial for its personalized mRNA cancer vaccine
-They basically lengthened recurrence-free survival in 1k+ patients with high-risk melanoma whose tumors had been surgically removed
-AI aspect = this is in refers to the tumor specific antigens selection step, not the trial itself.
-AI is used to predict antigens to trigger an immune response out of hundreds mutations
-Also used for sequence optimization and manufacturing logistics, since each vaccine is custom made for the patient in about six weeks
-huge news because its the first positive Phase 3 result for an individualized mRNA cancer therapy vaccine
-Disclaimer: not saying "AI cured cancer" - moderna basically only did this once (only to melanoma) - rightful to be weary about this
+## Risks and diligence gaps
 
-## Bio-Photonics
+<Callout title="Key risks" tone="risk">
+  A letter of intent is not revenue. The primary diligence gap is verifying whether the \$2.3M LOI converts into binding, cash-paying contracts—and whether MBOP v.1 works reliably outside the lab.
+</Callout>
 
+- **Unverified revenue:** Neither the \$2.3 million LOI nor the speculative \$100,000 licensing figure represents established, recognized revenue without inspecting the underlying agreements.
+- **Hardware and fabrication execution:** Translating semiconductor-style microfluidics into consistent biological cell-culture chips carries yield, contamination, and reproducibility risk at MBOP v.1 scale.
+- **Bio-AI hype vs. clinical reality:** As the Moderna melanoma caveat illustrates, AI tools accelerate targeted steps (like antigen selection or imaging throughput) rather than eliminating biological validation timelines.
 
-## Financials
-Precigenetics announced a \$2.3 million letter of intent—not a completed sale. The article’s allocation of \$100,000 to licensing is explicitly speculative. Until you inspect the underlying documents, neither recognized revenue nor licensing revenue is established.
+## Sources
+
+- [Sasaan Showghi on X, *MBOP v.1 announcement*](https://x.com/SasaanAShowghi/status/2023564914124877950)

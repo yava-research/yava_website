@@ -90,6 +90,18 @@ export const publicationPicks: PublicationPick[] = [
     shares: 20,
   },
   {
+    slug: "rskd",
+    ticker: "RSKD",
+    name: "Riskified Ltd.",
+    exchange: "NYSE",
+    sector: "Technology",
+    city: "New York",
+    country: "United States",
+    publication: "the-service-systems",
+    initiationDate: "2026-10-16",
+    shares: 20,
+  },
+  {
     slug: "thc",
     ticker: "THC",
     name: "Tenet Healthcare Corporation",

@@ -1,144 +1,103 @@
 import { Callout, KeyStats } from "@/components/article";
-import { BarChartCard, LineChartCard } from "@/components/charts";
 
-**[Turbopuffer](https://turbopuffer.com/)** is a search database that helps applications find relevant information across large collections of documents. It supports both **keyword search** and **semantic search**—searching for similar meaning using numerical representations called *embeddings*. [turbopuffer.com](https://turbopuffer.com/docs?utm_source=chatgpt.com)
+[Turbopuffer](https://turbopuffer.com/) is a managed search database built for applications that need to retrieve relevant context across massive, multi-tenant document and code collections. It combines **keyword search**, **vector search** (using numerical embeddings), and **hybrid search** on top of cloud object storage with SSD and memory caching. While an LLM interprets information and generates an answer, Turbopuffer handles the retrieval step underneath — selling B2B infrastructure to AI coding assistants, workplace search tools, and enterprise software teams.
 
-The distinction is that **Turbopuffer retrieves relevant material; the LLM interprets it**. You could also combine semantic search with keyword search—for example, to make sure an exact course code or tool name is considered. Turbopuffer calls this *hybrid search*. [turbopuffer.com](https://turbopuffer.com/docs/hybrid?utm_source=chatgpt.com)
+<KeyStats
+  items={[
+    { label: "Annualized run rate", value: "USD 100M", note: "Crossed in March 2026, per CEO (unaudited)" },
+    { label: "Total capital raised", value: "Under USD 1M", note: "Profitable on minimal venture funding, per CEO" },
+    { label: "Cursor cost reduction", value: "20×", note: "Company-published migration case study" },
+    { label: "Notion cost reduction", value: "80%", note: "Company-published workload case study" },
+  ]}
+/>
 
-One feature of its design is that it stores data in cloud object storage and uses caching to serve searches. That can make it attractive at large scale, though the company notes that uncached queries and writes can be slower. [turbopuffer.com](https://turbopuffer.com/docs?utm_source=chatgpt.com)
+<Callout title="The thesis" tone="thesis">
+  Turbopuffer is a usage-based toll on the retrieval layer of the AI stack. By anchoring durable data in cheap cloud object storage and caching hot namespaces, it lowers the unit cost of search enough for customers to index far more data per user. The durability of that toll depends on whether its cost-and-latency trade-offs hold up against specialist vector databases, incumbent search engines, and expanding model context windows.
+</Callout>
 
-**Turbopuffer is a business-to-business infrastructure company that helps software applications search their data.** It sells a managed search database to companies building products such as AI coding assistants, workplace search, and research tools.
+## What Turbopuffer does and where it sits
 
-Its business thesis is straightforward: as AI applications search more documents and code, the cost and speed of retrieving relevant information matter. Turbopuffer aims to make that retrieval cheaper by building its search engine around cloud object storage, while using faster storage and memory as caches. [turbopuffer.com](https://turbopuffer.com/docs?utm_source=chatgpt.com)
+An AI model can reason over context, but it still has to find the right context first. When a developer asks an AI coding assistant where user authentication is handled in a large repository, the application has to search across millions of isolated customer codebases, pull the relevant snippets, and pass them to the model within milliseconds.
 
-The company is private. Its co-founders are **Simon Hørup Eskildsen**, CEO, and **Justine Li**; both previously worked on infrastructure at Shopify. [turbopuffer.com](https://turbopuffer.com/about?utm_source=chatgpt.com)
+Turbopuffer provides that retrieval layer through four capabilities ([Turbopuffer docs](https://turbopuffer.com/docs)):
 
-## What problem does it solve?
+- **Full-text search:** Matches exact words, symbols, or identifiers such as function names and course codes.
+- **Vector search:** Retrieves semantically similar material using embeddings.
+- **Hybrid search:** Combines keyword and vector matching in a single query ([hybrid search docs](https://turbopuffer.com/docs/hybrid)).
+- **Metadata filtering:** Scopes results by attributes such as customer, project, or document category.
 
-An AI model may be good at answering questions, but it still needs access to the relevant information. Consider asking Cursor:
+Because these primitives apply beyond generative AI, companies also use the engine for conventional product search and recommendations.
 
-> “Where in this codebase is user authentication handled?”
-
-The application must search a potentially large codebase, find useful files or snippets, and supply them to the model. That retrieval step has to happen quickly and at a reasonable cost, potentially across millions of separate customer codebases.
-
-Turbopuffer provides the search layer for that process. Its database supports:
-
-- **Full-text search:** Finds documents using words or identifiers, such as a function name.
-- **Vector search:** Finds material with similar meaning using numerical representations called embeddings.
-- **Hybrid search:** Combines both approaches.
-- **Metadata filtering:** Narrows results using fields such as a customer, project, or document category.
-
-Its product is useful beyond generative AI: businesses can also use it for conventional search, recommendations, and other retrieval applications. [turbopuffer.com](https://turbopuffer.com/docs?utm_source=chatgpt.com)
-
-## Where it sits in the AI value chain
-
-For an application like Cursor, the workflow looks roughly like this:
-
-**User asks a question → Cursor searches the codebase using Turbopuffer → relevant code is retrieved → an AI model uses that code to answer.**
-
-```mermaid
-sequenceDiagram
+<Mermaid
+  caption="How Turbopuffer sits behind an AI coding assistant"
+  chart={`sequenceDiagram
   actor User
   participant Cursor
   participant TP as Turbopuffer
   participant Model as AI model
   User->>Cursor: Asks a question
   Cursor->>TP: Search this user's codebase namespace
-  TP-->>Cursor: Relevant code
+  TP-->>Cursor: Relevant code snippets
   Cursor->>Model: Question + retrieved code
-  Model-->>User: Answer
-```
+  Model-->>User: Answer`}
+/>
 
-Turbopuffer is an infrastructure provider behind the scenes. It does not need to own the user-facing application or the AI model to earn revenue from that workflow. Cursor says it uses Turbopuffer for code retrieval and creates a separate search namespace for each user and codebase. [marketplace.turbopuffer.com](https://marketplace.turbopuffer.com/customers/cursor?utm_source=chatgpt.com)
+In this workflow, Turbopuffer never needs to own the end-user interface or the foundation model. [Cursor's case study](https://marketplace.turbopuffer.com/customers/cursor) notes that it creates a separate search namespace for each user and codebase, making Turbopuffer an invisible infrastructure layer analogous to a cloud database.
 
-That makes Turbopuffer somewhat analogous to a database or cloud provider: a customer incorporates its service into a product, and the end user may never see the Turbopuffer brand.
+| Customer | Primary use case | Why the retrieval layer matters |
+| --- | --- | --- |
+| **Cursor** | Code retrieval for AI coding features | Must search millions of isolated codebases cheaply and quickly |
+| **Notion** | Workspace search, Q&A, and research | Must retrieve relevant context across vast document stores |
+| **Linear** | Issue and project search | Users need fast filtering across tickets and project histories |
+| **Enterprise & AI teams** | Internal knowledge and customer-record search | Supplies grounded context to downstream AI workflows |
 
-## Who are its customers?
+Turbopuffer also lists Anthropic, Atlassian, Ramp, and Cognition among its customers, though their specific workloads and spend profiles should not be assumed to match Cursor or Notion.
 
-Its customers are software companies and other organizations that need search capabilities inside their products or workflows.
+## Architecture and unit economics
 
-| Customer | Example use | Why the search layer matters |
-|---|---|---|
-| **Cursor** | Finding relevant code for its AI coding features | It must search many separate codebases efficiently. |
-| **Notion** | Search, Q&A, and research across workspace data | It needs to retrieve relevant information from a large volume of documents. |
-| **Linear** | Searching issues | Users need to find relevant tickets and project information. |
-| **Enterprise and AI companies** | Search across internal documents, customer records, or other data | AI tools need relevant context to answer questions or perform tasks. |
+Most traditional vector and search databases keep indexes resident in memory or on attached SSDs, which becomes expensive when a customer stores huge volumes of data that are queried only intermittently. Turbopuffer's architectural bet is to keep durable data in **cloud object storage** while promoting active namespaces into SSD and memory caches on demand ([Turbopuffer concepts](https://turbopuffer.com/docs/concepts)).
 
-Turbopuffer also lists companies including Anthropic, Atlassian, Ramp, and Cognition as customers, although their precise workloads should not be assumed to be identical. [marketplace.turbopuffer.com](https://marketplace.turbopuffer.com/customers/cursor?utm_source=chatgpt.com)
+That design targets three operational pain points:
 
-## How does Turbopuffer make money?
+1. **Lower storage and query costs:** Company case studies report a **20× cost reduction at Cursor** and an **80% workload cost reduction at Notion** (which Notion credited with helping remove per-user AI charges). Because these are vendor-published case studies, savings for other teams will vary with data size and query frequency.
+2. **Reduced operational overhead:** Teams offload distributed index sharding, scaling, and maintenance rather than running their own search clusters.
+3. **Multi-tenant namespace isolation:** Software products like Cursor and Notion partition data into millions of small, independent namespaces (one per user or workspace), a pattern object-storage-backed indexing handles naturally.
 
-It sells **managed search infrastructure with usage-based pricing**. The major drivers of a customer’s bill include:
+The most compelling economic effect is **Jevons-style demand expansion**: when retrieval is expensive, product teams ration how much data they index and how often users can search. Turbopuffer notes in its [company blog](https://turbopuffer.com/blog/turbopuffer) that after migrating, Cursor began generating more vectors per user — turning lower unit cost into higher overall query and storage volume.
 
-1. **Storage:** How much searchable data the customer keeps.
-2. **Writes:** How much data is added or updated.
-3. **Queries:** How much data the customer searches.
-4. **Plan and deployment requirements:** Larger customers can pay for enterprise features and support.
+### The latency trade-off
 
-For sustained high-volume workloads, Turbopuffer also offers *namespace pinning*, which charges for reserved capacity in GB-hours instead of the standard per-query approach for that namespace. Pricing depends on the workload, plan, and configuration. [Sacra](https://sacra.com/c/turbopuffer/?utm_source=chatgpt.com)
+Object storage is cheap, but reading from it is slower than reading from memory. Turbopuffer explicitly notes **higher write latency and occasional slower cold queries** when data is neither cached nor pinned. For workloads with strict real-time write-to-read or tail-latency requirements, real-world benchmark performance under a customer's own traffic pattern matters as much as headline storage pricing.
 
-A simplified example:
+## Business model and scale
 
-> Cursor grows from 1 million to 2 million active users. If that growth leads it to index more code and run more searches, its Turbopuffer usage—and potentially its bill—can grow even if Turbopuffer has not signed another customer.
+Turbopuffer sells managed search infrastructure on a **usage-based pricing** model driven by storage volume, write throughput, query volume, and enterprise deployment or support tiers. Its website lists a **USD 16 monthly minimum** on the Launch plan, while [Sacra's company profile](https://sacra.com/c/turbopuffer/) notes a *namespace pinning* option that bills sustained high-volume workloads on reserved capacity (GB-hours) rather than pure per-query pricing.
 
-That is the appeal of a **usage-based model**: Turbopuffer can expand revenue as its customers’ products grow. The tradeoff is that spending can also decline if customers optimize workloads, build their own search systems, switch providers, or see usage fall.
+Usage-based billing creates natural net-dollar retention when customers grow: if Cursor doubles its active user base and indexes more code, Turbopuffer's revenue can expand without signing a new logo. The flip side is that customers can also compress spend by optimizing queries, pruning indexes, or migrating in-house.
 
-The company’s website currently shows a **$16 monthly minimum for its Launch plan**, while the cited pricing page describes enterprise plans and additional deployment and support options. [turbopuffer.com](https://turbopuffer.com/?utm_source=chatgpt.com)
+The company is private and was founded by **Simon Hørup Eskildsen** (CEO) and **Justine Li**, both former Shopify infrastructure engineers, with backing from **Lachy Groom and Thrive Capital** ([Turbopuffer about page](https://turbopuffer.com/about)). In a [public LinkedIn post](https://www.linkedin.com/posts/sirupsen_turbopuffer-crossed-100m-run-rate-in-march-activity-7463237416338915328-QQ8A), Eskildsen stated that Turbopuffer crossed a **USD 100 million annualized revenue run rate in March 2026**, was profitable, and had raised **less than USD 1 million**. Because detailed financial statements are not public, that milestone should be read as a point-in-time pace rather than contracted annual recurring revenue.
 
-## Why might customers choose it?
+## Competitive position and risks
 
-### 1. Lower search costs
+Turbopuffer's strongest pitch is that as software applications connect AI models to larger proprietary datasets, retrieval frequency rises and cost-efficient multi-tenant search becomes a core utility. However, owning a tollbooth on a growing activity does not guarantee durable pricing power.
 
-The core architectural idea is to keep durable data in relatively inexpensive **object storage**, while caching data on faster SSDs and in memory when it is needed. This can be attractive when a customer has a huge amount of data but only a portion is searched frequently. [turbopuffer.com](https://turbopuffer.com/docs/concepts?utm_source=chatgpt.com)
+<Callout title="Key risks to the thesis" tone="risk">
+  - **Crowded competition:** Turbopuffer competes against specialist vector databases (Pinecone, Qdrant), established search platforms (Elastic), relational extensions (PostgreSQL with `pgvector`), and hyperscaler services — all capable of copying object-storage-backed tiers.
+  - **Customer concentration:** A small handful of breakout AI applications could represent a large share of revenue, though customer-level revenue splits are undisclosed.
+  - **Margin and cloud dependence:** Unit margins depend on the spread between what customers pay and what Turbopuffer pays underlying cloud providers for object storage, compute, and egress.
+  - **Shifting AI architectures:** Larger context windows, agentic file-system grep workflows, or new retrieval paradigms could alter query patterns — reducing some vector lookups while creating new multi-step search workloads.
+</Callout>
 
-Turbopuffer’s customer case studies report:
+The central question is whether Turbopuffer can maintain enough of a cost, latency, and multi-tenant operational edge to keep expanding volume faster than competitors compress the price per search.
 
-- **Cursor:** A 20× reduction in costs after migrating.
-- **Notion:** An 80% cost reduction for the relevant workload; the case study says this helped Notion remove per-user AI charges. [marketplace.turbopuffer.com](https://marketplace.turbopuffer.com/customers/cursor?utm_source=chatgpt.com)
+## Sources
 
-Those are **company-published case studies**, not independent guarantees. A different customer’s savings would depend on its existing system, data, and query patterns.
-
-### 2. Less infrastructure to manage
-
-A customer can use Turbopuffer’s managed service instead of building and operating its own distributed search system. Its case study says Cursor also reduced the operational complexity of managing its codebase indexes. [marketplace.turbopuffer.com](https://marketplace.turbopuffer.com/customers/cursor?utm_source=chatgpt.com)
-
-### 3. Search across many separate customers
-
-Applications like Cursor and Notion serve many users and organizations. Their data may be divided into many isolated *namespaces*, such as individual codebases or workspaces. Turbopuffer’s architecture is designed to handle large numbers of these separate search collections.
-
-### 4. It can change what customers can afford to build
-
-This is perhaps the most interesting economic point. If retrieval is expensive, a product team may limit the amount of data it indexes or restrict how often users can search. If retrieval becomes much cheaper, the customer can make more information searchable or add features that previously did not make economic sense.
-
-Turbopuffer says that after Cursor’s migration, Cursor began creating more vectors per user. That illustrates a possible feedback loop: **lower cost per unit can lead to more usage**, which can benefit both the customer and Turbopuffer. It does not, by itself, tell us how much Turbopuffer earned from that expansion. [turbopuffer.com](https://turbopuffer.com/blog/turbopuffer?__from__=talkingdev\&utm_source=chatgpt.com)
-
-## The cost advantage also has tradeoffs
-
-Object storage is relatively inexpensive, but retrieving data from it can be slower than accessing data already in memory. Turbopuffer uses caching to help manage this.
-
-The company explicitly identifies **higher write latency and occasional slower cold queries**—queries against data that is not already cached or pinned—as tradeoffs in its design. For customers with strict latency requirements, performance under their own workload matters as much as the headline price. [turbopuffer.com](https://turbopuffer.com/docs?utm_source=chatgpt.com)
-
-## How large is the business?
-
-In a public post, CEO Simon Hørup Eskildsen said Turbopuffer crossed a **$100 million annualized revenue run rate in March 2026**, was profitable, and had raised **less than $1 million**. These are company statements; detailed financial statements are not public in the sources reviewed. [106 comments](https://www.linkedin.com/posts/sirupsen_turbopuffer-crossed-100m-run-rate-in-march-activity-7463237416338915328-QQ8A?utm_source=chatgpt.com)
-
-A **$100 million annualized run rate does not mean the company had already collected $100 million over the preceding 12 months**. It is a way of expressing a point-in-time revenue pace as an annual figure. Usage-based revenue can fluctuate, so it also should not automatically be treated as contracted recurring revenue.
-
-Its company page identifies **Lachy Groom and Thrive Capital** as backers. [turbopuffer.com](https://turbopuffer.com/about?utm_source=chatgpt.com)
-
-## Competitive position and investment thesis
-
-From an investor’s perspective, Turbopuffer is a way to think about the **retrieval layer of the AI infrastructure stack**. The strongest version of the thesis would be:
-
-> As companies connect AI applications to more proprietary data, they will need to search that data more often. A provider that makes search cheaper, reliable, and easy to operate can grow alongside its customers’ AI workloads.
-
-Potential strengths include its customer references, architecture suited to infrequently accessed data, and usage-based expansion. But several questions matter before concluding it has a durable advantage:
-
-- **Competition:** Search is a crowded market. Turbopuffer competes with specialist vector databases such as Pinecone and Qdrant, established search systems such as Elastic, database extensions such as PostgreSQL with pgvector, and cloud-provider services. Competitors can also improve their pricing and architecture.
-- **Customer concentration:** A few fast-growing AI customers could contribute a large share of revenue. Their names are public, but Turbopuffer has not disclosed the revenue share attributable to each in the sources reviewed.
-- **Pricing pressure:** Even if search demand rises, competitors may drive down the price of storage and queries.
-- **Cloud dependence:** Turbopuffer relies on underlying cloud infrastructure. Its margin depends in part on what it pays for storage, compute, and related services versus what customers pay it.
-- **Changing AI architecture:** Larger model context windows or different retrieval techniques may change how applications search data. They could reduce some searches while enabling other, more complex workflows; the net effect is uncertain.
-- **Economics versus technical performance:** The lowest-cost search engine is valuable only if customers accept its search quality, latency, reliability, and operational features.
-
-My interpretation is that Turbopuffer’s opportunity resembles a **toll on a growing activity**, but the toll is not guaranteed: customers pay for a service they can compare, optimize, or potentially replace. The central question is whether Turbopuffer can keep enough of a performance-and-cost advantage to grow revenue even as the price per search falls.
+- [Turbopuffer, *Homepage and Pricing*](https://turbopuffer.com/)
+- [Turbopuffer, *Documentation*](https://turbopuffer.com/docs)
+- [Turbopuffer, *Hybrid Search Documentation*](https://turbopuffer.com/docs/hybrid)
+- [Turbopuffer, *Architecture and Concepts*](https://turbopuffer.com/docs/concepts)
+- [Turbopuffer, *About and Investors*](https://turbopuffer.com/about)
+- [Turbopuffer, *Company Blog*](https://turbopuffer.com/blog/turbopuffer)
+- [Turbopuffer Marketplace, *Cursor Case Study*](https://marketplace.turbopuffer.com/customers/cursor)
+- [Sacra, *Turbopuffer Company Profile*](https://sacra.com/c/turbopuffer/)
+- [Simon Hørup Eskildsen on LinkedIn, *USD 100M ARR Run-Rate Announcement*](https://www.linkedin.com/posts/sirupsen_turbopuffer-crossed-100m-run-rate-in-march-activity-7463237416338915328-QQ8A)
