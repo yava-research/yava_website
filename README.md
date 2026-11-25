@@ -27,6 +27,7 @@ Turbopack cache with `rm -rf .next` and restart.
 | --- | --- |
 | `/` | Hero, About ("Who are we?") and the program |
 | `/publications` | Featured report and a filterable, searchable archive |
+| `/publications/portfolio` | Hypothetical portfolio of stocks picked in publications, tracked from each publication date against the S&P 500 |
 | `/team` | Member cards, grouped by Executive Board and Analysts |
 | `/team/<slug>` | A member's bio, generated from the roster |
 | `/join` | Prepare an application email; attach a résumé and send from your inbox |
@@ -47,9 +48,10 @@ All content lives in `src/data/`, so you don't need to touch any layout code.
   - Draft files are retained on disk. Fill the body, verify author identity, add sources and methodology, and check headings before publishing.
   - Set `href` only when an actual external report or PDF exists. Standalone files go in `public/publications/files/`.
   - One entry should have `featured: true`.
-  - To write the full article on-site (all types supported), add `src/content/publications/<slug>.mdx` with the same `slug` — rows then link to `/publications/<slug>`. Images go in `public/publications/`. PDFs, spreadsheets, and other downloads go in `public/publications/files/`. Authoring guide (tables, code, equations, charts, PDFs, video, posts, and downloads): `src/content/publications/README.md`.
+  - To write the full article on-site (all types supported), add `src/content/publications/<slug>.mdx` with the same `slug` — rows then link to `/publications/<slug>`. Images go in `public/publications/`. PDFs, spreadsheets, and other downloads go in `public/publications/files/`. Authoring guide (tables, code, equations, charts, PDFs, video, posts, and downloads): `src/content/publications/_README.md`.
   - A member's bio page lists every piece whose `authors` include their `byline`.
 - **`holdings.ts`** lists the positions: for each one, enter only the `purchaseDate` and `shares` (plus headquarters and research link). `src/lib/portfolio.ts` fetches the purchase-date close and the current price from Yahoo Finance (refreshed hourly) and computes cost basis, weight, unrealized gain in dollars and percent, and the overall portfolio gain. A ticker with no price shows "Price unavailable" and is left out of the totals.
+- **`publication-picks.ts`** lists the stocks our publications recommend, as paper trades. Each entry gives the ticker, the publication `slug`, the publication date as `initiationDate`, and hypothetical `shares`. `/publications/portfolio` prices them the same way as `holdings.ts` and shows the gain since initiation against the S&P 500. These are kept apart from the fund's real holdings. How to write and register a pick: "Articles with a stock pick" in `src/content/publications/_README.md`.
 - **`performance.ts`** holds benchmark history; portfolio chart returns are calculated from the holdings and their purchase dates using historical prices and exchange rates.
 - **`site.ts`** holds the social links, the recruiting email and the location.
 

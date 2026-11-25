@@ -27,7 +27,7 @@ export function KeyStats({ items }: { items: Stat[] }) {
     <dl className="key-stats">
       {items.map((s) => (
         <div key={s.label} className="key-stats__item">
-          <dt className="mono-label">{s.label}</dt>
+          <dt className="meta-label">{s.label}</dt>
           <dd className="key-stats__value">{s.value}</dd>
           {s.note && <dd className="key-stats__note">{s.note}</dd>}
         </div>

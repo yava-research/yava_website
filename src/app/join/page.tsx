@@ -41,7 +41,7 @@ export default function JoinPage() {
         </ol>
 
         <div className="contact-note">
-          <span className="mono-label">Questions?</span>
+          <span className="meta-label">Questions?</span>
           <a href={`mailto:${site.recruitingEmail}`}>{site.recruitingEmail}</a>
         </div>
       </div>

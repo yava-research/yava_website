@@ -1,0 +1,377 @@
+import { Callout, KeyStats } from "@/components/article";
+import { BarChartCard, LineChartCard } from "@/components/charts";
+
+U.S. stocks remain one of the most durable engines of long-term capital appreciation, but rising domestic index concentration creates portfolio construction challenges and makes it harder to source diversifying alpha inside U.S. equities alone. **Portable alpha**—also called **return stacking**—solves that allocation bottleneck through capital efficiency: instead of selling core equity exposure to fund an alternative sleeve, you layer a derivatives-based global macro and trend-following overlay directly on top of developed international equities (`EFA`), generating two distinct return streams from the same dollar of capital.
+
+<KeyStats
+  items={[
+    { label: "Stacked net CAGR", value: "10.87%", note: "vs. 7.52% for 100% EFA (2008–2026)" },
+    { label: "Stacked / EFA Sharpe", value: "0.52 / 0.40", note: "Net of 40 bps financing + 5 bps/side TC" },
+    { label: "2022 drawdown cushion", value: "-9.8%", note: "vs. -28.7% for EFA (+26.2% overlay)" },
+    { label: "Live RSIT correlation", value: "0.94", note: "Daily prototype fit (May–Nov 2026)" },
+  ]}
+/>
+
+<Callout title="Empirical takeaway" tone="thesis">
+  Across 4,541 NYSE trading days (November 3, 2008 – November 20, 2026), stacking a 10% target-volatility **60% EWMA Trend / 40% Global Macro** overlay onto 100% developed international equities (`EFA`) lifts annualized returns by **+335 bps/yr** (**10.87%** vs. **7.52%**) and raises the Sharpe ratio from **0.40** to **0.52**—while actually *reducing* maximum drawdown from **-34.19%** to **-32.32%**. By contrast, stacking pure time-series trend without macro conditioning worsens maximum drawdown to **-40.39%**, and splitting capital 50/50 without leverage cuts compounding down to **6.83%**.
+</Callout>
+
+## What portable alpha solves
+
+Normally, if you have \$100 and want exposure to both international equities and a diversifying global macro or managed futures strategy, traditional portfolio construction forces a zero-sum trade-off:
+
+- **Traditional unstacked split (50/50):** Put \$50 into international stocks and \$50 into managed futures. You get 50% of each, cutting volatility and drawdowns, but surrendering half of your stock exposure creates a structural compounding drag during bull markets.
+- **Return-stacked portable alpha (~200% gross exposure):** Use capital-efficient futures, swaps, or margin collateral so each \$100 of equity capital supports roughly \$100 of international stock exposure *plus* \$100 of multi-asset macro and trend-following exposure.
+
+![Diagram contrasting traditional cash-funded liquid alternatives with portable alpha return stacking that layers an independent alpha strategy on top of core equity market exposure](/publications/portable-alpha.svg)
+
+In institutional practice—seen in BlackRock's portable alpha framework and return-stacked ETFs such as `RSIT` (Return Stacked International Stocks & Managed Futures)—the architecture separates beta from alpha into two independent sleeves:
+
+1. **Core beta sleeve (developed ex-U.S. equities):** Captures the long-term growth of developed international equity markets outside the United States (tracking benchmarks like MSCI EAFE, proxied by `EFA`) through a capital-efficient mix of physical securities, underlying ETFs, and international equity index futures. Keeping the equity core intact removes the need to sell stocks to fund alternatives.
+2. **Alpha overlay sleeve (global macro and systematic trend):** Layers rules-based long and short derivatives positions across four liquid global asset classes—**Equities, Rates/Bonds, Currencies (FX), and Commodities**—based on price trends, macro regimes, carry, and cross-asset dispersion.
+
+To capture the managed futures category average while avoiding hedge-fund performance fees and single-manager risk, live implementations such as `RSIT` blend a **Bottom-Up approach (70%)**—running systematic multi-asset models directly on historical market data—with a **Top-Down approach (30%)** that regresses recent CTA manager returns onto liquid futures to adapt to current industry positioning.
+
+## Why return stacking works and the catch
+
+The mathematical case for portable alpha rests on **uncorrelated risk addition**. Layering a 10%-volatility alpha sleeve with near-zero stock correlation ($\rho \approx 0$) onto a 20%-volatility equity core increases total portfolio volatility far less than linearly:
+
+$$
+\sigma_{\text{stacked}} = \sqrt{\sigma_{\text{beta}}^2 + \sigma_{\text{alpha}}^2 + 2 \rho \sigma_{\text{beta}} \sigma_{\text{alpha}}} \approx \sqrt{20\%^2 + 10\%^2} \approx 22.4\%
+$$
+
+In exchange for roughly **+2 percentage points** of incremental volatility, the investor keeps full equity participation and adds an independent return stream designed to perform during inflation shocks and rate-hiking cycles when stocks and bonds sell off together.
+
+The catch is equally mechanical. Because you hold roughly \$2 of economic exposure for every \$1 of capital, **leverage amplifies both gains and losses**: headline volatility is higher than unleveraged stocks alone, implied equity futures financing creates a persistent hurdle rate, and both sleeves can lose money simultaneously during sharp liquidity crunches or V-shaped macro reversals.
+
+## Prototyping the strategy with Yahoo Finance
+
+Testing signal logic, macro-versus-trend weights, and multi-asset behavior on real historical data requires fixing three common traps that appear in quick `yfinance` prototypes:
+
+1. **Continuous futures roll gaps and calendar mismatch:** Querying raw Yahoo continuous futures (`ES=F`, `ZN=F`, `6E=F`, `CL=F`) introduces unadjusted contract roll jumps, April 2020 negative crude oil prints, and non-NYSE holiday bars that inject artificial zero-return days when aligned to equity ETFs (`EFA`/`VXUS`).
+2. **Gross-notional normalization versus risk budgeting:** Normalizing raw weights so $\sum_i \lvert w_i \rvert = 1.0$ lets low-volatility short-term bonds (`SHY`/`ZT=F`) absorb most of the notional budget while compressing realized overlay volatility well below a 10%–12% target.
+3. **Unfunded futures excess-return accounting:** When proxying futures with total-return ETFs, subtracting the daily 1–3 month Treasury bill return (`BIL`) is mandatory so long and short positions reflect true unfunded futures excess returns rather than embedded cash yields.
+
+### Unfunded futures accounting with ETF proxies
+
+We assemble a symmetric **16-instrument, 4-asset-class universe** of liquid total-return ETFs (four contracts per class) aligned strictly to **4,809 NYSE equity trading days** (October 11, 2007 – November 20, 2026; **4,541 evaluation days** from November 3, 2008 after a 252-day warm-up) and convert each return to an unfunded futures excess return:
+
+$$
+r^{\text{xs}}_{i,t} = R^{\text{ETF}}_{i,t} - R_{\text{BIL}, t}
+$$
+
+This adjustment is mathematically exact across every asset class in our universe:
+
+- **Physical equity, bond, and bullion ETFs** (`SPY`, `VGK`, `EWJ`, `EEM`, `SHY`, `IEF`, `TLT`, `BWX`, `GLD`, `SLV`): Subtracting $R_{\text{BIL}, t}$ strips out the risk-free financing rate embedded in forward/futures contracts.
+- **Currency deposit ETFs** (`FXE`, `FXY`, `FXB`, `FXA`): Holding foreign cash earns spot FX moves plus foreign deposit rates; subtracting USD T-bills recovers spot return plus $r_{\text{foreign}} - r_{\text{USD}}$, matching currency futures via covered interest parity.
+- **Collateralized commodity futures ETFs** (`USO`, `DBA`): These funds earn futures excess return *plus* T-bill collateral yield; subtracting $R_{\text{BIL}, t}$ isolates pure unfunded commodity futures return.
+
+When the stacked portfolio holds \$100 of T-bill collateral (earning $R_{\text{BIL}, t}$ once), funds \$100 of `EFA` exposure through futures (paying $R_{\text{BIL}, t} + s_{\text{fin}}$), and posts remaining T-bills as margin for the unfunded overlay, the T-bill yield cancels cleanly:
+
+$$
+R_{\text{stacked}, t} = R_{\text{EFA}, t} + \sum_{i=1}^{16} w_{i, t-1} \, r^{\text{xs}}_{i,t} - s_{\text{fin}} - c_{\text{tc}} \sum_{i=1}^{16} \lvert w_{i,t} - w_{i, t-1} \rvert
+$$
+
+Our baseline simulation charges an institutional **40 bps/year equity futures financing spread** ($s_{\text{fin}}$) and **5 bps one-way** (10 bps round-trip) slippage on weekly Friday rebalances, enforcing a strict **1-day execution lag** (close-$t$ signals earn day-$t+1$ returns).
+
+### Signal engines: systematic trend vs. global macro
+
+We prototype and evaluate two causal bottom-up signal families across all 16 contracts using fixed economic sign priors and zero in-sample parameter fitting:
+
+1. **Systematic Trend (Multi-Horizon EWMA Crossover):** On each asset's cumulative log excess-return index $p_{i,t}$, we blend fast (`16/64` days, 25% weight), medium (`32/128` days, 40% weight), and slow (`64/256` days, 35% weight) exponentially weighted moving-average crossovers scaled by 42-day EWMA realized volatility $\sigma_{i,t}$ and bounded smoothly in $[-1, +1]$:
+
+$$
+S^{\text{trend}}_{i,t} = \sum_{(f,s)} \omega_{f,s} \, \tanh\!\left(\frac{\text{EWMA}_f(p_{i,t}) - \text{EWMA}_s(p_{i,t})}{1.2 \, \sigma_{i,t} \sqrt{s/2}}\right)
+$$
+
+2. **Global Macro (Growth, Inflation, Yield-Curve, and Implied FX Carry):** Four causal cross-asset macro signals capture economic regimes and carry before pure price trends turn:
+   - **Growth pulse:** 63-day risk-adjusted changes in the Copper/Gold ratio (`HG=F / GC=F`) and high-yield credit spread proxy (`HYG / IEF`). Rising growth tilts long equities, cyclical FX (`FXE`, `FXB`, `FXA`), and industrial/energy commodities (`USO`, `DBA`), while tilting short safe-haven `FXY`.
+   - **Inflation pulse:** 63-day breakeven inflation impulse (`TIP / IEF`) blended with 126-day broad commodity momentum (`DBC`). Rising inflation tilts long commodities (`GLD`, `SLV`, `USO`, `DBA`) and short sovereign duration (`SHY`, `IEF`, `TLT`, `BWX`).
+   - **Yield-curve carry and policy trend:** The 10Y–3M Treasury slope (`^TNX - ^IRX`) rewards long duration when steep (positive carry) and penalizes duration when inverted, paired with 126-day 10Y yield momentum (`^TNX`).
+   - **Implied FX carry:** Comparing each CurrencyShares ETF's 6-month total return against spot FX (`EURUSD=X`, `JPY=X`, `GBPUSD=X`, `AUDUSD=X`) and `BIL` extracts the implied foreign-minus-USD deposit rate differential directly from Yahoo Finance prices.
+
+3. **Two-stage risk-parity volatility targeting:** Each of the four asset classes receives an **equal 25% risk budget** via inverse-volatility asset sizing (with annualized volatility floored at 2.5% to bound short-rate leverage in `SHY`). A causal 42-day portfolio volatility scalar then targets **10% annualized overlay volatility**, capped at **4.0× gross notional leverage**.
+
+## Signal logic and macro-trend weight frontier
+
+Evaluating each standalone overlay on a funded basis (`Overlay Excess Return + BIL`, net of 5 bps/side slippage) across 18.02 years highlights clear differences between trend estimators and macro conditioning:
+
+| Standalone Overlay Specification (10% Target Vol) | Funded CAGR | Excess Return | Ann. Vol | Sharpe | Sortino | Max Drawdown | Corr to EFA | Ann. Turnover |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| **Trend: EWMA Crossover (16/64, 32/128, 64/256)** | +3.55% | +2.23% | 9.63% | 0.28 | 0.37 | -18.97% | +0.01 | 18.4x |
+| **Trend: TSMOM Vol-Scaled (1/3/6/12M)** | +2.98% | +1.66% | 10.65% | 0.21 | 0.28 | -19.73% | -0.05 | 36.2x |
+| **Trend: TSMOM Binary Sign (1/3/6/12M)** | +3.44% | +2.12% | 10.48% | 0.25 | 0.35 | -20.79% | -0.08 | 45.0x |
+| **Global Macro (Growth + Infl + Curve/FX Carry)** | +4.58% | +3.24% | 10.35% | 0.36 | 0.51 | -32.55% | -0.11 | 42.0x |
+| **Blended: 60% EWMA Trend / 40% Global Macro** | **+4.80%** | **+3.46%** | **9.42%** | **0.41** | **0.55** | **-21.37%** | **-0.04** | **24.4x** |
+
+- **EWMA crossovers outperform fixed lookback windows:** Exponential smoothing achieves higher net Sharpe (**0.28** vs. **0.21–0.25**) and shallower drawdown (**-18.97%**) at **less than half the turnover** (`18.4x` vs. `36.2x–45.0x`) of 1/3/6/12-month lookback TSMOM, because smooth decay avoids signal flips caused by old volatile days rolling off a fixed box.
+- **Global Macro delivers stronger crisis diversification but steeper standalone drawdowns:** Macro earns **+3.24%/yr** excess return (Sharpe **0.36**, **-0.11** correlation to `EFA`), but suffers a **-32.55%** standalone drawdown when regime signals whipsaw.
+
+Sweeping the blend weight from **100% Trend / 0% Macro** to **0% Trend / 100% Macro** quantifies the diversification benefit when stacked on `EFA`:
+
+| Trend / Macro Weight | Overlay Excess | Overlay Vol | Overlay Sharpe | Overlay Max DD | Corr to EFA | Crisis Alpha (Worst 10% EFA Mos.) | Stacked CAGR | Stacked Vol | Stacked Sharpe | Stacked Max DD |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| **100% / 0%** | +2.23% | 9.63% | 0.28 | -18.97% | +0.01 | +0.17% / mo | +9.44% | 22.48% | 0.46 | -40.39% |
+| **80% / 20%** | +3.09% | 9.41% | 0.37 | -18.23% | -0.01 | +0.38% / mo | +10.41% | 22.16% | 0.50 | -34.84% |
+| **70% / 30%** | +3.31% | 9.38% | 0.39 | -19.69% | -0.02 | +0.47% / mo | +10.68% | 22.04% | 0.51 | -32.87% |
+| **60% / 40%** | **+3.46%** | **9.42%** | **0.41** | **-21.37%** | **-0.04** | **+0.54% / mo** | **+10.87%** | **21.95%** | **0.52** | **-32.32%** |
+| **50% / 50%** | +3.53% | 9.53% | 0.41 | -23.08% | -0.05 | +0.62% / mo | +10.97% | 21.88% | 0.53 | -31.80% |
+| **30% / 70%** | +3.65% | 9.89% | 0.41 | -26.65% | -0.07 | +0.78% / mo | +11.16% | 21.81% | 0.54 | -31.89% |
+| **0% / 100%** | +3.24% | 10.35% | 0.36 | -32.55% | -0.11 | +1.07% / mo | +10.81% | 21.68% | 0.52 | -33.64% |
+
+Pure price trend enters sharp sell-offs *still long equities* from the preceding rally—so stacking `100% Trend` on `EFA` worsens maximum drawdown from **-34.19%** to **-40.39%**. Adding **40% Global Macro** pivots out of pro-cyclical exposure earlier via credit spreads, Copper/Gold, and yield-curve signals, tripling crisis-month alpha (**+0.17%** to **+0.54%/mo**), lifting overlay Sharpe by **+46%** (**0.28** to **0.41**), and pulling stacked max drawdown below unleveraged `EFA` (**-32.32%**). Pushing Macro above 50% flattens Sharpe while pushing standalone overlay drawdowns toward **-27% to -33%**.
+
+![Two-panel exhibit showing the Macro versus Trend weight frontier on the left (overlay Sharpe and stacked maximum drawdown) and cumulative gross excess return attribution across Commodities, Rates, FX, and Equities on the right](/publications/portable-alpha-signals.svg)
+
+## Multi-asset behavior across four risk sleeves
+
+Decomposing the **60% Trend / 40% Macro** overlay across its four equal-risk asset classes clarifies *why* non-equity futures drive portable alpha's diversification benefit:
+
+| Asset Class | Constituent ETF Proxies | Gross Ann. Return | Vol Contrib. | Sleeve IR | Corr to EFA | Crisis Alpha (Worst 10% EFA Mos.) | Avg. Gross Notional |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| **Commodities** | `GLD`, `SLV`, `USO`, `DBA` | **+1.57%** | 4.05% | **0.39** | -0.08 | +0.06% / mo | 0.25× |
+| **Rates / Bonds** | `SHY`, `IEF`, `TLT`, `BWX` | **+1.38%** | 3.95% | **0.35** | **-0.21** | **+0.60% / mo** | 0.81× |
+| **Currencies (FX)** | `FXE`, `FXY`, `FXB`, `FXA` | +1.01% | 3.10% | 0.33 | -0.06 | +0.26% / mo | 0.44× |
+| **Equities** | `SPY`, `VGK`, `EWJ`, `EEM` | +1.11% | 4.26% | 0.26 | **+0.24** | **-0.26% / mo** | 0.28× |
+
+<BarChartCard
+  title="Annualized gross return and crisis-month behavior by asset class"
+  caption="Source: YAMF backtest of 60% EWMA Trend / 40% Global Macro overlay (Nov 2008 – Nov 2026; 4,541 days). Crisis alpha is average monthly excess return during EFA's worst 10% months."
+  xKey="assetClass"
+  series={[
+    { key: "grossAnn", label: "Gross Ann. Return (%)", color: "#00043A" },
+    { key: "crisisMo", label: "Avg. Crisis Month (%)", color: "#C9A57A" },
+    { key: "corrEfa", label: "Corr. to EFA (×10)", color: "#8F3F30" },
+  ]}
+  data={[
+    { assetClass: "Commodities", grossAnn: 1.57, crisisMo: 0.06, corrEfa: -0.8 },
+    { assetClass: "Rates", grossAnn: 1.38, crisisMo: 0.60, corrEfa: -2.1 },
+    { assetClass: "FX", grossAnn: 1.01, crisisMo: 0.26, corrEfa: -0.6 },
+    { assetClass: "Equities", grossAnn: 1.11, crisisMo: -0.26, corrEfa: 2.4 },
+  ]}
+/>
+
+Every sleeve posts a positive gross Information Ratio (**0.26 to 0.39**), but each serves a distinct structural role:
+
+- **Rates carry the largest notional (`0.81×`) and primary crisis hedge:** Lower bond volatility means equal risk budgeting allocates nearly half of total gross notional (`0.81×` of `1.77×`) to Rates, generating **-0.21 correlation to EFA** and **+0.60%/mo** crisis alpha by riding flight-to-safety rallies in deflationary panics and shorting duration during the 2022 inflation shock.
+- **Commodities earn the highest sleeve IR (`0.39`):** Persistent energy, metals, and agricultural trends contributed **+1.57%/yr** on just `0.25×` notional exposure with **-0.08** correlation to stocks.
+- **FX captures central-bank policy divergence:** Pairing trend with implied deposit carry delivered **+1.01%/yr** (IR **0.33**) and **+0.26%/mo** crisis alpha—monetizing the multi-year USD surge and JPY slide in 2022–2024.
+- **Equity trend adds upside but hurts during sudden crashes:** The overlay's equity sleeve has **+0.24** correlation to `EFA` and **-0.26%/mo** negative crisis alpha, proving why stacking equity-only trend onto stocks creates hidden redundancy.
+
+## Stacked vs. traditional portfolio architectures
+
+Comparing the return-stacked portfolio against unstacked international equities (`EFA`), U.S. equities (`SPY`), a classic international 60/40 (`60% EFA / 40% AGG`), and an unstacked 50/50 split demonstrates the capital-efficiency advantage:
+
+| Portfolio Construction (Nov 2008 – Nov 2026) | Net CAGR | Ann. Vol | Sharpe | Sortino | Max Drawdown | Calmar | Corr to EFA |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| **100% EFA (Core International Beta)** | +7.52% | 20.17% | 0.40 | 0.50 | -34.19% | 0.22 | 1.00 |
+| **100% SPY (U.S. Equity Benchmark)** | +13.55% | 18.50% | 0.71 | 0.87 | -33.72% | 0.40 | 0.87 |
+| **60% EFA / 40% AGG (Traditional 60/40)** | +6.23% | 12.32% | 0.45 | 0.57 | -23.97% | 0.26 | 0.99 |
+| **50% EFA / 50% Overlay (Unstacked Split)** | +6.83% | 10.97% | **0.54** | **0.69** | **-17.16%** | **0.40** | 0.90 |
+| **Stacked: 100% EFA + 100% Pure Trend** | +9.44% | 22.48% | 0.46 | 0.59 | -40.39% | 0.23 | 0.90 |
+| **Stacked: 100% EFA + 100% 60/40 Trend/Macro** | **+10.87%** | **21.95%** | **0.52** | **0.67** | **-32.32%** | **0.34** | **0.90** |
+
+The **50/50 Unstacked Split** achieves the highest Sharpe (**0.54**) and shallowest drawdown (**-17.16%**), confirming the overlay is a genuine diversifier—*but* giving up half your stock beta drags 18-year compounding down to **6.83%** (ending NAV **329** vs. **369** for `EFA`). **Return Stacking (`100% EFA + 100% 60/40 Overlay`)** retains nearly the same Sharpe (**0.52**) while compounding at **10.87% CAGR** (ending NAV **642**, +74% more terminal wealth than `EFA` alone) with **lower** maximum drawdown than unleveraged `EFA`.
+
+![Two-panel exhibit showing log-scale cumulative wealth curves for Stacked 60/40 Trend/Macro, Stacked Pure Trend, 100% EFA, and 50/50 Split from 2008 to 2026 at top, and underwater drawdowns highlighting the 2022 inflation-shock cushion at bottom](/publications/portable-alpha-backtest.svg)
+
+<LineChartCard
+  title="Indexed portfolio growth across market cycles (Oct 2008 = 100)"
+  caption="Source: YAMF backtest on Yahoo Finance daily total-return data (Nov 3, 2008 – Nov 20, 2026). Net of 40 bps/yr equity futures financing spread and 5 bps/side overlay slippage."
+  xKey="period"
+  series={[
+    { key: "stacked", label: "Stacked: 100% EFA + 100% 60/40", color: "#00043A" },
+    { key: "efa", label: "100% EFA Core Beta", color: "#8F3F30" },
+    { key: "split5050", label: "50/50 Unstacked Split", color: "#5F6B52" },
+    { key: "efa6040", label: "60% EFA / 40% AGG", color: "#C9A57A" },
+  ]}
+  data={[
+    { period: "Oct 08", stacked: 100.0, efa: 100.0, split5050: 100.0, efa6040: 100.0 },
+    { period: "2011", stacked: 124.0, efa: 122.9, split5050: 117.3, efa6040: 130.9 },
+    { period: "2014", stacked: 161.5, efa: 166.3, split5050: 136.4, efa6040: 163.1 },
+    { period: "2017", stacked: 220.0, efa: 208.7, split5050: 162.3, efa6040: 193.5 },
+    { period: "2020", stacked: 335.7, efa: 236.2, split5050: 209.7, efa6040: 225.4 },
+    { period: "2022", stacked: 418.3, efa: 225.4, split5050: 238.6, efa6040: 207.3 },
+    { period: "2024", stacked: 460.1, efa: 276.1, split5050: 265.4, efa6040: 241.6 },
+    { period: "Nov 26", stacked: 641.8, efa: 369.3, split5050: 329.1, efa6040: 297.0 },
+  ]}
+/>
+
+### Performance across five macro regimes
+
+Full-sample CAGR conceals sharp regime cyclicality. Splitting the 18-year sample into five distinct macroeconomic windows shows *when* the overlay carries the portfolio and *when* it lags:
+
+| Historical Regime | 100% EFA CAGR | 60/40 EFA/AGG | Overlay Excess | Stacked CAGR | EFA Max DD | Stacked Max DD |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| **Post-GFC & Euro Crisis (2009–2012)** | +9.41% | +8.71% | -2.25% | +6.08% | -30.24% | -31.36% |
+| **QE / Low-Vol Grind (2013–2019)** | +6.01% | +4.94% | +4.48% | +10.34% | -23.11% | -24.29% |
+| **COVID & Reflation (2020–2021)** | +9.48% | +7.47% | +10.18% | +20.11% | -33.93% | -32.32% |
+| **2022 Inflation & Rate Shock (2022)** | **-14.44%** | **-13.43%** | **+26.20%** | **+9.40%** | **-28.74%** | **-9.84%** |
+| **Higher-for-Longer & Whipsaw (2023–2026)** | +13.60% | +9.72% | -1.37% | +11.69% | -14.05% | -20.89% |
+
+In **2022**, traditional bond diversification failed (`60/40` lost **-13.43%** alongside `EFA`'s **-14.44%**), whereas the multi-asset overlay surged **+26.20%** by shorting sovereign duration and foreign currencies while holding commodity inflation—converting a `-28.7%` equity drawdown into a **+9.40%** positive year with only a **-9.84%** drawdown. By contrast, during stop-start policy whipsaws (**2009–2012** Euro sovereign headlines and **2023–2026** rate-cut/tariff reversals), the overlay lost **-1.37% to -2.25%/yr** and widened drawdowns relative to `EFA` alone.
+
+## Testing 70/30 bottom-up and top-down replication against live ETFs
+
+To test the **70% Bottom-Up / 30% Top-Down** replication architecture used in live funds like `RSIT`, we add a causal **Top-Down** engine over **January 2020 – November 2026**: every Friday, a Ridge-regularized regression ($\lambda = 0.05$) maps the trailing 63-day excess returns of `DBMF` onto eight liquid cross-asset proxies (`SPY`, `EFA`, `IEF`, `TLT`, `FXE`, `FXY`, `GLD`, `USO`), volatility-targets the implied weights to 10%, and executes with a 1-day lag:
+
+| Live CTA & Replication Validation (Jan 2020 – Nov 2026) | Funded CAGR | Ann. Vol | Sharpe | Sortino | Max DD | Corr to EFA | Corr to DBMF |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| **Live `DBMF` (Managed Futures ETF)** | +8.42% | 12.54% | 0.49 | 0.63 | -20.39% | +0.16 | 1.00 |
+| **Prototype Bottom-Up Only (60/40 Trend/Macro)** | +8.50% | 9.51% | 0.62 | 0.79 | -15.29% | -0.16 | 0.62 |
+| **Prototype Top-Down Only (63d Ridge → DBMF)** | +8.06% | 9.61% | 0.57 | 0.63 | -15.09% | +0.27 | 0.59 |
+| **Prototype 70% Bottom-Up / 30% Top-Down** | **+8.52%** | **7.92%** | **0.73** | **0.92** | **-9.77%** | **-0.04** | **0.74** |
+
+Blending 70% Bottom-Up with 30% Top-Down improves every metric simultaneously: daily correlation to live `DBMF` rises from **0.62 to 0.74** (and hits **0.65** against pure-trend `KMLM` over 2021–2026), realized Sharpe climbs to **0.73**, and maximum drawdown falls by more than a third (**-15.29%** to **-9.77%**) while preserving **-0.04** correlation to `EFA`.
+
+Sanity-checking the full stacked prototype directly against **`RSIT`** over its live trading history (**May 7, 2026 – November 20, 2026**; 138 NYSE trading days) confirms both the model's fidelity and its real-world risks: our stacked prototype tracks live `RSIT` with **0.94 daily correlation** (vs. **0.79** for `EFA` alone), and both experienced the same choppy mid-2026 drawdown as `EFA` fell **-6.82%**, `RSIT` fell **-10.09%**, and our stacked 70/30 prototype fell **-4.84%**.
+
+## Quantifying the catch: double-hit months and financing drag
+
+Across **217 calendar months** from November 2008 to November 2026, `EFA` was negative in 86 months—and the overlay *also* lost money in **47 of those months** (**21.7%** of all months; **54.7%** of `EFA` down months). The six worst double-hit months show how stacked leverage concentrates risk during sudden liquidity reversals:
+
+| Double-Hit Month | 100% EFA Return | Overlay Excess Return | Stacked Monthly Return | Macro Catalyst |
+| --- | ---: | ---: | ---: | --- |
+| **January 2009** | -13.73% | -2.14% | **-15.48%** | Post-Lehman bank solvency shock & Treasury reversal |
+| **May 2010** | -11.19% | -2.07% | **-13.03%** | Greek debt crisis & Flash Crash risk-off spike |
+| **September 2011** | -10.81% | -1.49% | **-12.06%** | Eurozone periphery contagion & gold liquidation |
+| **May 2012** | -11.14% | -0.51% | **-11.61%** | Grexit fears & sharp commodity sell-off |
+| **January 2014** | -5.20% | -5.64% | **-10.71%** | EM FX taper tantrum & surprise UST rally vs. short bond trend |
+| **March 2026** | -7.83% | -2.50% | **-10.17%** | Cross-asset rate/equity whipsaw during policy repricing |
+
+Financing spreads and slippage form the second structural hurdle. Because the overlay earns ~3.46%/yr net excess return before financing spreads, wide swap spreads or retail margin borrowing rapidly compress net alpha:
+
+| Equity Futures Financing Spread | 3 bps / side TC (CAGR / Sharpe) | 5 bps / side TC (CAGR / Sharpe) | 10 bps / side TC (CAGR / Sharpe) |
+| --- | --- | --- | --- |
+| **0 bps / yr** (Idealized zero-spread futures) | 11.86% / 0.56 | 11.31% / 0.54 | 9.96% / 0.48 |
+| **40 bps / yr** (Institutional futures / ETF baseline) | 11.41% / 0.54 | **10.87% / 0.52** | 9.52% / 0.47 |
+| **80 bps / yr** (Wide swap / roll financing) | 10.97% / 0.53 | 10.43% / 0.50 | 9.08% / 0.45 |
+| **120 bps / yr** (Retail margin / expensive wrapper) | 10.52% / 0.51 | 9.99% / 0.48 | 8.65% / 0.43 |
+
+Even at punitive **120 bps/yr financing + 10 bps/side slippage**, the stacked portfolio (**8.65% CAGR**, **0.43 Sharpe**) still edges past unstacked `EFA` (**7.52%**, **0.40**)—but nearly two-thirds of the excess compounding disappears. Tight institutional futures financing is non-negotiable.
+
+## Reference Python prototype and paper-trading architecture
+
+Below is the core `yfinance` signal and volatility-targeting engine alongside the contract-sizing, margin-buffer, and `ib_async` paper-execution bridge required to move from historical research into live futures simulation. The full runnable script and daily backtest CSV are attached below.
+
+```python
+from dataclasses import dataclass
+from typing import Dict, List
+import numpy as np
+import pandas as pd
+
+ASSET_CLASSES: Dict[str, List[str]] = {
+    "Equities": ["SPY", "VGK", "EWJ", "EEM"],
+    "Rates": ["SHY", "IEF", "TLT", "BWX"],
+    "FX": ["FXE", "FXY", "FXB", "FXA"],
+    "Commodities": ["GLD", "SLV", "USO", "DBA"],
+}
+OVERLAY = [t for lst in ASSET_CLASSES.values() for t in lst]
+
+
+@dataclass
+class PortableAlphaConfig:
+    capital: float = 100_000.0
+    equity_notional_target: float = 100_000.0   # 1.0x international equity beta
+    overlay_target_vol: float = 0.10            # 10% annualized overlay volatility
+    trend_share: float = 0.60                   # 60% EWMA trend / 40% global macro
+    top_down_blend: float = 0.30                # 30% top-down Ridge / 70% bottom-up
+    max_gross_leverage: float = 4.0             # Hard cap on overlay gross notional
+    min_cash_buffer_pct: float = 0.50           # Keep >= 50% capital in T-bills/cash
+
+
+def build_signals(df: pd.DataFrame, raw_nyse: pd.DataFrame):
+    """Causal EWMA trend + global macro signals on unfunded excess returns."""
+    rets = df.pct_change().fillna(0.0)
+    xs = rets[OVERLAY].sub(rets["BIL"], axis=0)
+    vol_ann = (xs.ewm(span=42, min_periods=20).std() * np.sqrt(252)).clip(lower=0.025)
+    log_px = np.log((1.0 + xs).cumprod())
+
+    # 1) Multi-horizon EWMA crossover trend
+    sig_trend = pd.DataFrame(0.0, index=df.index, columns=OVERLAY)
+    for (fast, slow), w in [((16, 64), 0.25), ((32, 128), 0.40), ((64, 256), 0.35)]:
+        diff = log_px.ewm(span=fast).mean() - log_px.ewm(span=slow).mean()
+        sig_trend += w * np.tanh(diff / (1.2 * (vol_ann / np.sqrt(252)) * np.sqrt(slow / 2.0)))
+
+    # 2) Causal global macro (Growth, Inflation, Yield-Curve, Implied FX Carry)
+    cu_au = np.log(df["HG=F"] / df["GC=F"])
+    hy_ief = np.log(df["HYG"] / df["IEF"])
+    growth = (
+        0.5 * (cu_au.diff(63) / (cu_au.diff().ewm(span=63).std() * np.sqrt(63))).clip(-3, 3)
+        + 0.5 * (hy_ief.diff(63) / (hy_ief.diff().ewm(span=63).std() * np.sqrt(63))).clip(-3, 3)
+    )
+    tip_ief = np.log(df["TIP"] / df["IEF"])
+    dbc_lp = np.log(df["DBC"])
+    infl = (
+        0.5 * (tip_ief.diff(63) / (tip_ief.diff().ewm(span=63).std() * np.sqrt(63))).clip(-3, 3)
+        + 0.5 * (dbc_lp.diff(126) / (dbc_lp.diff().ewm(span=63).std() * np.sqrt(126))).clip(-3, 3)
+    )
+    curve_carry = np.tanh(((df["^TNX"] - df["^IRX"]) - 0.50) / 1.50)
+    tnx_chg = (df["^TNX"].diff(126) / (df["^TNX"].diff().ewm(span=63).std() * np.sqrt(126))).clip(-3, 3)
+
+    sig_macro = pd.DataFrame(0.0, index=df.index, columns=OVERLAY)
+    for t in ASSET_CLASSES["Equities"]:
+        sig_macro[t] = np.tanh((0.65 * growth - 0.35 * tnx_chg) / 1.2)
+    for t in ASSET_CLASSES["Rates"]:
+        sig_macro[t] = np.tanh((0.30 * curve_carry - 0.35 * infl - 0.35 * tnx_chg) / 1.1)
+    for t in ["GLD", "SLV"]:
+        sig_macro[t] = np.tanh((0.55 * infl - 0.45 * tnx_chg) / 1.1)
+    for t in ["USO", "DBA"]:
+        sig_macro[t] = np.tanh((0.60 * infl + 0.40 * growth) / 1.1)
+    return xs, vol_ann, sig_trend, sig_macro
+
+
+def size_futures_contracts(
+    target_weights: pd.Series,
+    capital: float,
+    latest_prices: pd.Series,
+    multipliers: Dict[str, float],
+    fx_to_usd: Dict[str, float],
+    initial_margin_used: float,
+    cfg: PortableAlphaConfig,
+) -> Dict[str, float]:
+    """Translate risk-targeted weights into contract counts with a >= 50% cash margin guard."""
+    if initial_margin_used / capital > (1.0 - cfg.min_cash_buffer_pct):
+        raise RuntimeError("Margin buffer breach: cut overlay risk before trading.")
+    return {
+        mkt: (float(w) * capital) / (float(latest_prices[mkt]) * multipliers[mkt] * fx_to_usd.get(mkt, 1.0))
+        for mkt, w in target_weights.items()
+    }
+```
+
+When transitioning from `yfinance` prototyping to paper trading (for example via `ib_async` connected to IBKR TWS port `7497` or IB Gateway port `4002`), keep three operational safeguards active: enforce at least a **50% unencumbered T-bill/cash buffer** for variation margin spikes, trade on **weekly or 5% drift-band schedules** to cap roll/commission drag, and map the 16 ETF proxies onto liquid CME/ICE/Eurex micro or mini futures (`MES`, `M2K`, `ZN`, `ZT`, `6E`, `6J`, `MGC`, `MCL`) scaled by contract multipliers.
+
+<Download
+  files={[
+    {
+      href: "/publications/files/portable-alpha-blackrock/backtest-results.csv",
+      title: "Daily portable alpha backtest & attribution series (CSV)",
+      description: "4,541 NYSE trading days (Nov 2008 – Nov 2026) with daily returns, NAVs, asset-class contributions, turnover, and gross leverage.",
+    },
+    {
+      href: "/publications/files/portable-alpha-blackrock/strategy-code.zip",
+      title: "Reproducible yfinance prototype & summary metrics (ZIP)",
+      description: "Standalone Python script with EWMA trend, global macro carry/regime signals, 70/30 Ridge CTA replication, and live DBMF/RSIT checks.",
+    },
+  ]}
+/>
+
+## Execution risks and what would change our view
+
+<Callout title="Key implementation and behavioral risks" tone="risk">
+  **Tracking error and behavioral abandonment are the biggest killers of portable alpha.** Even a strategy that compounds +335 bps/yr ahead of `EFA` over 18 years endured multi-year stretches—such as 2009–2012 (-333 bps/yr lag) and 2023–2026 (-191 bps/yr lag)—where the overlay dragged behind unleveraged equities while adding headline volatility. Investors who allocate after a blowout year like 2022 and capitulate during a choppy whipsaw year like 2026 lock in the exact opposite of the full-cycle compounding benefit.
+</Callout>
+
+Three observable shifts would materially alter our assessment of this strategy:
+
+- **Persistent futures basis widening (adverse):** If dealer balance-sheet constraints push international equity futures roll spreads consistently above **100 bps/yr** over T-bills, the net risk-adjusted benefit of stacking compresses sharply relative to a lower-leverage allocation.
+- **Expanded futures breadth beyond 16 ETF proxies (constructive):** Moving from 16 ETF proxies to 27–50 institutional futures contracts—adding natural gas, copper, grains, softs, European/Japanese sovereign bonds, and emerging FX directly—should deepen cross-sectional diversification and trim standalone overlay drawdowns below -15%.
+- **Structural persistence of positive stock-bond correlation (constructive):** Whenever inflation volatility remains elevated and sovereign bonds correlate positively with equities (as in 2022), traditional `60/40` portfolios lose their primary shock absorber, increasing the portfolio value of a multi-asset trend and global macro overlay.
+
+## Sources
+
+- [Yahoo Finance, *Historical Daily Adjusted Close Series (`EFA`, `SPY`, `AGG`, `BIL`, `DBMF`, `KMLM`, `RSIT`, and 16 Multi-Asset ETFs / Macro Indices), Oct 2007 – Nov 2026*](https://finance.yahoo.com/)
+- [BlackRock, *Portable Alpha: Separating Alpha from Beta in Institutional Portfolios*](https://www.blackrock.com/institutions/en-us/insights/portable-alpha)
+- [Return Stacked ETFs, *Return Stacked International Stocks & Managed Futures ETF (`RSIT`) Strategy Overview & Replication Methodology*](https://www.returnstackedetfs.com/)
+- [Moskowitz, T., Ooi, Y. H., & Pedersen, L. H. (2012), *Time Series Momentum*, Journal of Financial Economics](https://doi.org/10.1016/j.jfineco.2011.11.003)
+- [Koijen, R. S. J., Moskowitz, T. J., Pedersen, L. H., & Vrugt, E. B. (2018), *Carry*, Journal of Financial Economics](https://doi.org/10.1016/j.jfineco.2017.11.002)

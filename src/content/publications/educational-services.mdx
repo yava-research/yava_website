@@ -41,13 +41,13 @@ Our baseline model combines two market-neutral cross-sectional signals evaluated
 
 ### Currency normalization and leave-one-out peer benchmark
 
-Before computing signals, we strip daily sterling moves $R_{\text{GBPUSD}, t}$ from the NYSE ADR returns of `RELX` and `PSO` so cross-sectional comparisons reflect local equity repricing:
+Before computing signals, we strip daily sterling moves $R_{{GBPUSD}, t}$ from the NYSE ADR returns of `RELX` and `PSO` so cross-sectional comparisons reflect local equity repricing:
 
 $$
 R^{\text{loc}}_{i,t} = \frac{1 + R^{\text{USD}}_{i,t}}{1 + R_{\text{GBPUSD}, t}} - 1, \quad i \in \{\text{RELX}, \text{PSO}\}
 $$
 
-Rather than regressing a stock on a sector index that contains its own return—which biases $\beta_{\text{RELX}}$ upward given `RELX`'s 45% base weight—we construct a **leave-one-out liquidity-weighted peer factor** $R_{\text{peer}, -i, t}$ from base weights $w^{\text{bmk}} = \{0.45\text{ RELX}, 0.30\text{ PSO}, 0.15\text{ WLY}, 0.10\text{ MH}\}$, excluding `SCHL` from benchmark construction to prevent small-cap noise contamination and renormalizing dynamically prior to `MH`'s July 24, 2025 listing:
+Rather than regressing a stock on a sector index that contains its own return—which biases $\beta_{\text{RELX}}$ upward given `RELX`'s 45% base weight—we construct a **leave-one-out liquidity-weighted peer factor** $R_{\text{peer}, -i, t}$ using base weights of 45% for `RELX`, 30% for `PSO`, 15% for `WLY`, and 10% for `MH`. We exclude `SCHL` from benchmark construction to prevent small-cap noise contamination and renormalize dynamically prior to `MH`'s July 24, 2025 listing:
 
 $$
 R_{\text{peer}, -i, t} = \frac{\sum_{j \neq i, \, j \notin \{\text{SCHL}\}} w^{\text{bmk}}_j \, R^{\text{loc}}_{j,t}}{\sum_{j \neq i, \, j \notin \{\text{SCHL}\}} w^{\text{bmk}}_j}

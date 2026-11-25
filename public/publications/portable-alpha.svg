@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" width="720" height="430" role="img" aria-labelledby="pa-title pa-desc">
+  <title id="pa-title">Cash-funded liquid alternatives vs. portable alpha return stacking</title>
+  <desc id="pa-desc">The same independent alpha strategy can sit on top of cash market exposure, which diversifies and is typically funded from fixed income, or on top of equity market exposure, which amplifies returns and is typically funded from equities.</desc>
+  <defs>
+    <marker id="pa-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="#00043a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: 'Fira Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    .eyebrow { font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; fill: #6b6a7e; }
+    .block { font-size: 15px; font-weight: 600; }
+    .note-h { font-size: 14px; font-weight: 700; }
+    .note { font-size: 12px; }
+    .small { font-size: 11.5px; fill: #6b6a7e; }
+  </style>
+
+  <rect width="720" height="430" fill="#fffdf9"/>
+
+  <!-- Column headers -->
+  <text class="eyebrow" x="265" y="34" text-anchor="middle">CASH-FUNDED</text>
+  <text class="eyebrow" x="455" y="34" text-anchor="middle">RETURN-STACKED</text>
+
+  <!-- Port-the-alpha arc -->
+  <path d="M 285 86 C 315 56, 405 56, 435 86" fill="none" stroke="#00043a" stroke-width="1.6" stroke-linecap="round" marker-end="url(#pa-arrow)"/>
+  <text class="small" x="360" y="50" text-anchor="middle" font-style="italic">port the alpha</text>
+
+  <!-- Divider -->
+  <line x1="360" y1="96" x2="360" y2="352" stroke="#c9a57a" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+  <!-- Left column: alpha + cash -->
+  <rect x="190" y="92" width="150" height="122" rx="16" fill="#e9d3b4"/>
+  <text class="block" x="265" y="148" text-anchor="middle" fill="#00043a">Independent</text>
+  <text class="block" x="265" y="167" text-anchor="middle" fill="#00043a">alpha strategy</text>
+  <rect x="190" y="226" width="150" height="122" rx="16" fill="#ece3d4" stroke="#dccdb5" stroke-width="1"/>
+  <text class="block" x="265" y="283" text-anchor="middle" fill="#00043a">Cash market</text>
+  <text class="block" x="265" y="302" text-anchor="middle" fill="#00043a">exposure</text>
+
+  <!-- Right column: alpha + equity -->
+  <rect x="380" y="92" width="150" height="122" rx="16" fill="#e9d3b4"/>
+  <text class="block" x="455" y="148" text-anchor="middle" fill="#00043a">Independent</text>
+  <text class="block" x="455" y="167" text-anchor="middle" fill="#00043a">alpha strategy</text>
+  <rect x="380" y="226" width="150" height="122" rx="16" fill="#00043a"/>
+  <text class="block" x="455" y="283" text-anchor="middle" fill="#fffdf9">Equity market</text>
+  <text class="block" x="455" y="302" text-anchor="middle" fill="#fffdf9">exposure</text>
+
+  <!-- Plus joints -->
+  <g stroke="#fffdf9" stroke-width="3">
+    <circle cx="265" cy="220" r="15" fill="#00043a"/>
+    <circle cx="455" cy="220" r="15" fill="#8f3f30"/>
+  </g>
+  <g stroke="#fffdf9" stroke-width="3" stroke-linecap="round">
+    <path d="M 258 220 H 272 M 265 213 V 227"/>
+    <path d="M 448 220 H 462 M 455 213 V 227"/>
+  </g>
+
+  <!-- Left note: diversifying -->
+  <rect x="20" y="166" width="150" height="108" rx="4" fill="#f6f1e8" stroke="#d8ccb8"/>
+  <rect x="20" y="166" width="4" height="108" fill="#5f6b52"/>
+  <text class="note-h" x="97" y="198" text-anchor="middle" fill="#00043a">Diversifying</text>
+  <text class="note" x="97" y="215" text-anchor="middle" fill="#2a2b4a">liquid alternatives</text>
+  <text class="note" x="97" y="240" text-anchor="middle" fill="#4a4960">Typically funded from</text>
+  <text class="note" x="97" y="256" text-anchor="middle" fill="#4a4960"><tspan font-weight="700" fill="#00043a">fixed income</tspan> sleeves</text>
+  <path d="M 172 220 H 186" stroke="#d8ccb8" stroke-width="1.2"/>
+
+  <!-- Right note: amplifying -->
+  <rect x="550" y="166" width="150" height="108" rx="4" fill="#f6f1e8" stroke="#d8ccb8"/>
+  <rect x="696" y="166" width="4" height="108" fill="#8f3f30"/>
+  <text class="note-h" x="623" y="198" text-anchor="middle" fill="#00043a">Amplifying</text>
+  <text class="note" x="623" y="215" text-anchor="middle" fill="#2a2b4a">liquid alternatives</text>
+  <text class="note" x="623" y="240" text-anchor="middle" fill="#4a4960">Typically funded from</text>
+  <text class="note" x="623" y="256" text-anchor="middle" fill="#4a4960"><tspan font-weight="700" fill="#00043a">equity</tspan> sleeves</text>
+  <path d="M 534 220 H 548" stroke="#d8ccb8" stroke-width="1.2"/>
+
+  <!-- Exposure footers -->
+  <text class="small" x="265" y="372" text-anchor="middle">≈100% gross exposure</text>
+  <text class="small" x="455" y="372" text-anchor="middle">≈200% gross exposure</text>
+
+  <text x="20" y="412" font-size="10.5" fill="#6b6a7e">Adapted from BlackRock's portable alpha framework. Illustrative; not to scale.</text>
+</svg>

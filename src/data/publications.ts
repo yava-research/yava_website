@@ -6,7 +6,7 @@
 // "/publications/files/<file>.pdf") is the row link, or the row is plain text.
 // In-article PDFs, spreadsheets, video, and posts go in the MDX file.
 // Exactly one entry should have `featured: true`.
-// Article authoring guide: src/content/publications/README.md.
+// Article authoring guide: src/content/publications/_README.md.
 
 export type PublicationType =
   | "Research Report"
@@ -22,7 +22,7 @@ export type Publication = {
   title: string;
   /** Bylines, matched against each member's `byline` to build their bio page list. */
   authors: string[];
-  desk: "Energy" | "AI" | "Technology" | "Macro" | "Financials" | "EM" | "Engineering" | "Fixed Income" | "Venture";
+  desk: "Energy" | "AI" | "Technology" | "Macro" | "Financials" | "EM" | "Strategy" | "Fixed Income" | "Venture";
   date: string; // YYYY-MM
   href?: string;
   featured?: boolean;
@@ -36,6 +36,52 @@ export type Publication = {
 // Drafts stay on disk but are excluded from every public collection and route.
 export const publicationEntries: Publication[] = [
   {
+    slug: "emerging-markets-fintech",
+    status: "published",
+    type: "Research Report",
+    title: "Buy Nubank, buy Kaspi, hold dLocal",
+    authors: ["Grok 4.7"],
+    desk: "EM",
+    date: "2026-11",
+    abstract:
+      "A model-written view of three emerging-market fintechs, using Q3 2026 filings and the 23 November 2026 close. Nubank and Kaspi are buys. dLocal is a hold until gross profit per dollar of volume stops falling.",
+  },
+  {
+    slug: "portable-alpha-blackrock",
+    status: "published",
+    type: "Research Report",
+    title: "An 'International Equity + Global Macro' Strategy",
+    authors: ["A. Thirumalai"],
+    desk: "Strategy",
+    date: "2026-11",
+    abstract:
+      "Testing return-stacked international equity beta (EFA) with a multi-asset global macro and trend-following futures overlay across 18 years of daily market data (2008–2026).",
+  },
+  {
+    slug: "intelligence-as-a-utility",
+    status: "published",
+    type: "Research Report",
+    title: "Intelligence As A Utility",
+    authors: ["A. Thirumalai"],
+    desk: "AI",
+    date: "2026-11",
+    featured: true,
+    coverTitle: "The Economics of Intelligence: From Rare Resource to Everyday Utility",
+    abstract:
+      "As open-weight parity, distillation, and model routers commoditize standalone AI models, durable value shifts toward scarce physical compute and downstream firms that can retain productivity gains.",
+  },
+  {
+    slug: "malaysia-em",
+    status: "published",
+    type: "Blog",
+    title: "A Silent Tech Superpower? Malaysia's Infrastructure & Semiconductor Boom",
+    authors: ["A. Thirumalai"],
+    desk: "EM",
+    date: "2026-09",
+    abstract:
+      "Malaysia is moving from back-end assembly into IC design, advanced packaging, and data centers. A look at the investment, hiring, and talent dynamics behind the country's semiconductor boom.",
+  },
+  {
     slug: "educational-services",
     status: "published",
     type: "Technical Report",
@@ -45,6 +91,17 @@ export const publicationEntries: Publication[] = [
     date: "2026-11",
     abstract:
       "A market-neutral statistical arbitrage and institutional lead-lag framework across RELX, Pearson, Wiley, McGraw Hill, and Scholastic—tested with state-space Kalman hedging and seasonal conditioning on daily data from 2021 to 2026.",
+  },
+  {
+    slug: "low-net-equity-neutal-ls",
+    status: "published",
+    type: "Technical Report",
+    title: "Can a Breakfast Basket Earn Its Keep? A Low-Net Long/Short Test",
+    authors: ["A. Thirumalai"],
+    desk: "Strategy",
+    date: "2026-11",
+    abstract:
+      "A 61-month backtest compares momentum, multifactor, and group-balanced long/short baskets across breakfast-related stocks, including dividends, cash delistings, and modeled borrow costs.",
   },
   {
     slug: "india-emerging",
@@ -57,19 +114,6 @@ export const publicationEntries: Publication[] = [
     abstract: "A look at India's growth prospects and a hypothetical 20-stock basket to review at the end of the first quarter of 2027.",
   },
   {
-    slug: "powering-the-compute-boom",
-    status: "draft",
-    type: "Research Report",
-    title: "Powering the Compute Boom: Why Nuclear Is the Grid's Next Baseload",
-    coverTitle: "Powering the Compute Boom",
-    number: "No. 014",
-    authors: ["M. Reyes", "J. Patel"],
-    desk: "Energy",
-    date: "2026-09",
-    abstract:
-      "Data center demand could double U.S. commercial power consumption by 2030. We model the supply gap and assess which utilities and independent power producers are best positioned to capture long-term contracts with hyperscalers.",
-  },
-  {
     slug: "agents-running-the-world",
     status: "published",
     type: "Research Report",
@@ -80,34 +124,23 @@ export const publicationEntries: Publication[] = [
     abstract: "What AI agents need to move from answering questions to completing transactions, and what that could mean for commerce and compute.",
   },
   {
-    slug: "ai-spending",
+    slug: "the-service-systems",
     status: "published",
-    featured: true,
     type: "Blog",
-    title: "October AI spending: adoption, budgets, and token prices",
-    coverTitle: "The economics of AI adoption",
-    abstract: "Five charts from the Ramp Economics Lab on AI adoption, spending per employee, and token prices, collected in one reading view.",
+    title: "Beyond the Billable Hour: Which Services Firms Keep the AI Savings",
     authors: ["A. Thirumalai"],
     desk: "AI",
-    date: "2026-10",
-  },
-  {
-    slug: "dlocal",
-    status: "draft",
-    type: "Blog",
-    title: "Fintech in LATAM - dLocal",
-    authors: ["A. Thirumalai"],
-    desk: "Financials",
-    date: "2026-10",
+    date: "2026-09",
+    abstract: "The market is pricing services firms as AI losers. Most are, but firms with a moat can keep the savings that competitors will hand to clients.",
   },
   {
     slug: "fine-tuning-models",
-    status: "published",
+    status: "draft",
     type: "Blog",
     title: "The Inference Question",
     authors: ["A. Thirumalai"],
     desk: "AI",
-    date: "2026-10",
+    date: "2026-08",
   },
   {
     slug: "shalevsai",
@@ -129,21 +162,21 @@ export const publicationEntries: Publication[] = [
   },
   {
     slug: "turbopuffer",
-    status: "draft",
+    status: "published",
     type: "Research Report",
     title: "Cloud Storage - Turbopuffer",
     authors: ["A. Thirumalai"],
     desk: "Venture",
-    date: "2026-10",
+    date: "2026-09",
   },
   {
     slug: "compute-trading-energy",
-    status: "draft",
+    status: "published",
     type: "Technical Report",
     title: "Compute Futures: Are they like Electricity? - An Analysis",
     authors: ["A. Thirumalai"],
     desk: "Energy",
-    date: "2026-10",
+    date: "2026-09",
   },
   {
     slug: "longtrading",
@@ -156,21 +189,12 @@ export const publicationEntries: Publication[] = [
   },
   {
     slug: "ai-life-sci",
-    status: "draft",
+    status: "published",
     type: "Investment Memo",
-    title: "AI + Life Sciences => Precigenetics",
+    title: "AI + Life Sciences",
     authors: ["A. Thirumalai"],
     desk: "Venture",
     date: "2026-09",
-  },
-  {
-    slug: "inference-economics",
-    status: "draft",
-    type: "Technical Report",
-    title: "Inference Economics: Modeling the Cost Curve of Frontier AI",
-    authors: ["R. Singh", "D. Alvarez"],
-    desk: "AI",
-    date: "2026-08",
   },
 ];
 

@@ -8,6 +8,7 @@ import {
   formatWholeDollars,
   holdings,
 } from "@/data/holdings";
+import { getArticleSlugs } from "@/lib/articles";
 import { getPerformance } from "@/lib/benchmarks";
 import { formatPriceDate, getHistoricalReturns, getPortfolio } from "@/lib/portfolio";
 
@@ -47,23 +48,23 @@ export default async function PortfolioPage() {
         </p>
         <dl className="fact-strip portfolio-stats" aria-describedby="return-method">
           <div>
-            <dt className="mono-label">Positions</dt>
+            <dt className="meta-label">Positions</dt>
             <dd>{holdings.length}</dd>
           </div>
           <div>
-            <dt className="mono-label">Unrealized gain</dt>
+            <dt className="meta-label">Unrealized gain</dt>
             <dd className={hasPrices ? (portfolio.totalGain < 0 ? "is-down" : "is-up") : undefined}>
               {hasPrices ? formatGain(portfolio.totalGainPercent) : "—"}
             </dd>
           </div>
           <div>
-            <dt className="mono-label">Unrealized P&amp;L</dt>
+            <dt className="meta-label">Unrealized P&amp;L</dt>
             <dd className={hasPrices ? (portfolio.totalGain < 0 ? "is-down" : "is-up") : undefined}>
               {hasPrices ? formatMoneyChange(portfolio.totalGain) : "—"}
             </dd>
           </div>
           <div>
-            <dt className="mono-label">Priced holdings value</dt>
+            <dt className="meta-label">Priced holdings value</dt>
             <dd>{hasPrices ? formatWholeDollars(portfolio.totalValue) : "—"}</dd>
           </div>
         </dl>
@@ -79,7 +80,7 @@ export default async function PortfolioPage() {
 
       <PortfolioPerformance points={chartPerformance} />
 
-      <HoldingsIndex positions={portfolio.positions} />
+      <HoldingsIndex positions={portfolio.positions} articleSlugs={getArticleSlugs()} />
     </>
   );
 }

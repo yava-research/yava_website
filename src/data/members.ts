@@ -23,7 +23,7 @@ export type Member = {
 };
 
 export const groups: { name: Member["group"]; meta: string }[] = [
-  { name: "Executive Board", meta: "2026 – 2027" },
+  { name: "Executive Board", meta: "2026–2027" },
   { name: "Analysts", meta: "Energy · AI · Technology · Macro · EM" },
 ];
 

@@ -14,9 +14,11 @@ import {
 import { publications } from "@/data/publications";
 import type { Position } from "@/lib/portfolio";
 
-const hasResearch = (holding: Holding) =>
+const hasResearch = (holding: Holding, articleSlugs: string[]) =>
   publications.some(
-    (publication) => holding.analysis.href === `/publications/${publication.slug}`,
+    (publication) =>
+      holding.analysis.href === `/publications/${publication.slug}` &&
+      articleSlugs.includes(publication.slug),
   );
 
 type SortKey = "weight" | "marketValue" | "gain" | "country";
@@ -46,7 +48,7 @@ function metric(position: Position, key: Exclude<SortKey, "country">): number | 
   return position.valuation.gainPercent;
 }
 
-export function HoldingsIndex({ positions }: { positions: Position[] }) {
+export function HoldingsIndex({ positions, articleSlugs = [] }: { positions: Position[]; articleSlugs?: string[] }) {
   const [sort, setSort] = useState<Sort | null>(null);
 
   const sortedPositions = useMemo(() => {
@@ -126,7 +128,7 @@ export function HoldingsIndex({ positions }: { positions: Position[] }) {
         <h2 id="holdings-title" className="section-head__title">
           Holdings
         </h2>
-        <span className="section-head__meta mono-label">
+        <span className="section-head__meta meta-label">
           {positions.length} positions · weighted by market value
         </span>
       </div>
@@ -166,7 +168,7 @@ export function HoldingsIndex({ positions }: { positions: Position[] }) {
         </button>
       </div>
 
-      <div className="holdings-columns mono-label">
+      <div className="holdings-columns meta-label">
         <span>No.</span>
         <span>Company</span>
         <span>{renderSortButton("country", "Headquarters")}</span>
@@ -179,15 +181,15 @@ export function HoldingsIndex({ positions }: { positions: Position[] }) {
         {sortedPositions.map(({ valuation, ...holding }, index) => (
           <li key={holding.slug}>
             <div className="holding-row">
-              <span className="holding-row__num mono-label">
+              <span className="holding-row__num meta-label">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <span className="holding-row__company">
                 <span className="holding-row__name">{holding.name}</span>
-                <span className="holding-row__ticker mono-label">
+                <span className="holding-row__ticker meta-label">
                   {holding.ticker} · {holding.sector}
                 </span>
-                <span className="holding-row__lot mono-label">
+                <span className="holding-row__lot meta-label">
                   {holding.shares.toLocaleString("en-US")} sh
                   {valuation &&
                     (valuation.currency === "USD"
@@ -196,7 +198,7 @@ export function HoldingsIndex({ positions }: { positions: Position[] }) {
                   ·{" "}
                   {formatTradeDate(holding.purchaseDate)}
                 </span>
-                {hasResearch(holding) ? (
+                {hasResearch(holding, articleSlugs) ? (
                   <Link className="holding-row__research text-link" href={holding.analysis.href}>
                     Read research →
                   </Link>

@@ -2,7 +2,7 @@
 export const site = {
   name: "Yavapai Alternative Management Fund",
   shortName: "YAMF",
-  tagline: "Student Investment Club",
+  tagline: "Student investment club",
   location: "Tucson, Arizona",
   founded: 2026,
   recruitingEmail: "yavapairesearch@protonmail.com",

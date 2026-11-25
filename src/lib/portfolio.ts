@@ -36,13 +36,13 @@ export type Valuation = Quote & {
   weight: number;
 };
 
-export type Position = Holding & {
+export type Position<T extends Holding = Holding> = T & {
   /** Null when Yahoo Finance had no price for the ticker. */
   valuation: Valuation | null;
 };
 
-export type Portfolio = {
-  positions: Position[];
+export type Portfolio<T extends Holding = Holding> = {
+  positions: Position<T>[];
   totalCost: number;
   totalValue: number;
   totalGain: number;
@@ -178,20 +178,23 @@ async function getQuote(ticker: string, purchaseDate: string): Promise<Quote | n
   return quote;
 }
 
-export async function getPortfolio(): Promise<Portfolio> {
-  const quotes = await Promise.all(holdings.map((h) => getQuote(h.ticker, h.purchaseDate)));
+/** Values `list` (the fund's holdings by default) at the latest prices. */
+export async function getPortfolio<T extends Holding = Holding>(
+  list: T[] = holdings as T[],
+): Promise<Portfolio<T>> {
+  const quotes = await Promise.all(list.map((h) => getQuote(h.ticker, h.purchaseDate)));
 
   let totalCost = 0;
   let totalValue = 0;
   let asOf: number | null = null;
   for (const [index, quote] of quotes.entries()) {
     if (!quote) continue;
-    totalCost += holdings[index].shares * quote.purchasePrice;
-    totalValue += holdings[index].shares * quote.price;
+    totalCost += list[index].shares * quote.purchasePrice;
+    totalValue += list[index].shares * quote.price;
     asOf = Math.min(asOf ?? quote.priceTime, quote.priceTime);
   }
 
-  const positions = holdings.map((holding, index): Position => {
+  const positions = list.map((holding, index): Position<T> => {
     const quote = quotes[index];
     if (!quote) return { ...holding, valuation: null };
     const costBasis = holding.shares * quote.purchasePrice;
@@ -221,6 +224,15 @@ export async function getPortfolio(): Promise<Portfolio> {
   };
 }
 
+/**
+ * Price return of `symbol` (e.g. "^GSPC") from the close on `fromDate` to the
+ * latest price, in percent. Null when Yahoo Finance has no data.
+ */
+export async function getPriceReturn(symbol: string, fromDate: string): Promise<number | null> {
+  const quote = await getQuote(symbol, fromDate);
+  return quote && quote.purchasePrice > 0 ? (quote.price / quote.purchasePrice - 1) * 100 : null;
+}
+
 /** Epoch seconds → "October 28, 2026", in exchange time. */
 export function formatPriceDate(epochSeconds: number): string {
   return new Date(epochSeconds * 1000).toLocaleDateString("en-US", {
@@ -231,11 +243,14 @@ export function formatPriceDate(epochSeconds: number): string {
   });
 }
 
-/** Historical unrealized return of the currently listed holdings at each date.
+/** Historical unrealized return of `list` (the fund's holdings by default) at each date.
  * Positions enter at their purchase date; unavailable prices leave the point blank.
  */
-export async function getHistoricalReturns(dates: string[]): Promise<(number | null)[]> {
-  const histories = await Promise.all(holdings.map(async (holding) => {
+export async function getHistoricalReturns(
+  dates: string[],
+  list: Holding[] = holdings,
+): Promise<(number | null)[]> {
+  const histories = await Promise.all(list.map(async (holding) => {
     try {
       const stock = await getHistoricalSeries(holding.ticker, holding.purchaseDate);
       if (!stock) return null;
@@ -254,7 +269,7 @@ export async function getHistoricalReturns(dates: string[]): Promise<(number | n
   return dates.map((date) => {
     let cost = 0;
     let value = 0;
-    for (const [index, holding] of holdings.entries()) {
+    for (const [index, holding] of list.entries()) {
       if (holding.purchaseDate > date) continue;
       const history = histories[index];
       if (!history) return null;
@@ -267,6 +282,19 @@ export async function getHistoricalReturns(dates: string[]): Promise<(number | n
     }
     return cost > 0 ? (value / cost - 1) * 100 : 0;
   });
+}
+
+/**
+ * Daily closes for `symbol` (e.g. "^GSPC") from `fromDate` (YYYY-MM-DD) to
+ * the latest session, oldest first, dated in exchange time. Null when Yahoo
+ * Finance has no data.
+ */
+export async function getDailyCloses(
+  symbol: string,
+  fromDate: string,
+): Promise<{ date: string; close: number }[] | null> {
+  const series = await getHistoricalSeries(symbol, fromDate);
+  return series?.bars.length ? series.bars : null;
 }
 
 async function getHistoricalSeries(symbol: string, fromDate: string): Promise<DailySeries | null> {

@@ -27,103 +27,38 @@ colors:
   placeholder: "#6b6a7e"
 typography:
   display:
-    fontFamily: "STIX Two Text, serif"
-    fontSize: "clamp(48px, 7.2vw, 96px)"
+    fontFamily: "DM Serif Text, serif"
+    fontSize: "clamp(48px, 6.6vw, 96px)"
     fontWeight: 400
     lineHeight: 1
-    letterSpacing: "-0.025em"
+    letterSpacing: "-0.03em"
+    use: "Each page's h1. The home hero sets its own larger clamp."
+  title:
+    fontFamily: "DM Serif Text, serif"
+    fontSize: "clamp(40px, 5vw, 64px)"
+    use: "Article h1, for long titles."
+  brand:
+    fontFamily: "DM Serif Text, serif"
+    fontSize: "24px"
+    use: "Header and footer wordmark."
+  heading:
+    fontFamily: "DM Serif Text, serif"
+    fontSize: "clamp(28px, 2.8vw, 40px)"
+    lineHeight: 1.1
+    letterSpacing: "-0.015em"
   body:
-    fontFamily: "Fira Sans, sans-serif"
+    fontFamily: "DM Sans, sans-serif"
     fontSize: "18px"
     fontWeight: 300
-    lineHeight: "32px"
-  label:
-    fontFamily: "Fira Mono, monospace"
-    fontSize: "12px"
-    fontWeight: 400
-    lineHeight: "16px"
-    letterSpacing: "0.1em"
-  step-8-5:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "8.5px"
-  step-10-5:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "10.5px"
-  step-12:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "12px"
-  step-13:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "13px"
-  step-14:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "14px"
-  step-15:
-    fontFamily: "Fira Sans, sans-serif"
+    lineHeight: 1.7
+  sm:
+    fontFamily: "DM Sans, sans-serif"
     fontSize: "15px"
-  step-16:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "16px"
-  step-17:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "17px"
-  step-18:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "18px"
-  step-19:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "19px"
-  step-20:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "20px"
-  step-21:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "21px"
-  step-22:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "22px"
-  step-24:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "24px"
-  step-26:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "26px"
-  step-28:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "28px"
-  step-30:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "30px"
-  step-32:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "32px"
-  step-34:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "34px"
-  step-40:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "40px"
-  step-44:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "44px"
-  step-48:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "48px"
-  step-52:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "52px"
-  step-64:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "64px"
-  step-72:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "72px"
-  step-88:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "88px"
-  step-96:
-    fontFamily: "Fira Sans, sans-serif"
-    fontSize: "96px"
+    use: "Controls, navigation, metadata, captions, form labels."
+  xs:
+    fontFamily: "DM Sans, sans-serif"
+    fontSize: "13px"
+    use: "Data tables, chart axes and the notes under them only."
 rounded:
   square: "0px"
 spacing:
@@ -161,7 +96,9 @@ Navy carries primary text and actions; sand is the default page surface. Paper d
 
 ## Typography
 
-STIX Two Text carries titles; Fira Sans carries prose and controls. Fira Mono is reserved for concise metadata, tickers, dates, and measurements. Form labels use sentence-case sans. Readable HTML metadata has a 12px floor; smaller SVG ornament labels are secondary cartographic annotations; phone tracking tightens to 0.04em. Long-form articles use a narrow reading column and visible paragraph separation.
+Two families. DM Serif Text carries titles and headings; DM Sans carries prose, controls, metadata and figures. There is no monospace web font: tickers, prices and dates use DM Sans with `font-variant-numeric: tabular-nums`, and code blocks fall back to the system monospace stack (`--font-code`).
+
+Below each page's h1 the scale has three steps, exposed as CSS variables: `--text-heading`, `--text-body` and `--text-sm`. Subheadings are told apart by family (serif against sans), weight and colour, not by in-between sizes. `--text-xs` (13px) is the floor and belongs only to data tables, chart axes and their notes. Labels and table headers are sentence case with no added tracking. Long-form articles use a narrow reading column and visible paragraph separation.
 
 ## Layout
 

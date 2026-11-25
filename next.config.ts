@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "node:path";
 import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
@@ -24,7 +25,8 @@ const withMDX = createMDX({
     // remark-gfm: tables, strikethrough, task lists, autolinks.
     // remark-math + rehype-katex: $…$ and $$…$$ equations.
     // rehype-highlight: code block syntax highlighting.
-    remarkPlugins: ["remark-gfm", "remark-math"],
+    // remark-yamf (local): ==highlight== -> <mark>, ```mermaid -> <Mermaid />.
+    remarkPlugins: ["remark-gfm", "remark-math", path.join(process.cwd(), "src/lib/remark-yamf.mjs")],
     rehypePlugins: [[ "rehype-katex", { strict: false } ], "rehype-highlight"],
   },
 });

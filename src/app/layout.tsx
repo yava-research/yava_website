@@ -1,26 +1,25 @@
 import type { Metadata } from "next";
-import { Fira_Mono, Fira_Sans, STIX_Two_Text } from "next/font/google";
+import { DM_Sans, DM_Serif_Text } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import "./globals.css";
 
-const serif = STIX_Two_Text({
+// Two families: DM Serif Text for titles and headings, DM Sans for prose,
+// controls and figures (tabular numerals stand in for a monospace face).
+const serif = DM_Serif_Text({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["400", "600"],
+  weight: "400",
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-const sans = Fira_Sans({
+const sans = DM_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
-});
-
-const mono = Fira_Mono({
-  variable: "--font-mono",
-  subsets: ["latin"],
-  weight: "400",
+  weight: "variable",
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -34,7 +33,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable} ${mono.variable}`}>
+    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <body>
         <a className="skip-link" href="#main-content">Skip to content</a>
         <SiteHeader />

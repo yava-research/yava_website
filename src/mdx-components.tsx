@@ -2,12 +2,15 @@ import type { MDXComponents } from "mdx/types";
 import type { AnchorHTMLAttributes, ImgHTMLAttributes, TableHTMLAttributes } from "react";
 import { Children, createElement, isValidElement, type ReactNode } from "react";
 import { Download, Pdf, Video } from "@/components/article-media";
+import { ZoomableImage } from "@/components/lightbox";
+import { Mermaid } from "@/components/mermaid";
+import { Sidenote } from "@/components/sidenote";
 import { Tweet } from "@/components/tweet-embed";
 import { headingId } from "@/lib/headings";
 import { publicationFile } from "@/lib/publication-files";
 
 // Global MDX element map (required by @next/mdx App Router).
-// Pdf, Video, Tweet, and Download are built in.
+// Pdf, Video, Tweet, Download, Mermaid, and Sidenote are built in.
 // Charts and callouts are imported inside each .mdx file.
 
 function ArticleLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
@@ -23,11 +26,10 @@ function ArticleLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
   return <a href={href} {...rest} />;
 }
 
-function ArticleImage({ alt = "", src, ...rest }: ImgHTMLAttributes<HTMLImageElement>) {
-  // Native image sizing supports author-supplied article figures.
+function ArticleImage({ alt = "", src }: ImgHTMLAttributes<HTMLImageElement>) {
   // Put files in public/publications/ and reference as "/publications/<file>".
-  // eslint-disable-next-line @next/next/no-img-element
-  return src ? <img src={src} alt={alt} loading="lazy" decoding="async" {...rest} /> : null;
+  // Every article image opens in a zoomable viewer on click.
+  return typeof src === "string" ? <ZoomableImage src={src} alt={alt} /> : null;
 }
 
 function textContent(children: ReactNode): string {
@@ -61,6 +63,8 @@ const components = {
   Video,
   Tweet,
   Download,
+  Mermaid,
+  Sidenote,
 } satisfies MDXComponents;
 
 export function useMDXComponents(): MDXComponents {

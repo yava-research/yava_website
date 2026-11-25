@@ -1,0 +1,106 @@
+import { BreakfastExposure, BreakfastPerformance } from "@/components/breakfast-exhibits";
+
+## Can a breakfast basket earn its keep?
+
+I tested three systematic long/short portfolios built from breakfast-related stocks. From January 2021 through January 2026, the **group-balanced multifactor basket returned 8.9% annualized after modeled costs**, versus **3.1%** for momentum alone and **−1.3%** for the same multifactor score without group limits. The strongest result came from changing what the portfolio was allowed to own, not from adding more signals. Most of the gain came in 2024 and 2025, though, and the basket still drew down 21.6% at month-end. This is a case study, not evidence of a durable breakfast premium.
+
+## Strategy explained
+
+A **low-net-equity systematic long/short** strategy uses a rules-based model to buy stocks expected to outperform and short stocks expected to underperform. The idea is to earn a spread between the two baskets without relying mainly on the market rising. Here is the book at each rebalance, on $1 million of hypothetical equity:
+
+<BreakfastExposure />
+
+**Low dollar net is not market neutrality.** If the shorts are more sensitive to a market rally than the longs, the portfolio can lose money even with positive net exposure. In this test, the momentum basket had a realized SPY beta of −0.42 despite starting every month 10% net long. The 190% gross matters, too: if the longs gain 5% while the shorts jump 30%, the book loses 22% before costs.
+
+| Scenario | Long basket move | Short basket move | Long P&L | Short P&L | Return on equity |
+|---|---:|---:|---:|---:|---:|
+| Longs outperform | +10% | +5% | +$100,000 | −$45,000 | +5.5% |
+| Broad selloff | −12% | −8% | −$120,000 | +$72,000 | −4.8% |
+| Short squeeze | +5% | +30% | +$50,000 | −$270,000 | −22.0% |
+| Both sides fall equally | −10% | −10% | −$100,000 | +$90,000 | −1.0% |
+
+## What counts as breakfast?
+
+The theme selects the opportunity set; the model selects the trade. A recognizable breakfast brand does not make a stock a good long. And very few public companies are pure breakfast plays. McDonald’s trades on more than breakfast traffic, Mondelez on more than belVita, and Tyson on more than bacon. I used the theme to build a watchlist, not as a claim that breakfast sales drive each stock.
+
+| Business group | Research universe | What can move the group |
+|---|---|---|
+| Packaged foods | GIS, POST, SJM, K, KLG, FLO, JJSF, BGS, CAG, MDLZ | Grocery pricing, brand strength, input costs, and margins |
+| Restaurants and coffee | FWRG, DENN, SBUX, MCD, BROS, QSR, JACK, DIN, CBRL, WEN | Traffic, labor, and same-store sales |
+| Breakfast ingredients | CALM, HRL, TSN, KHC | Egg prices, meat prices, feed costs, and how much producers can pass through |
+
+This is a retrospectively assembled list of 24 issuers, not a complete historical index of breakfast stocks. The actual common ranking pool varied from 19 to 23 names. IPOs and the WK Kellogg spin-off entered only after they had enough trading history and filing coverage; acquired companies stopped being eligible once they ceased trading. Including known delistings helps, but it does not eliminate the selection bias in a hand-built universe.
+
+## How I ran the monthly test
+
+All three variants traded on the last available U.S. market close of each month, held through the next month, and used the same five longs at 20% of equity each and five shorts at 18% each. Ranks used information through the **prior** month-end; the execution month’s return was not part of the signal. The first rebalance was in December 2020; the last holding month was January 2026 (61 monthly returns).
+
+| Variant | Selection rule | What it tests |
+|---|---|---|
+| **Momentum** | Buy the five highest and short the five lowest on trailing total return from month −12 through month −1. | Is past relative performance enough on its own? |
+| **Multifactor** | Use the same five-by-five structure, but rank on momentum, quality, valuation, and growth. | Do fundamentals improve the unconstrained ranking? |
+| **Group-balanced** | Use the same multifactor scores, but pick two longs and two shorts each in packaged foods and restaurants, plus one long and one short in ingredients. | What changes when neither side can concentrate in one business group? |
+
+Group balance here means matching the number and size of positions on each side within a group, not equal weighting across the three groups. The 10% net long is distributed as +4% packaged foods, +4% restaurants, and +2% ingredients at each rebalance. There is no beta hedge, and there are only four ingredient names in the entire research universe.
+
+### The ranking math
+
+Each input is converted to a percentile within that month’s common universe, with a higher percentile always better. The model averages the available percentiles within each pillar, then applies the weights below. All three variants require the same coverage—momentum, growth, at least two quality measures, and at least one valuation measure—so the comparison does not quietly change the universe.
+
+| Pillar | Weight | Inputs |
+|---|---:|---|
+| Momentum | 30% | Eleven months of total return, skipping the most recent month |
+| Quality | 40% | Return on invested capital proxy, operating margin, free cash flow/assets, and lower net debt/EBITDA |
+| Valuation | 20% | Free cash flow/equity value and EBITDA/enterprise value where both inputs to that yield are positive |
+| Growth | 10% | Year-over-year fiscal revenue growth |
+
+Fundamentals come from [SEC EDGAR Company Facts](https://www.sec.gov/search-filings/edgar-application-programming-interfaces), using only the original annual 10-K accession available by the signal cutoff. This is point-in-time filing availability, not a quarterly fundamentals product. Equity values use the signal-date price times a share-count proxy from the filing; annual accounting data and share counts can go stale. Where EBITDA is nonpositive, the leverage input ranks at the bottom and the EBITDA yield is omitted. A nonpositive invested-capital denominator is also omitted.
+
+### Dividends, delistings, and trading costs
+
+For stocks with Yahoo Finance history I used adjusted-close total returns; for the three acquired names I used Digrin’s monthly histories and verified the terminal cash consideration against merger filings. Dividends help a long and hurt a short through the sign of the position; they are not deducted a second time. Kellanova’s 2023 spin-off distribution is marked separately at WK Kellogg’s October close.
+
+| Delisting | Closing date | Cash per share | What happened in the portfolios |
+|---|---|---:|---|
+| [WK Kellogg (KLG)](https://www.sec.gov/Archives/edgar/data/1959348/000119312525219988/d37512d8k.htm) | Sep. 26, 2025 | $23.00 | Momentum held it long through the cash-out. |
+| [Kellanova (K)](https://www.sec.gov/Archives/edgar/data/55067/000119312525315130/d90636d8k.htm) | Dec. 11, 2025 | $83.50 | All three held it long; the December return also includes the $0.58 dividend. |
+| [Denny’s (DENN)](https://www.sec.gov/Archives/edgar/data/852772/000119312526015085/d52435d8k.htm) | Jan. 16, 2026 | $6.25 | It appeared in earlier baskets but none held it when the deal closed. |
+
+I charged **15 basis points per dollar traded** against drifted weights and **1% annualized borrow** on short notional, with 3% and 5% as sensitivity cases. A cash-out closes the position without a simulated market trade, and borrow, if applicable, stops at the closing date. The test does not verify historical locates or model recalls, margin calls, cash yield, or broker financing. Net results are after the two modeled costs, not a claim about implementable returns.
+
+## What the comparison showed
+
+<BreakfastPerformance />
+
+| Monthly backtest, Jan. 2021–Jan. 2026 | Momentum | Multifactor | Group-balanced |
+|---|---:|---:|---:|
+| Gross annualized return | 6.0% | 1.2% | 11.8% |
+| **Net annualized return** | **3.1%** | **−1.3%** | **8.9%** |
+| Annualized volatility | 19.0% | 17.0% | 18.8% |
+| Sharpe ratio vs. BIL | 0.09 | −0.18 | 0.39 |
+| Maximum month-end drawdown | −20.4% | −27.1% | −21.6% |
+| Realized beta vs. SPY | −0.42 | ~0.00 | +0.02 |
+| Long contribution, annualized | +2.2 pp | +6.8 pp | +9.7 pp |
+| Short contribution, annualized | +5.3 pp | −4.3 pp | +3.2 pp |
+| Average monthly trading / equity | 103.8% | 87.8% | 96.8% |
+| Avg. net return in SPY’s six worst months | +5.5% | +1.6% | +1.7% |
+
+Returns compound; contributions are average monthly P&L scaled by 12, so they do not add to compound annualized returns. Turnover counts all buys and sells, including the initial build. Sharpe uses monthly returns above the BIL Treasury-bill ETF; BIL itself compounded at 3.1% annualized over the period. Drawdown is measured at month-end and can miss deeper intramonth losses.
+
+**The unconstrained factor model picked better longs than momentum, but its shorts erased much of the gain.** The group-balanced version used the same scores and finished with positive contribution from both legs. It also prevented large group tilts: the unconstrained multifactor basket reached +64% net in restaurants at one rebalance, compared with +4% every time in the balanced version. But measured beta was near zero for both multifactor baskets. The improvement was not simply a result of getting closer to market neutrality.
+
+| Assumed annual borrow fee | Momentum net CAGR | Multifactor net CAGR | Group-balanced net CAGR |
+|---|---:|---:|---:|
+| 1% | 3.1% | −1.3% | 8.9% |
+| 3% | 1.2% | −3.1% | 7.0% |
+| 5% | −0.6% | −4.8% | 5.1% |
+
+At 5% borrow, the balanced book still led, but its month-end drawdown widened to 29.5%. At the base rate it lost 15.1% in 2023 and then gained roughly 35% in each of 2024 and 2025. That uneven path is more informative than the single annualized return: 61 observations from one small, hand-picked universe leave plenty of room for noise and period dependence.
+
+## What I would take from the test
+
+The experiment makes a stronger case for **controlling group exposure** than for trading a breakfast theme. Raw momentum earned about the same compound return as Treasury bills and had material negative market beta. Adding fundamentals alone did worse. Matching the long and short positions by business group improved the outcome in this sample, but left meaningful drawdown and concentration risk—each position still made up a fifth of its side at formation.
+
+Before treating this as investable, I would freeze the eligibility rules and test them on an independent period with a complete historical security master, broker-level borrow and recall data, and volume-based trade limits. I would also check daily drawdowns and pre-trade beta and commodity exposures: two companies can share a breakfast label without offsetting each other’s risks.
+
+**Research files:** [Monthly returns, holdings, and costs](/publications/files/breakfast-long-short/monthly-results.csv) · [Summary and borrow sensitivity](/publications/files/breakfast-long-short/summary.csv) · [Final rebalance rank sheet](/publications/files/breakfast-long-short/rank-sheet.csv). The rank sheet shows each score, its filing accession, and the actual simulated weight in each variant. It is a historical snapshot, not a recommendation.

@@ -1,43 +1,133 @@
-The useful test for an AI agent is simple: can it finish a task for me, safely, with less effort than doing it myself? Searching is only the beginning. An agent also has to navigate services, understand constraints, obtain permission and recover when something goes wrong. That makes distribution, payments and access to services as important as the model itself.
+import { Callout, KeyStats } from "@/components/article";
 
-## From answers to actions
+<Callout title="Publication Update" tone="note">
+  Revised November 24, 2026.
+</Callout>
 
-An assistant that summarizes restaurants is useful; one that finds a meal within a budget, checks delivery time and submits an approved order could be more valuable. The difference is responsibility. An incorrect answer wastes time, while an incorrect purchase can cost money or expose private information. I expect early adoption to favor narrow tasks with clear limits, visible prices and a final confirmation.
+The useful test for an AI agent is simple: can it finish a task for me, safely, with less effort than doing it myself? Searching and summarizing are only the beginning. To complete real-world work, an agent has to navigate third-party services, respect commercial constraints, obtain verifiable permission, carry a payment credential, and recover when something goes wrong. That makes distribution, payment rails, and permissioned access to services just as important as the underlying model.
 
-## Tencent and the distribution advantage
+<KeyStats
+  items={[
+    { label: "Google Workspace MCP cap", value: "5,000 / day", note: "Standard Tier limit per project, per product" },
+    { label: "Odessia planned travel", value: "USD 60M+", note: "Annualized volume prior to OpenAI acquisition" },
+    { label: "Booking's Vayo investment", value: "USD 100M", note: "Planned spend on inbox-connected travel agent" },
+    { label: "Arm FY2026 revenue", value: "USD 4.92B", note: "Processor licensing and chip royalties" },
+  ]}
+/>
 
-![Tencent's AI agent interface](/publications/tencent_ai_agents.jpeg)
+<Callout title="The thesis" tone="thesis">
+  Frontier models are necessary, not sufficient. The real bottlenecks to an agentic economy are distribution inside existing user-merchant ecosystems, tokenized payment rails that preserve dispute rights, and negotiated access to third-party APIs. Today, consumer transaction volume through general-purpose agents remains tiny, while incumbents are actively throttling unapproved bots to protect their customer relationships and unit economics.
+</Callout>
 
-Tencent's October 2026 results describe Xiaowei as a small-scale agent prototype inside Weixin, using Mini Programs to help users discover products, make purchase decisions and place orders. An existing ecosystem gives Tencent a potential distribution advantage: users and merchants already meet inside the same application. This is a prototype, however, not proof that autonomous transactions have reached scale. [Tencent results](https://www.tencent.com/wp-content/uploads/2026/10/c700_Joshua-PS-Publication-Announcement.pdf).
+## The landscape: models are only the front end
 
-The metrics I would watch are repeat use, completed transactions, error and refund rates, and how often a user must intervene. A large installed base can speed experimentation, but trust and merchant participation determine whether the feature becomes a habit.
+A wave of consumer and developer agent surfaces has arrived from the major labs and platforms — including OpenAI's Bots, Meta's Muse, xAI and SpaceX's Grok Bot, and Instinct — alongside growing interest in what [a16z has framed as the "B2A" (business-to-agent) economy](https://www.a16z.news/p/welcome-to-the-b2a-economy).
 
-## Agentic payments
+The limitation is rarely the reasoning step. An agent can compare products or draft an itinerary in seconds, yet stall at the moment of execution because it lacks three things: a trusted distribution channel where merchants already participate, an authorized way to pay, and permission to read or write to external systems.
 
-An agent needs an authorized way to pay, a spending limit and a record of what the user approved. Visa is developing tools for agentic commerce, while payment credentials and network rules can vary by implementation. [Visa, agentic commerce](https://corporate.visa.com/en/solutions/acceptance/agentic-commerce.html). It would be premature to assume every agent uses a platform-issued commercial card or that one interchange spread describes the whole market.
+<Mermaid
+  caption="The four gates between an AI prompt and a completed transaction"
+  chart={`flowchart LR
+  A["1. Discovery & Intent"] --> B["2. Access & Rate Limits"]
+  B --> C["3. Tokenized Payment & Auth"]
+  C --> D["4. Fulfillment & Recourse"]`}
+/>
 
-The economic question is who captures the value of a transaction: the agent, merchant, issuer, payment network or another intermediary. Merchants will weigh any new fees against incremental sales, fraud losses and customer acquisition costs. Users need clear confirmation, dispute rights and a way to revoke authority. The winning payment flow must work for all three sides.
+## Distribution: why existing ecosystems start ahead
 
-## Food delivery and travel
+![Tencent's AI agent interface inside Weixin showing Mini Program product discovery and ordering](/publications/tencent_ai_agents.jpeg)
 
-Food delivery is a natural test case: preferences recur, inventories change and the order can be checked before payment. The agent still needs to handle substitutions, fees, allergies and delivery addresses. A useful measure is the share of orders completed accurately without costly support, not just the number of prompts.
+[Tencent's October 2026 results](https://www.tencent.com/wp-content/uploads/2026/10/c700_Joshua-PS-Publication-Announcement.pdf) describe Xiaowei as a small-scale agent prototype inside Weixin that uses Mini Programs to help users discover products, compare options, and place orders. An existing super-app ecosystem gives Tencent a clear distribution advantage: users, merchants, and payment credentials already meet inside the same application.
 
-Travel is harder. A flight choice involves baggage, connections, fare rules, changes and identity information. In November 2026 United restricted personal AI agents from booking or modifying tickets through its systems; Delta said it was evaluating external agents. [Fast Company, November 11, 2026](https://www.fastcompany.com/91640548/united-airlines-just-made-a-big-change-to-flight-bookings-heres-why-delta-and-american-arent-following). Access is therefore a business and policy question as well as a technical one. An agent that can compare options but cannot book or service a ticket has only solved part of the problem.
+Even so, Xiaowei is an early prototype, not proof that autonomous commerce has reached scale. A large installed base lowers the cost of experimentation, but habit formation depends on trust and merchant participation. The metrics worth watching are repeat usage, completed transactions, error and refund rates, and how often a human has to step in to rescue a broken flow.
 
-## The compute investment question
+## Reality check: early consumer adoption is thin
 
-My long-term interest in Arm is an indirect way to follow growth in computing. Arm licenses processor designs and earns royalties on chips incorporating its technology; it reported fiscal 2026 revenue of USD 4.92 billion. [Arm annual report](https://investors.arm.com/static-files/29742a1f-33e5-4320-9a45-4079efcdb321). Agents may increase demand for the CPUs that coordinate software and infrastructure, alongside accelerators that run models, but more agent activity does not translate mechanically into Arm revenue.
+Despite the hype around [agentic commerce](https://mdm.co/agentic-commerce-is-a-mirage-part-5/) — a skepticism echoed in [industry commentary on X](https://x.com/eric_seufert/status/2124888248153423889) — disclosed transaction volumes from major consumer platforms remain minuscule:
 
-The bull case is that growing cloud workloads and adoption of Arm-based designs lift royalty revenue. The bear case is that competition, customer concentration, spending on new products and valuation absorb the benefit. I would watch data-center royalties, licensing quality and operating costs rather than treat the existence of agents as sufficient evidence for a long position. Arm describes these and other risks in its [September 2026 filing](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000142/arm-20260930.htm).
+- **Food delivery:** In late October 2026, [DoorDash disclosed](https://techcrunch.com/2026/10/30/doordash-said-its-only-received-several-hundred-orders-from-ai-agents/) that it had received only several hundred orders from AI agents in total. On paper, food delivery is an ideal test case: preferences recur, inventories update in real time, and a cart can be reviewed before checkout. In practice, an agent still has to handle out-of-stock substitutions, allergies, delivery addresses, and layered fees. The right benchmark is not prompt volume, but the share of orders completed accurately without expensive customer support.
+- **Ridesharing:** In early November 2026, [Uber reported](https://techcrunch.com/2026/11/04/almost-no-one-uses-ai-agents-to-book-their-uber-company-says/) that almost no one uses AI agents to book rides. When a native app already reduces booking to two taps, delegating the task to an external agent adds latency and failure modes without saving effort.
 
-## What would change my mind
+## Payments: building the trust layer
 
-I would become more optimistic if independent evidence showed repeat use, reliable task completion and transaction economics that work for merchants as well as platforms. I would become less optimistic if errors, access restrictions or the cost of supervision kept agents confined to demonstrations. For now, the opportunity is real, but widespread autonomous commerce remains a hypothesis to test.
+For an agent to buy anything on a user's behalf, it needs an authorized payment method, a spending limit, and an auditable record of what was approved. Payment networks are positioning themselves as the trust layer for this shift so banks, merchants, and platforms do not have to rebuild checkout rails from scratch.
+
+### Tokenization, identity, and dispute recourse
+
+Mastercard CEO Michael Miebach has framed **Agent Pay** and **tokenization** around two core problems that appear whenever an autonomous agent transacts: credential exposure and verifiable trust.
+
+1. **Wrapping raw credentials:** Rather than handing raw card or account numbers to a chatbot or merchant, the underlying credential is wrapped in a scoped or one-time token. If an agent endpoint is compromised, the raw payment data is not exposed.
+2. **Proving agent identity and user intent:** Every agent-initiated payment has to establish two facts — that the agent is legitimate (not a spoofed bot) and that the user or organization actually authorized the specific purchase.
+3. **Preserving consumer protections:** Routing agentic transactions through established network rules keeps existing cardholder guarantees and chargeback recourse intact if an agent misfires (for example, ordering ten items instead of one). Future tokens are also expected to carry richer transaction context across real-time rails.
+
+### Consumer fragmented baskets vs. B2B machine-to-machine flows
+
+In consumer shopping, AI discovery often surfaces niche products across many small, independent sellers rather than one marketplace. Checking out across a dozen unfamiliar sites creates severe drop-off; standardizing the payment and checkout layer (in coordination with major commerce platforms such as Google) is meant to close that gap. While total annual volume is still small, Mastercard has pointed to steep week-over-week growth from that low base.
+
+The larger long-term opportunity, however, is **B2B and machine-to-machine commerce** (`Agent Pay for Machines`), where software agents transact directly with other agents in corporate operations — continuously buying inputs such as compute or digital ad inventory in small-dollar, real-time increments instead of settling quarterly invoices.
+
+| Dimension | Consumer agentic commerce | B2B and machine-to-machine |
+| --- | --- | --- |
+| Primary trigger | User asks an assistant to find and buy items across multiple merchants | Procurement agents autonomously buy ongoing inputs (compute, ads) |
+| Cadence and size | Ad-hoc retail purchases | High-velocity, real-time, small-dollar settlement |
+| Core trust requirement | Verifying agent authorization and preserving bank dispute rights | Enforcing strict spend limits, auditability, and treasury control |
+| Role of tokenization | Masks raw card data during AI-assisted checkout | Moves value across cards, tokenized deposits, and push rails |
+
+[Visa is similarly building tools for agentic commerce](https://corporate.visa.com/en/solutions/acceptance/agentic-commerce.html), though credential structures and network rules vary by implementation. It would be premature to assume every agent will run on a platform-issued commercial card or that a single interchange spread will define the market. The central economic question is who captures the take rate across the agent, merchant, issuer, and network: merchants will weigh new fees against incremental sales and fraud losses, while users need clear confirmation and instant revocation of authority.
+
+## Travel: where technical capability hits business policy
+
+Travel is substantially harder than food delivery or ridesharing. A single flight booking involves fare rules, baggage allowances, connection buffers, change penalties, and verified passenger identity. That complexity has triggered two competing moves: vertical consolidation by platforms, and access restrictions by suppliers.
+
+On the consolidation side, AI travel agents have moved quickly from experiments to strategic assets:
+
+- **OpenAI's acquisition of Odessia:** Founded less than a year earlier by Sonder founder Francis Davidson, Odessia was acquired by OpenAI to anchor its travel push. According to [industry reporting](https://karryon.com.au/industry-news/other-technology/openai-ai-travel-agent-odessia-australia/), the service had already gained meaningful early traction:
+
+> "Over [US] \$60M/year of travel was planned by Odessia over the past summer by tens of thousands of early adopters, using AI to plan and book extraordinary trips is now a reality."
+
+Source: [Karryon, reporting on OpenAI's acquisition of Odessia](https://karryon.com.au/industry-news/other-technology/openai-ai-travel-agent-odessia-australia/)
+
+- **Booking Holdings' Vayo:** Booking launched its own AI travel agent, Vayo, in October 2026 with a planned USD 100 million investment. Since mid-November, Vayo has been able to book flights, hotels, and activities in a single conversation via an invite-only beta where travelers connect their email inbox — a sign that incumbent online travel agencies are racing to defend their [intermediation role](https://www.conduit.ai/blog/will-ai-agents-replace-booking-com).
+
+On the supplier side, airlines are drawing boundaries. In November 2026, [United restricted personal AI agents](https://www.fastcompany.com/91640548/united-airlines-just-made-a-big-change-to-flight-bookings-heres-why-delta-and-american-arent-following) from booking or modifying tickets through its systems, while Delta stated it was still evaluating external agents. Access is therefore a commercial and policy decision as much as a technical one: an agent that can compare itineraries but cannot ticket or service a reservation has only solved half the problem.
+
+## The access bottleneck: rate limits and walled gardens
+
+Travel is not an isolated case. Large platforms and marketplaces — from [Amazon](https://www.danhock.co/p/how-scared-should-amazon-be-of-agents) to productivity suites — have strong incentives to control how external agents touch their inventory, ad surfaces, and user data, a dynamic [Paul Graham has highlighted on X](https://x.com/paulg/status/2108011311229747525).
+
+Even when platforms expose official agent interfaces, they enforce strict quotas to prevent runaway scraping and API abuse. Google's Workspace Model Context Protocol (MCP) servers are a concrete example:
+
+> "Across GA Google Workspace MCP servers (Gmail, Calendar, Drive, Docs, Sheets, Slides, Chat, and Tasks), the Standard Tier is capped at ==5,000 requests per day==, per project, per product (in addition to per-minute rate limits). Unlike single API calls, some MCP tools count as multiple requests because they make multiple API calls."
+
+Source: [Google Workspace Developer Documentation, Quota and Usage Tiers](https://developers.google.com/workspace/guides/quota-usage-tiers)
+
+For developers building autonomous workflows, a 5,000-request daily ceiling — where a single high-level tool call can consume multiple quota units — turns API governance and caching into first-order engineering constraints.
+
+## Compute: the infrastructure angle
+
+My long-term interest in Arm (`ARM`) is an indirect way to follow growth in the compute layer underneath these systems. Arm licenses processor architectures and earns royalties on chips incorporating its technology, reporting fiscal 2026 revenue of USD 4.92 billion in its [FY2026 Annual Report](https://investors.arm.com/static-files/29742a1f-33e5-4320-9a45-4079efcdb321) (see also its [September 2026 SEC filing](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000142/arm-20260930.htm)).
+
+<Callout title="My View" tone="thesis">
+  Agents may increase demand for the CPUs that orchestrate software, tool calls, and cloud infrastructure alongside the accelerators running models, but higher agent activity does not translate mechanically into Arm revenue.
+
+  - **Bull case:** Expanding cloud orchestration workloads and broader adoption of Arm-based server and edge silicon lift high-margin royalty revenue.
+  - **Bear case:** Architectural competition, customer concentration, elevated R&D spending on new products, and valuation multiples absorb much of the upside.
+</Callout>
 
 ## Sources
 
-- [Tencent, October 2026 results](https://www.tencent.com/wp-content/uploads/2026/10/c700_Joshua-PS-Publication-Announcement.pdf)
-- [Visa, agentic commerce](https://corporate.visa.com/en/solutions/acceptance/agentic-commerce.html)
-- [Fast Company, airline booking policies, November 2026](https://www.fastcompany.com/91640548/united-airlines-just-made-a-big-change-to-flight-bookings-heres-why-delta-and-american-arent-following)
-- [Arm, fiscal 2026 annual report](https://investors.arm.com/static-files/29742a1f-33e5-4320-9a45-4079efcdb321)
-- [Arm, September 2026 filing](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000142/arm-20260930.htm)
+- [a16z, *Welcome to the B2A Economy*](https://www.a16z.news/p/welcome-to-the-b2a-economy)
+- [Tencent, *October 2026 Results*](https://www.tencent.com/wp-content/uploads/2026/10/c700_Joshua-PS-Publication-Announcement.pdf)
+- [MDM, *Agentic Commerce Is a Mirage (Part 5)*](https://mdm.co/agentic-commerce-is-a-mirage-part-5/)
+- [Eric Seufert on X, commentary on agentic commerce](https://x.com/eric_seufert/status/2124888248153423889)
+- [TechCrunch, *DoorDash said it's only received several hundred orders from AI agents* (Oct 30, 2026)](https://techcrunch.com/2026/10/30/doordash-said-its-only-received-several-hundred-orders-from-ai-agents/)
+- [TechCrunch, *Almost no one uses AI agents to book their Uber, company says* (Nov 4, 2026)](https://techcrunch.com/2026/11/04/almost-no-one-uses-ai-agents-to-book-their-uber-company-says/)
+- [Visa, *Agentic Commerce Solutions*](https://corporate.visa.com/en/solutions/acceptance/agentic-commerce.html)
+- [Fast Company, *United Airlines' AI booking restrictions vs. Delta and American* (Nov 11, 2026)](https://www.fastcompany.com/91640548/united-airlines-just-made-a-big-change-to-flight-bookings-heres-why-delta-and-american-arent-following)
+- [Karryon, *OpenAI acquires AI travel agent Odessia*](https://karryon.com.au/industry-news/other-technology/openai-ai-travel-agent-odessia-australia/)
+- [Conduit AI, *Will AI agents replace Booking.com?*](https://www.conduit.ai/blog/will-ai-agents-replace-booking-com)
+- [Dan Hock, *How scared should Amazon be of agents?*](https://www.danhock.co/p/how-scared-should-amazon-be-of-agents)
+- [Paul Graham on X, platform access and agents](https://x.com/paulg/status/2108011311229747525)
+- [Google Workspace Developers, *Quota and Usage Tiers*](https://developers.google.com/workspace/guides/quota-usage-tiers)
+- [Arm Holdings, *Fiscal 2026 Annual Report*](https://investors.arm.com/static-files/29742a1f-33e5-4320-9a45-4079efcdb321)
+- [Arm Holdings, *September 2026 SEC Filing*](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000142/arm-20260930.htm)

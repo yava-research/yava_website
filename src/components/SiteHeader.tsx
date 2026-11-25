@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { navLinks, site } from "@/data/site";
 
 export function SiteHeader() {
@@ -11,10 +11,23 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
+  const [atTop, setAtTop] = useState(true);
+  const isHome = pathname === "/";
+
+  // On the home page the header floats over the dawn hero and gains its sand
+  // surface once the page scrolls, so content never runs under bare links.
+  useEffect(() => {
+    if (!isHome) return;
+    const update = () => setAtTop(window.scrollY < 24);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, [isHome]);
+
   const close = () => setOpen(false);
 
   return (
-    <header className="site-header" onKeyDown={(event) => {
+    <header className="site-header" data-home={isHome} data-clear={isHome && atTop && !open} onKeyDown={(event) => {
       if (event.key === "Escape" && open) { close(); toggleRef.current?.focus(); }
     }} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) close(); }}>
       <div className="container site-header__inner">

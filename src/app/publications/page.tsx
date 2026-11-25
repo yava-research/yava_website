@@ -31,10 +31,14 @@ export default function PublicationsPage() {
         <div className="page-header__main">
           <h1 className="page-header__title">Research &amp; writing</h1>
         </div>
-        <p className="page-header__blurb">
-          Equity research reports, investment memos, technical deep-dives, and presentations from our
-          sector desks.
-        </p>
+        <div>
+          <p className="page-header__blurb">
+            Are we good stock pickers?
+          </p>
+          <Link href="/publications/portfolio" className="btn btn--outline btn--sm publications-portfolio-link">
+            Publication Paper Portfolio →
+          </Link>
+        </div>
       </header>
 
       <Suspense fallback={<p className="container empty">Loading the publication archive…</p>}>
@@ -42,7 +46,7 @@ export default function PublicationsPage() {
         {featured && (
           <section className="container featured" aria-label="Featured publication">
             <div className="cover">
-              <div className="cover__meta mono-label">
+              <div className="cover__meta meta-label">
                 <span style={{ color: "var(--sandstone)" }}>
                   {featured.type} · {featured.desk} Desk
                 </span>
@@ -52,8 +56,10 @@ export default function PublicationsPage() {
               <CoverArt />
             </div>
             <div className="featured__details">
-              <span className="eyebrow">Featured · {formatDate(featured.date, true)}</span>
               <h2 className="featured__title">{featured.title}</h2>
+              <p className="featured__meta meta-label">
+                {[formatDate(featured.date, true), featured.format ?? "Web article", `By ${featured.authors.join(", ")}`].join(" · ")}
+              </p>
               <p className="featured__abstract">{featured.abstract}</p>
               <div className="featured__actions">
                 {featuredHasArticle && (
@@ -66,9 +72,6 @@ export default function PublicationsPage() {
                     {featuredHasArticle ? "PDF →" : "Read report →"}
                   </a>
                 )}
-                <span className="mono-label" style={{ color: "var(--muted)" }}>
-                  {[featured.format ?? "Web article", `By ${featured.authors.join(", ")}`].join(" · ")}
-                </span>
               </div>
             </div>
           </section>

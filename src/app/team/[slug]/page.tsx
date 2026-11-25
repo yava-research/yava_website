@@ -34,7 +34,7 @@ export default async function MemberPage({ params }: PageProps<"/team/[slug]">) 
 
   return (
     <>
-      <nav className="container breadcrumb mono-label" aria-label="Breadcrumb">
+      <nav className="container breadcrumb meta-label" aria-label="Breadcrumb">
         <Link href="/team">← Team</Link>
         <span style={{ color: "var(--ochre)" }}>/</span>
         <span style={{ color: "var(--muted)" }}>{member.group}</span>
@@ -52,19 +52,19 @@ export default async function MemberPage({ params }: PageProps<"/team/[slug]">) 
 
           <dl className="fact-strip">
             <div>
-              <dt className="mono-label">Major</dt>
+              <dt className="meta-label">Major</dt>
               <dd>{member.major}</dd>
             </div>
             <div>
-              <dt className="mono-label">Class</dt>
+              <dt className="meta-label">Class</dt>
               <dd>{member.classYear}</dd>
             </div>
             {member.previous && <div>
-              <dt className="mono-label">Previous</dt>
+              <dt className="meta-label">Previous</dt>
               <dd>{member.previous}</dd>
             </div>}
             {member.hometown && <div>
-              <dt className="mono-label">Hometown</dt>
+              <dt className="meta-label">Hometown</dt>
               <dd>{member.hometown}</dd>
             </div>}
           </dl>
@@ -100,7 +100,7 @@ export default async function MemberPage({ params }: PageProps<"/team/[slug]">) 
             <h2 id="member-pubs-title" className="section-head__title">
               Publications by {firstName}
             </h2>
-            <span className="section-head__meta mono-label">
+            <span className="section-head__meta meta-label">
               {pubs.length} {pubs.length === 1 ? "piece" : "pieces"}
             </span>
           </div>

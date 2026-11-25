@@ -3,6 +3,7 @@
 import Chart from "react-apexcharts";
 import type { ApexOptions } from "apexcharts";
 import { useState } from "react";
+import { Expandable, useExpanded } from "@/components/lightbox";
 import { portfolioInception } from "@/data/holdings";
 import {
   benchmarkSpreadBps,
@@ -14,8 +15,8 @@ import {
   type PerformancePoint,
 } from "@/data/performance";
 
-const MONO = "'Fira Mono', ui-monospace, monospace";
-const SANS = "'Fira Sans', system-ui, sans-serif";
+const MONO = "var(--font-sans), system-ui, sans-serif"; // figure labels: sans with tabular numerals
+const SANS = "var(--font-sans), system-ui, sans-serif";
 
 type SeriesKey = (typeof performanceSeries)[number]["key"];
 
@@ -33,6 +34,23 @@ function SeriesSwatch({ color, dashed }: { color: string; dashed: boolean }) {
       />
     </svg>
   );
+}
+
+// Inline: static 380px chart. Expanded: fills the viewer with zoom/pan tools.
+function PerformanceChart({ options, series }: { options: ApexOptions; series: ApexOptions["series"] }) {
+  const expanded = useExpanded();
+  const height = expanded ? Math.max(380, window.innerHeight - 300) : 380;
+  const explore: ApexOptions = expanded
+    ? {
+        ...options,
+        chart: {
+          ...options.chart,
+          toolbar: { show: true, tools: { download: false, selection: false, zoom: true, zoomin: true, zoomout: true, pan: true, reset: true } },
+          zoom: { enabled: true, type: "x" },
+        },
+      }
+    : options;
+  return <Chart options={explore} series={series} type="line" height={height} width="100%" />;
 }
 
 export function PortfolioPerformance({ points }: { points: PerformancePoint[] }) {
@@ -98,7 +116,7 @@ export function PortfolioPerformance({ points }: { points: PerformancePoint[] })
       labels: {
         rotate: 0,
         hideOverlappingLabels: true,
-        style: { colors: "#6B6A7E", fontFamily: MONO, fontSize: "12px" },
+        style: { colors: "#6B6A7E", fontFamily: MONO, fontSize: "13px" },
       },
       axisBorder: { color: "#D8CCB8" },
       axisTicks: { color: "#D8CCB8" },
@@ -112,7 +130,7 @@ export function PortfolioPerformance({ points }: { points: PerformancePoint[] })
       labels: {
         formatter: (value: number) =>
           `${value < 0 ? "−" : ""}${Math.abs(Math.round(value))}%`,
-        style: { colors: "#6B6A7E", fontFamily: MONO, fontSize: "12px" },
+        style: { colors: "#6B6A7E", fontFamily: MONO, fontSize: "13px" },
       },
     },
     legend: { show: false },
@@ -141,7 +159,7 @@ export function PortfolioPerformance({ points }: { points: PerformancePoint[] })
           chart: { height: 320 },
           xaxis: {
             tickAmount: 4,
-            labels: { style: { fontSize: "11px" } },
+            labels: { style: { fontSize: "13px" } },
           },
           yaxis: { tickAmount: 4 },
           grid: { padding: { left: 0, right: 4 } },
@@ -156,7 +174,7 @@ export function PortfolioPerformance({ points }: { points: PerformancePoint[] })
         <h2 id="performance-title" className="section-head__title">
           Performance
         </h2>
-        <span className="section-head__meta mono-label">
+        <span className="section-head__meta meta-label">
           Portfolio gain vs cost · benchmarks since {portfolioInception}
         </span>
       </div>
@@ -198,7 +216,7 @@ export function PortfolioPerformance({ points }: { points: PerformancePoint[] })
         <figcaption className="performance-plate__head">
           <div>
             <p className="performance-plate__title">Portfolio and benchmark returns</p>
-            <p className="mono-label performance-plate__meta">Base · 31 Dec 2025 = 0%</p>
+            <p className="meta-label performance-plate__meta">Base · 31 Dec 2025 = 0%</p>
           </div>
           <ul className="performance-legend" aria-label="Chart series">
             {performanceSeries.map((line) => {
@@ -223,7 +241,9 @@ export function PortfolioPerformance({ points }: { points: PerformancePoint[] })
 
         <div className="performance-chart" aria-hidden="true">
           {visibleSeries.length > 0 ? (
-            <Chart options={options} series={chartSeries} type="line" height={380} width="100%" />
+            <Expandable title="Portfolio and benchmark returns" caption="Base · 31 Dec 2025 = 0%">
+              <PerformanceChart options={options} series={chartSeries} />
+            </Expandable>
           ) : (
             <p className="performance-chart__empty">
               All series are hidden. Choose a series in the legend to show it again.

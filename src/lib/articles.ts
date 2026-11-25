@@ -1,10 +1,10 @@
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { publications } from "@/data/publications";
-import { headingId } from "@/lib/headings";
+import { headingId, headingText } from "@/lib/headings";
 
 // Server-only helpers. MDX articles live in src/content/publications/<slug>.mdx
-// (see src/content/publications/README.md). Images go in public/publications/.
+// (see src/content/publications/_README.md). Images go in public/publications/.
 // PDFs, spreadsheets, and other downloads go in public/publications/files/.
 
 const CONTENT_DIR = path.join(process.cwd(), "src", "content", "publications");
@@ -29,9 +29,12 @@ export function hasArticle(slug: string): boolean {
 export function articleDetails(slug: string) {
   const source = readFileSync(path.join(CONTENT_DIR, `${slug}.mdx`), "utf8");
   const prose = source.replace(/^import .*$/gm, "").replace(/<[^>]*>/g, "");
-  const headings = [...source.matchAll(/^(#{2,4})\s+(.+)$/gm)].map((match) => ({
-    title: match[2],
-    id: headingId(match[2]),
-  }));
+  // Ignore "headings" inside fenced code blocks and JSX comments.
+  const outline = source.replace(/^(```|~~~)[\s\S]*?^\1/gm, "").replace(/\{\/\*[\s\S]*?\*\/\}/g, "");
+  const headings = [...outline.matchAll(/^(#{1,3})\s+(.+)$/gm)].map((match) => {
+    const title = headingText(match[2]);
+    // MDX renders # as <h2>, so treat it as a top-level section.
+    return { level: Math.max(2, match[1].length) as 2 | 3, title, id: headingId(title) };
+  });
   return { minutes: Math.max(1, Math.ceil(prose.split(/\s+/).length / 220) + (source.match(/<iframe\b/g)?.length ?? 0)), headings };
 }

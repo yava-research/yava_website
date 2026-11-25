@@ -1,0 +1,2230 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="894.24pt" height="571.9pt" viewBox="0 0 894.24 571.9" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-23T15:40:57.998630</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 571.9 
+L 894.24 571.9 
+L 894.24 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 25.92 495.9 
+L 774.72 495.9 
+L 774.72 63.9 
+L 25.92 63.9 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 25.92 162.263164 
+L 774.72 162.263164 
+" clip-path="url(#p565dd0a470)" style="fill: none; stroke-dasharray: 3.6,3.6; stroke-dashoffset: 0; stroke: #b0b0b0; stroke-width: 0.9"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_2">
+      <defs>
+       <path id="mdd63d9cdc4" d="M 0 0 
+L 0 4 
+" style="stroke: #6b6b6b; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mdd63d9cdc4" x="38.496419" y="495.9" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <!-- Dec 1 -->
+      <g style="fill: #6b6b6b" transform="translate(25.640169 514.0175) scale(0.085 -0.085)">
+       <defs>
+        <path id="PaperMono-Medium-16" d="M 518 0 
+L 1677 0 
+C 2829 0 3469 774 3469 2266 
+C 3469 3763 2829 4544 1677 4544 
+L 518 4544 
+L 518 0 
+z
+M 1120 582 
+L 1120 3968 
+L 1651 3968 
+C 2438 3968 2822 3450 2822 2266 
+C 2822 1082 2438 582 1651 582 
+L 1120 582 
+z
+" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-a0" d="M 1946 -77 
+C 2714 -77 3187 314 3360 909 
+L 2733 909 
+C 2637 634 2419 448 1946 448 
+C 1427 448 1094 749 1069 1504 
+L 3437 1504 
+L 3437 1786 
+C 3437 2707 2906 3334 1958 3334 
+C 1050 3334 435 2662 435 1626 
+C 435 570 1005 -77 1946 -77 
+z
+M 1082 1984 
+C 1152 2490 1491 2810 1958 2810 
+C 2509 2810 2778 2490 2810 1971 
+L 1082 1971 
+L 1082 1984 
+z
+" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-96" d="M 1984 -77 
+C 2803 -77 3341 403 3437 1171 
+L 2816 1171 
+C 2726 730 2458 461 1984 461 
+C 1434 461 1069 896 1069 1626 
+C 1069 2362 1427 2797 1984 2797 
+C 2458 2797 2726 2534 2816 2093 
+L 3437 2093 
+C 3341 2854 2803 3334 1984 3334 
+C 1043 3334 435 2662 435 1626 
+C 435 595 1043 -77 1984 -77 
+z
+" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-1" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-130" d="M 384 0 
+L 3360 0 
+L 3360 582 
+L 2304 582 
+L 2304 4544 
+L 1792 4544 
+L 493 3622 
+L 493 2982 
+L 1683 3802 
+L 1683 582 
+L 384 582 
+L 384 0 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#PaperMono-Medium-16"/>
+       <use xlink:href="#PaperMono-Medium-a0" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-96" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-1" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-130" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mdd63d9cdc4" x="94.19199" y="495.9" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <!-- Jan 1 -->
+      <g style="fill: #6b6b6b" transform="translate(81.33574 514.0175) scale(0.085 -0.085)">
+       <defs>
+        <path id="PaperMono-Medium-3b" d="M 1875 -77 
+C 2797 -77 3302 499 3302 1485 
+L 3302 4544 
+L 1274 4544 
+L 1274 3974 
+L 2682 3974 
+L 2682 1498 
+C 2682 819 2438 512 1875 512 
+C 1312 512 1062 749 1062 1421 
+L 448 1421 
+C 448 467 928 -77 1875 -77 
+z
+" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-89" d="M 1619 -77 
+C 2086 -77 2490 134 2669 448 
+L 2694 0 
+L 3251 0 
+L 3251 2138 
+C 3251 2931 2835 3334 1939 3334 
+C 998 3334 634 2861 595 2259 
+L 1235 2259 
+C 1267 2579 1408 2790 1946 2790 
+C 2458 2790 2650 2560 2650 2112 
+L 2650 1920 
+L 1619 1830 
+C 845 1754 499 1402 499 864 
+C 499 294 909 -77 1619 -77 
+z
+M 1120 890 
+C 1120 1190 1274 1318 1651 1357 
+L 2650 1440 
+L 2650 1299 
+C 2650 794 2330 448 1709 448 
+C 1344 448 1120 582 1120 890 
+z
+" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-cf" d="M 563 0 
+L 1171 0 
+L 1171 1901 
+C 1171 2426 1555 2790 2042 2790 
+C 2509 2790 2714 2515 2714 2067 
+L 2714 0 
+L 3322 0 
+L 3322 2176 
+C 3322 2822 2970 3334 2202 3334 
+C 1741 3334 1325 3072 1139 2675 
+L 1126 3258 
+L 563 3258 
+L 563 0 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#PaperMono-Medium-3b"/>
+       <use xlink:href="#PaperMono-Medium-89" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-cf" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-1" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-130" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mdd63d9cdc4" x="149.887561" y="495.9" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <!-- Feb 1 -->
+      <g style="fill: #6b6b6b" transform="translate(137.031311 514.0175) scale(0.085 -0.085)">
+       <defs>
+        <path id="PaperMono-Medium-25" d="M 627 0 
+L 1248 0 
+L 1248 2029 
+L 3238 2029 
+L 3238 2611 
+L 1248 2611 
+L 1248 3968 
+L 3347 3968 
+L 3347 4544 
+L 627 4544 
+L 627 0 
+z
+" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-95" d="M 2208 -77 
+C 3117 -77 3603 582 3603 1626 
+C 3603 2675 3117 3334 2208 3334 
+C 1734 3334 1389 3091 1222 2822 
+L 1222 4781 
+L 614 4781 
+L 614 0 
+L 1171 0 
+L 1190 461 
+C 1382 122 1728 -77 2208 -77 
+z
+M 2118 474 
+C 1523 474 1222 928 1222 1626 
+C 1222 2336 1523 2784 2131 2784 
+C 2682 2784 2970 2349 2970 1626 
+C 2970 915 2682 474 2118 474 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#PaperMono-Medium-25"/>
+       <use xlink:href="#PaperMono-Medium-a0" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-95" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-1" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-130" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mdd63d9cdc4" x="200.193238" y="495.9" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <!-- Mar 1 -->
+      <g style="fill: #6b6b6b" transform="translate(187.336988 514.0175) scale(0.085 -0.085)">
+       <defs>
+        <path id="PaperMono-Medium-46" d="M 326 0 
+L 909 0 
+L 877 3757 
+L 1690 1094 
+L 2182 1094 
+L 2995 3757 
+L 2963 0 
+L 3546 0 
+L 3546 4544 
+L 2778 4544 
+L 1939 1754 
+L 1101 4544 
+L 326 4544 
+L 326 0 
+z
+" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-e2" d="M 499 0 
+L 2835 0 
+L 2835 531 
+L 1856 531 
+L 1856 1882 
+C 1856 2336 2202 2771 2784 2771 
+C 3066 2771 3334 2739 3475 2701 
+L 3475 3264 
+C 3347 3302 3104 3334 2810 3334 
+C 2349 3334 1997 3066 1830 2694 
+L 1811 3258 
+L 499 3258 
+L 499 2726 
+L 1254 2726 
+L 1254 531 
+L 499 531 
+L 499 0 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#PaperMono-Medium-46"/>
+       <use xlink:href="#PaperMono-Medium-89" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-e2" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-1" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-130" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mdd63d9cdc4" x="255.888808" y="495.9" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <!-- Apr 1 -->
+      <g style="fill: #6b6b6b" transform="translate(243.032558 514.0175) scale(0.085 -0.085)">
+       <defs>
+        <path id="PaperMono-Medium-3" d="M 205 0 
+L 858 0 
+L 1184 1216 
+L 2688 1216 
+L 3014 0 
+L 3667 0 
+L 2413 4544 
+L 1459 4544 
+L 205 0 
+z
+M 1338 1792 
+L 1939 4038 
+L 2534 1792 
+L 1338 1792 
+z
+" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-df" d="M 614 -1165 
+L 1222 -1165 
+L 1222 410 
+C 1402 115 1766 -77 2227 -77 
+C 3219 -77 3603 730 3603 1626 
+C 3603 2528 3219 3334 2227 3334 
+C 1734 3334 1382 3123 1197 2739 
+L 1184 3258 
+L 614 3258 
+L 614 -1165 
+z
+M 2125 474 
+C 1542 474 1222 877 1222 1626 
+C 1222 2381 1549 2784 2125 2784 
+C 2682 2784 2970 2355 2970 1626 
+C 2970 896 2682 474 2125 474 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#PaperMono-Medium-3"/>
+       <use xlink:href="#PaperMono-Medium-df" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-e2" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-1" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-130" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#mdd63d9cdc4" x="309.787748" y="495.9" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <!-- May 1 -->
+      <g style="fill: #6b6b6b" transform="translate(296.931498 514.0175) scale(0.085 -0.085)">
+       <defs>
+        <path id="PaperMono-Medium-104" d="M 1306 -1242 
+C 1670 -1242 1914 -1139 2093 -634 
+L 3482 3258 
+L 2835 3258 
+L 1978 698 
+L 1037 3258 
+L 390 3258 
+L 1702 -115 
+L 1581 -499 
+C 1530 -653 1440 -710 1267 -710 
+C 1133 -710 992 -698 909 -685 
+L 909 -1216 
+C 992 -1229 1158 -1242 1306 -1242 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#PaperMono-Medium-46"/>
+       <use xlink:href="#PaperMono-Medium-89" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-104" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-1" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-130" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#mdd63d9cdc4" x="365.483319" y="495.9" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <!-- Jun 1 -->
+      <g style="fill: #6b6b6b" transform="translate(352.627069 514.0175) scale(0.085 -0.085)">
+       <defs>
+        <path id="PaperMono-Medium-f2" d="M 1696 -77 
+C 2214 -77 2566 160 2746 531 
+L 2765 0 
+L 3315 0 
+L 3315 3258 
+L 2714 3258 
+L 2714 1376 
+C 2714 813 2406 474 1824 474 
+C 1357 474 1158 704 1158 1165 
+L 1158 3258 
+L 550 3258 
+L 550 1062 
+C 550 371 947 -77 1696 -77 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#PaperMono-Medium-3b"/>
+       <use xlink:href="#PaperMono-Medium-f2" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-cf" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-1" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-130" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#mdd63d9cdc4" x="419.382258" y="495.9" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <!-- Jul 1 -->
+      <g style="fill: #6b6b6b" transform="translate(406.526008 514.0175) scale(0.085 -0.085)">
+       <defs>
+        <path id="PaperMono-Medium-c9" d="M 422 0 
+L 3501 0 
+L 3501 531 
+L 2259 531 
+L 2259 4781 
+L 422 4781 
+L 422 4250 
+L 1651 4250 
+L 1651 531 
+L 422 531 
+L 422 0 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#PaperMono-Medium-3b"/>
+       <use xlink:href="#PaperMono-Medium-f2" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-c9" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-1" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-130" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#mdd63d9cdc4" x="475.077829" y="495.9" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <!-- Aug 1 -->
+      <g style="fill: #6b6b6b" transform="translate(462.221579 514.0175) scale(0.085 -0.085)">
+       <defs>
+        <path id="PaperMono-Medium-ac" d="M 1894 -1242 
+C 2835 -1242 3373 -819 3373 19 
+L 3373 3258 
+L 2797 3258 
+L 2784 2765 
+C 2650 3104 2259 3334 1779 3334 
+C 941 3334 378 2682 378 1722 
+C 378 762 947 109 1811 109 
+C 2253 109 2611 326 2771 653 
+L 2771 19 
+C 2771 -474 2483 -704 1894 -704 
+C 1344 -704 1146 -544 1088 -262 
+L 454 -262 
+C 563 -864 1005 -1242 1894 -1242 
+z
+M 1882 659 
+C 1338 659 1005 1062 1005 1722 
+C 1005 2374 1312 2784 1869 2784 
+C 2419 2784 2771 2381 2771 1722 
+C 2771 1062 2426 659 1882 659 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#PaperMono-Medium-3"/>
+       <use xlink:href="#PaperMono-Medium-f2" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-ac" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-1" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-130" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#mdd63d9cdc4" x="530.7734" y="495.9" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <!-- Sep 1 -->
+      <g style="fill: #6b6b6b" transform="translate(517.91715 514.0175) scale(0.085 -0.085)">
+       <defs>
+        <path id="PaperMono-Medium-5e" d="M 1939 -77 
+C 2880 -77 3430 442 3430 1178 
+C 3430 1843 3130 2246 2074 2554 
+C 1293 2758 1146 2906 1146 3315 
+C 1146 3750 1395 4038 1952 4038 
+C 2515 4038 2726 3814 2765 3386 
+L 3405 3386 
+C 3366 4115 2918 4621 1952 4621 
+C 1024 4621 531 4077 531 3315 
+C 531 2650 826 2278 1722 2029 
+C 2669 1760 2803 1594 2803 1171 
+C 2803 736 2528 506 1952 506 
+C 1389 506 1158 685 1088 1178 
+L 442 1178 
+C 518 352 1037 -77 1939 -77 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#PaperMono-Medium-5e"/>
+       <use xlink:href="#PaperMono-Medium-a0" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-df" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-1" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-130" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#mdd63d9cdc4" x="584.672339" y="495.9" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <!-- Oct 1 -->
+      <g style="fill: #6b6b6b" transform="translate(571.816089 514.0175) scale(0.085 -0.085)">
+       <defs>
+        <path id="PaperMono-Medium-4d" d="M 1939 -77 
+C 2982 -77 3533 685 3533 2259 
+C 3533 3853 2982 4621 1939 4621 
+C 890 4621 339 3853 339 2259 
+C 339 685 890 -77 1939 -77 
+z
+M 1939 518 
+C 1318 518 979 1043 979 2259 
+C 979 3482 1318 4026 1939 4026 
+C 2554 4026 2893 3482 2893 2259 
+C 2893 1043 2554 518 1939 518 
+z
+" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-ed" d="M 2541 -77 
+C 2874 -77 3219 -45 3334 -13 
+L 3334 518 
+C 3200 486 2893 461 2598 461 
+C 2086 461 1894 621 1894 1126 
+L 1894 2726 
+L 3277 2726 
+L 3277 3258 
+L 1894 3258 
+L 1894 4262 
+L 1286 4262 
+L 1286 3258 
+L 378 3258 
+L 378 2726 
+L 1286 2726 
+L 1286 1043 
+C 1286 243 1658 -77 2541 -77 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#PaperMono-Medium-4d"/>
+       <use xlink:href="#PaperMono-Medium-96" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-ed" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-1" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-130" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#mdd63d9cdc4" x="640.36791" y="495.9" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <!-- Nov 1 -->
+      <g style="fill: #6b6b6b" transform="translate(627.51166 514.0175) scale(0.085 -0.085)">
+       <defs>
+        <path id="PaperMono-Medium-47" d="M 512 0 
+L 1126 0 
+L 1126 3629 
+L 2554 0 
+L 3360 0 
+L 3360 4544 
+L 2746 4544 
+L 2746 922 
+L 1318 4544 
+L 512 4544 
+L 512 0 
+z
+" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-d5" d="M 1939 -77 
+C 2925 -77 3437 570 3437 1626 
+C 3437 2682 2925 3334 1939 3334 
+C 947 3334 435 2682 435 1626 
+C 435 570 947 -77 1939 -77 
+z
+M 1939 461 
+C 1331 461 1069 877 1069 1626 
+C 1069 2381 1331 2797 1939 2797 
+C 2534 2797 2803 2381 2803 1626 
+C 2803 877 2534 461 1939 461 
+z
+" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-fd" d="M 1568 0 
+L 2304 0 
+L 3501 3258 
+L 2842 3258 
+L 1939 621 
+L 1030 3258 
+L 378 3258 
+L 1568 0 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#PaperMono-Medium-47"/>
+       <use xlink:href="#PaperMono-Medium-d5" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-fd" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-1" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-130" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_13">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#mdd63d9cdc4" x="694.26685" y="495.9" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <!-- Dec 1 -->
+      <g style="fill: #6b6b6b" transform="translate(681.4106 514.0175) scale(0.085 -0.085)">
+       <use xlink:href="#PaperMono-Medium-16"/>
+       <use xlink:href="#PaperMono-Medium-a0" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-96" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-1" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-130" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_14">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#mdd63d9cdc4" x="749.96242" y="495.9" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <!-- Jan 1 -->
+      <g style="fill: #6b6b6b" transform="translate(737.10617 514.0175) scale(0.085 -0.085)">
+       <use xlink:href="#PaperMono-Medium-3b"/>
+       <use xlink:href="#PaperMono-Medium-89" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-cf" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-1" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-130" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_16">
+      <defs>
+       <path id="m41fe85a619" d="M 0 0 
+L 3 0 
+" style="stroke: #6b6b6b; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m41fe85a619" x="774.72" y="472.974784" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <!-- -28.00% -->
+      <g style="fill: #6b6b6b" transform="translate(783.72 477.033534) scale(0.085 -0.085)">
+       <defs>
+        <path id="PaperMono-Medium-190" d="M 646 1517 
+L 3226 1517 
+L 3226 2099 
+L 646 2099 
+L 646 1517 
+z
+" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-131" d="M 448 0 
+L 3373 0 
+L 3373 570 
+L 1293 570 
+L 2310 1523 
+C 2982 2163 3309 2496 3309 3245 
+C 3309 4077 2842 4621 1862 4621 
+C 928 4621 403 4070 390 3110 
+L 1030 3110 
+C 1043 3725 1286 4032 1862 4032 
+C 2394 4032 2656 3738 2656 3232 
+C 2656 2694 2432 2432 1850 1875 
+L 448 531 
+L 448 0 
+z
+" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-137" d="M 1939 -77 
+C 2829 -77 3501 378 3501 1222 
+C 3501 1843 3168 2259 2643 2432 
+C 3053 2586 3302 2906 3302 3398 
+C 3302 4096 2829 4621 1939 4621 
+C 1043 4621 570 4096 570 3398 
+C 570 2906 813 2586 1222 2432 
+C 704 2259 378 1843 378 1222 
+C 378 378 1043 -77 1939 -77 
+z
+M 1939 2682 
+C 1498 2682 1210 2886 1210 3366 
+C 1210 3789 1434 4038 1939 4038 
+C 2438 4038 2662 3789 2662 3366 
+C 2662 2886 2381 2682 1939 2682 
+z
+M 1939 506 
+C 1402 506 1018 749 1018 1280 
+C 1018 1805 1331 2125 1939 2125 
+C 2541 2125 2861 1805 2861 1280 
+C 2861 749 2464 506 1939 506 
+z
+" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-180" d="M 1939 -77 
+C 2278 -77 2483 154 2483 461 
+C 2483 768 2278 992 1939 992 
+C 1600 992 1389 768 1389 461 
+C 1389 154 1600 -77 1939 -77 
+z
+" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-12f" d="M 1933 -77 
+C 2938 -77 3494 723 3494 2272 
+C 3494 3821 2938 4621 1933 4621 
+C 928 4621 378 3821 378 2272 
+C 378 723 928 -77 1933 -77 
+z
+M 1933 518 
+C 1357 518 1018 1018 1018 2272 
+C 1018 3533 1357 4026 1933 4026 
+C 2509 4026 2848 3533 2848 2272 
+C 2848 1018 2509 518 1933 518 
+z
+" transform="scale(0.015625)"/>
+        <path id="PaperMono-Medium-1dc" d="M 1005 2381 
+C 1504 2381 1888 2701 1888 3501 
+C 1888 4301 1504 4621 1005 4621 
+C 499 4621 115 4301 115 3501 
+C 115 2701 499 2381 1005 2381 
+z
+M 154 0 
+L 653 0 
+L 3718 4544 
+L 3219 4544 
+L 154 0 
+z
+M 1005 2810 
+C 749 2810 595 2989 595 3501 
+C 595 4019 749 4192 1005 4192 
+C 1261 4192 1408 4019 1408 3501 
+C 1408 2989 1261 2810 1005 2810 
+z
+M 2874 -77 
+C 3373 -77 3757 243 3757 1043 
+C 3757 1843 3373 2163 2874 2163 
+C 2368 2163 1984 1843 1984 1043 
+C 1984 243 2368 -77 2874 -77 
+z
+M 2874 352 
+C 2618 352 2464 531 2464 1043 
+C 2464 1562 2618 1734 2874 1734 
+C 3130 1734 3277 1562 3277 1043 
+C 3277 531 3130 352 2874 352 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#PaperMono-Medium-190"/>
+       <use xlink:href="#PaperMono-Medium-131" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-137" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-180" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(242 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(302.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-1dc" transform="translate(363 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#m41fe85a619" x="774.72" y="428.587409" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <!-- -24.00% -->
+      <g style="fill: #6b6b6b" transform="translate(783.72 432.646159) scale(0.085 -0.085)">
+       <defs>
+        <path id="PaperMono-Medium-133" d="M 2355 0 
+L 2976 0 
+L 2976 1056 
+L 3520 1056 
+L 3520 1632 
+L 2976 1632 
+L 2976 2803 
+L 2355 2803 
+L 2355 1632 
+L 909 1632 
+L 2605 4544 
+L 1933 4544 
+L 262 1606 
+L 262 1056 
+L 2355 1056 
+L 2355 0 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#PaperMono-Medium-190"/>
+       <use xlink:href="#PaperMono-Medium-131" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-133" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-180" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(242 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(302.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-1dc" transform="translate(363 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m41fe85a619" x="774.72" y="384.200035" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <!-- -20.00% -->
+      <g style="fill: #6b6b6b" transform="translate(783.72 388.258785) scale(0.085 -0.085)">
+       <use xlink:href="#PaperMono-Medium-190"/>
+       <use xlink:href="#PaperMono-Medium-131" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-180" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(242 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(302.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-1dc" transform="translate(363 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#m41fe85a619" x="774.72" y="339.812661" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <!-- -16.00% -->
+      <g style="fill: #6b6b6b" transform="translate(783.72 343.871411) scale(0.085 -0.085)">
+       <defs>
+        <path id="PaperMono-Medium-135" d="M 1984 -77 
+C 2918 -77 3514 563 3514 1402 
+C 3514 2221 2950 2874 2112 2874 
+C 1613 2874 1293 2541 1171 2374 
+L 1178 2381 
+C 1203 2445 1254 2528 1338 2656 
+L 2643 4544 
+L 1907 4544 
+L 960 3104 
+C 614 2566 429 2074 429 1542 
+C 429 544 1050 -77 1984 -77 
+z
+M 1984 512 
+C 1466 512 1101 832 1101 1402 
+C 1101 1971 1466 2298 1984 2298 
+C 2509 2298 2874 1971 2874 1402 
+C 2874 832 2509 512 1984 512 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#PaperMono-Medium-190"/>
+       <use xlink:href="#PaperMono-Medium-130" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-135" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-180" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(242 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(302.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-1dc" transform="translate(363 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m41fe85a619" x="774.72" y="295.425286" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <!-- -12.00% -->
+      <g style="fill: #6b6b6b" transform="translate(783.72 299.484036) scale(0.085 -0.085)">
+       <use xlink:href="#PaperMono-Medium-190"/>
+       <use xlink:href="#PaperMono-Medium-130" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-131" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-180" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(242 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(302.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-1dc" transform="translate(363 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#m41fe85a619" x="774.72" y="251.037912" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <!-- -8.00% -->
+      <g style="fill: #6b6b6b" transform="translate(783.72 255.096662) scale(0.085 -0.085)">
+       <use xlink:href="#PaperMono-Medium-190"/>
+       <use xlink:href="#PaperMono-Medium-137" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-180" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(242 0)"/>
+       <use xlink:href="#PaperMono-Medium-1dc" transform="translate(302.5 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#m41fe85a619" x="774.72" y="206.650538" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <!-- -4.00% -->
+      <g style="fill: #6b6b6b" transform="translate(783.72 210.709288) scale(0.085 -0.085)">
+       <use xlink:href="#PaperMono-Medium-190"/>
+       <use xlink:href="#PaperMono-Medium-133" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-180" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(242 0)"/>
+       <use xlink:href="#PaperMono-Medium-1dc" transform="translate(302.5 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_23">
+      <g>
+       <use xlink:href="#m41fe85a619" x="774.72" y="162.263164" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <!-- 0.00% -->
+      <g style="fill: #6b6b6b" transform="translate(783.72 166.321914) scale(0.085 -0.085)">
+       <use xlink:href="#PaperMono-Medium-12f"/>
+       <use xlink:href="#PaperMono-Medium-180" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-1dc" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#m41fe85a619" x="774.72" y="117.875789" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_23">
+      <!-- 4.00% -->
+      <g style="fill: #6b6b6b" transform="translate(783.72 121.934539) scale(0.085 -0.085)">
+       <use xlink:href="#PaperMono-Medium-133"/>
+       <use xlink:href="#PaperMono-Medium-180" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-1dc" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_25">
+      <g>
+       <use xlink:href="#m41fe85a619" x="774.72" y="73.488415" style="fill: #6b6b6b; stroke: #6b6b6b; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_24">
+      <!-- 8.00% -->
+      <g style="fill: #6b6b6b" transform="translate(783.72 77.547165) scale(0.085 -0.085)">
+       <use xlink:href="#PaperMono-Medium-137"/>
+       <use xlink:href="#PaperMono-Medium-180" transform="translate(60.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(121 0)"/>
+       <use xlink:href="#PaperMono-Medium-12f" transform="translate(181.5 0)"/>
+       <use xlink:href="#PaperMono-Medium-1dc" transform="translate(242 0)"/>
+      </g>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 774.72 495.9 
+L 774.72 63.9 
+" style="fill: none; stroke: #d4d4d4; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 25.92 495.9 
+L 774.72 495.9 
+" style="fill: none; stroke: #d4d4d4; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_26">
+    <path d="M 25.92 162.263164 
+L 27.716631 134.897422 
+L 29.513263 128.680768 
+L 33.106525 127.275021 
+L 38.496419 137.49041 
+L 40.293051 135.615923 
+L 42.089682 117.622046 
+L 43.886313 101.346473 
+L 45.682944 109.874813 
+L 51.072838 109.062449 
+L 52.86947 112.967417 
+L 54.666101 108.656411 
+L 56.462732 101.596232 
+L 58.259364 132.710663 
+L 63.649258 143.988175 
+L 65.445889 155.640471 
+L 67.24252 176.976711 
+L 69.039152 147.861792 
+L 70.835783 138.458767 
+L 76.225677 122.807736 
+L 78.022308 111.905293 
+L 79.818939 108.781338 
+L 83.412202 105.719799 
+L 88.802096 118.965376 
+L 90.598727 131.960906 
+L 92.395359 147.205707 
+L 95.988621 105.688735 
+L 101.378515 95.192139 
+L 103.175147 99.347153 
+L 104.971778 116.747361 
+L 106.768409 265.227888 
+L 108.565041 254.95037 
+L 113.954934 284.783981 
+L 115.751566 254.387956 
+L 117.548197 274.787192 
+L 119.344828 269.726524 
+L 121.14146 270.944831 
+L 128.327985 304.558388 
+L 130.124616 297.060915 
+L 131.921248 298.62294 
+L 133.717879 287.126732 
+L 139.107773 298.372989 
+L 140.904404 294.780484 
+L 142.701036 296.779708 
+L 144.497667 292.531309 
+L 146.294298 305.901718 
+L 151.684192 282.206955 
+L 153.480823 286.145664 
+L 155.277455 275.642377 
+L 157.074086 284.270125 
+L 158.870717 245.414292 
+L 164.260611 237.912136 
+L 166.057243 235.692592 
+L 167.853874 265.295465 
+L 169.650505 292.772753 
+L 171.447137 316.967513 
+L 178.633662 299.274628 
+L 180.430293 292.303629 
+L 184.023556 300.400028 
+L 189.41345 332.878626 
+L 191.210081 323.782042 
+L 193.006712 313.716432 
+L 194.803344 310.621917 
+L 196.599975 329.190059 
+L 201.989869 347.789458 
+L 203.7865 393.428372 
+L 205.583132 406.369993 
+L 207.379763 391.552833 
+L 209.176394 410.996329 
+L 214.566288 413.934756 
+L 216.36292 418.967609 
+L 218.159551 440.817897 
+L 219.956182 466.106897 
+L 221.752813 456.604178 
+L 227.142707 445.100515 
+L 228.939339 434.503557 
+L 230.73597 442.443485 
+L 232.532601 434.81621 
+L 234.329233 434.597324 
+L 241.515758 387.739243 
+L 243.312389 381.518574 
+L 245.109021 426.876186 
+L 246.905652 428.9081 
+L 252.295546 420.37412 
+L 254.092177 395.99173 
+L 255.888808 374.860229 
+L 257.68544 442.349622 
+L 264.871965 433.565692 
+L 266.668596 428.032842 
+L 268.465228 389.458599 
+L 270.261859 406.713711 
+L 272.05849 401.524579 
+L 277.448384 389.708549 
+L 279.245016 381.487319 
+L 281.041647 401.430908 
+L 282.838278 385.863704 
+L 284.63491 356.552838 
+L 290.024803 344.415457 
+L 291.821435 345.00989 
+L 293.618066 358.492227 
+L 295.414697 366.59417 
+L 297.211329 366.12495 
+L 302.601223 358.992798 
+L 304.397854 380.076602 
+L 306.194485 377.261191 
+L 307.991117 365.499261 
+L 309.787748 367.000782 
+L 315.177642 378.512474 
+L 316.974273 361.557876 
+L 318.770905 346.792905 
+L 320.567536 347.825111 
+L 322.364167 354.363116 
+L 327.754061 365.968576 
+L 329.550692 370.598162 
+L 331.347324 384.017987 
+L 333.143955 366.844407 
+L 334.940586 390.962605 
+L 340.33048 388.053426 
+L 342.127112 420.961671 
+L 343.923743 398.845566 
+L 345.720374 392.526637 
+L 347.517006 372.318664 
+L 354.703531 341.06841 
+L 356.500162 343.696095 
+L 358.296794 332.528408 
+L 360.093425 317.513295 
+L 365.483319 311.600978 
+L 367.27995 297.837148 
+L 369.076581 293.332586 
+L 370.873213 308.441562 
+L 372.669844 327.116758 
+L 378.059738 345.322639 
+L 379.856369 333.873554 
+L 381.653001 394.841478 
+L 385.246263 342.131967 
+L 390.636157 325.583886 
+L 392.432789 313.665677 
+L 394.22942 315.792792 
+L 396.026051 278.379984 
+L 403.212576 265.710871 
+L 405.009208 337.596053 
+L 406.805839 316.262011 
+L 408.60247 147.716409 
+L 410.399102 138.050434 
+L 415.788996 121.971763 
+L 417.585627 93.693103 
+L 419.382258 122.253256 
+L 421.17889 148.811413 
+L 428.365415 163.857783 
+L 430.162046 210.717776 
+L 431.958677 240.403998 
+L 433.755309 225.138551 
+L 435.55194 229.924703 
+L 440.941834 254.168019 
+L 442.738465 247.536246 
+L 444.535097 225.513907 
+L 446.331728 207.589615 
+L 448.128359 227.402446 
+L 453.518253 248.968277 
+L 455.314885 251.346968 
+L 457.111516 234.194608 
+L 458.908147 248.530027 
+L 460.704779 238.607888 
+L 466.094672 220.35995 
+L 467.891304 194.662618 
+L 469.687935 227.308583 
+L 471.484566 214.475545 
+L 473.281198 244.085395 
+L 478.671092 224.992404 
+L 480.467723 180.890663 
+L 482.264354 148.025622 
+L 484.060986 154.536004 
+L 485.857617 146.460633 
+L 491.247511 165.804054 
+L 493.044142 154.285671 
+L 494.840774 144.113103 
+L 496.637405 145.865913 
+L 498.434036 150.060116 
+L 503.82393 143.894026 
+L 505.620561 190.249338 
+L 507.417193 180.108122 
+L 509.213824 202.581614 
+L 511.010455 198.043024 
+L 516.400349 218.419415 
+L 518.196981 207.902555 
+L 519.993612 203.520531 
+L 521.790243 202.237227 
+L 523.586875 222.895302 
+L 528.976769 233.443322 
+L 530.7734 251.315808 
+L 532.570031 237.19937 
+L 534.366663 243.834967 
+L 536.163294 226.369666 
+L 543.349819 253.256344 
+L 546.943082 282.083652 
+L 548.739713 273.601383 
+L 554.129607 304.651008 
+L 555.926238 333.447061 
+L 557.72287 342.461443 
+L 559.519501 334.385977 
+L 561.316132 323.681488 
+L 566.706026 312.726474 
+L 568.502658 299.236108 
+L 570.299289 313.978426 
+L 572.09592 303.367609 
+L 573.892551 272.161514 
+L 579.282445 314.447932 
+L 581.079077 305.433454 
+L 582.875708 302.24087 
+L 584.672339 335.199871 
+L 586.468971 305.527317 
+L 591.858865 317.796986 
+L 593.655496 323.618785 
+L 595.452127 331.631548 
+L 597.248759 331.600388 
+L 599.04539 338.142026 
+L 604.435284 344.621152 
+L 606.231915 329.440679 
+L 608.028546 342.743128 
+L 609.825178 327.093149 
+L 611.621809 322.14441 
+L 617.011703 305.450468 
+L 618.808334 297.808186 
+L 620.604966 279.829985 
+L 622.401597 278.357904 
+L 624.198228 273.691136 
+L 629.588122 273.691136 
+L 631.384754 259.941357 
+L 633.181385 278.827792 
+L 634.978016 246.630019 
+L 636.774648 275.5077 
+L 642.164541 239.45753 
+L 643.961173 234.414832 
+L 645.757804 215.058604 
+L 647.554435 259.314903 
+L 649.351067 260.097922 
+L 654.740961 224.266925 
+L 656.537592 232.285041 
+L 658.334223 226.615985 
+L 660.130855 237.484305 
+L 661.927486 236.701285 
+L 667.31738 237.358995 
+L 669.114011 253.395226 
+L 670.910643 249.29221 
+L 672.707274 268.523224 
+L 674.503905 299.468185 
+L 679.893799 254.93001 
+L 679.893799 254.93001 
+" clip-path="url(#p565dd0a470)" style="fill: none; stroke: #2b6ce6; stroke-width: 1.55; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_27">
+    <path d="M 679.893799 254.93001 
+L 691.665328 254.93001 
+" clip-path="url(#p565dd0a470)" style="fill: none; stroke: #2b6ce6; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_25">
+    <g id="patch_5">
+     <path d="M 690.305328 262.53001 
+L 746.265328 262.53001 
+Q 747.705328 262.53001 747.705328 261.09001 
+L 747.705328 248.77001 
+Q 747.705328 247.33001 746.265328 247.33001 
+L 690.305328 247.33001 
+Q 688.865328 247.33001 688.865328 248.77001 
+L 688.865328 261.09001 
+Q 688.865328 262.53001 690.305328 262.53001 
+z
+" style="fill: #2b6ce6"/>
+    </g>
+    <!-- AYI  -8.35% -->
+    <g style="fill: #ffffff" transform="translate(691.665328 257.77001) scale(0.08 -0.08)">
+     <defs>
+      <path id="PaperMono-Bold-3" d="M 166 0 
+L 1037 0 
+L 1274 1011 
+L 2598 1011 
+L 2835 0 
+L 3706 0 
+L 2554 4544 
+L 1318 4544 
+L 166 0 
+z
+M 1459 1792 
+L 1939 3834 
+L 2413 1792 
+L 1459 1792 
+z
+" transform="scale(0.015625)"/>
+      <path id="PaperMono-Bold-7c" d="M 1523 0 
+L 2362 0 
+L 2362 1894 
+L 3667 4544 
+L 2771 4544 
+L 1939 2733 
+L 1101 4544 
+L 205 4544 
+L 1523 1894 
+L 1523 0 
+z
+" transform="scale(0.015625)"/>
+      <path id="PaperMono-Bold-31" d="M 646 0 
+L 3226 0 
+L 3226 755 
+L 2355 755 
+L 2355 3795 
+L 3226 3795 
+L 3226 4544 
+L 646 4544 
+L 646 3795 
+L 1517 3795 
+L 1517 755 
+L 646 755 
+L 646 0 
+z
+" transform="scale(0.015625)"/>
+      <path id="PaperMono-Bold-1" transform="scale(0.015625)"/>
+      <path id="PaperMono-Bold-190" d="M 646 1427 
+L 3226 1427 
+L 3226 2221 
+L 646 2221 
+L 646 1427 
+z
+" transform="scale(0.015625)"/>
+      <path id="PaperMono-Bold-137" d="M 1933 -77 
+C 2880 -77 3558 378 3558 1222 
+C 3558 1843 3219 2253 2694 2432 
+C 3130 2586 3392 2899 3392 3398 
+C 3392 4096 2950 4621 1933 4621 
+C 915 4621 480 4096 480 3398 
+C 480 2899 730 2586 1165 2432 
+C 646 2253 320 1843 320 1222 
+C 320 378 986 -77 1933 -77 
+z
+M 1933 2733 
+C 1555 2733 1325 2899 1325 3302 
+C 1325 3667 1523 3859 1933 3859 
+C 2349 3859 2547 3667 2547 3302 
+C 2547 2899 2317 2733 1933 2733 
+z
+M 1933 685 
+C 1491 685 1171 870 1171 1344 
+C 1171 1773 1427 2035 1933 2035 
+C 2438 2035 2707 1773 2707 1344 
+C 2707 870 2374 685 1933 685 
+z
+" transform="scale(0.015625)"/>
+      <path id="PaperMono-Bold-180" d="M 1939 -77 
+C 2323 -77 2554 179 2554 525 
+C 2554 877 2323 1126 1939 1126 
+C 1562 1126 1318 877 1318 525 
+C 1318 179 1562 -77 1939 -77 
+z
+" transform="scale(0.015625)"/>
+      <path id="PaperMono-Bold-132" d="M 1856 -77 
+C 2797 -77 3462 435 3462 1312 
+C 3462 1837 3194 2214 2656 2387 
+C 3098 2554 3315 2880 3315 3347 
+C 3315 4122 2848 4621 1882 4621 
+C 973 4621 461 4173 378 3315 
+L 1229 3315 
+C 1280 3680 1485 3840 1869 3840 
+C 2266 3840 2464 3629 2464 3258 
+C 2464 2842 2208 2701 1824 2701 
+L 1414 2701 
+L 1414 1958 
+L 1830 1958 
+C 2317 1958 2611 1747 2611 1325 
+C 2611 883 2310 704 1869 704 
+C 1453 704 1216 845 1184 1325 
+L 346 1325 
+C 378 410 915 -77 1856 -77 
+z
+" transform="scale(0.015625)"/>
+      <path id="PaperMono-Bold-134" d="M 1850 -77 
+C 2803 -77 3424 557 3424 1523 
+C 3424 2490 2861 3078 2048 3078 
+C 1728 3078 1485 2976 1306 2810 
+L 1389 3782 
+L 3162 3782 
+L 3162 4544 
+L 678 4544 
+L 448 1978 
+L 1286 1978 
+C 1370 2157 1568 2317 1875 2317 
+C 2285 2317 2566 2042 2566 1523 
+C 2566 973 2291 704 1869 704 
+C 1466 704 1267 864 1229 1235 
+L 384 1235 
+C 442 390 966 -77 1850 -77 
+z
+" transform="scale(0.015625)"/>
+      <path id="PaperMono-Bold-1dc" d="M 1005 2381 
+C 1530 2381 1914 2701 1914 3501 
+C 1914 4301 1530 4621 1005 4621 
+C 474 4621 90 4301 90 3501 
+C 90 2701 474 2381 1005 2381 
+z
+M 154 0 
+L 723 0 
+L 3718 4544 
+L 3149 4544 
+L 154 0 
+z
+M 1005 2899 
+C 800 2899 678 3053 678 3501 
+C 678 3955 800 4102 1005 4102 
+C 1210 4102 1325 3955 1325 3501 
+C 1325 3053 1210 2899 1005 2899 
+z
+M 2874 -77 
+C 3398 -77 3782 243 3782 1043 
+C 3782 1843 3398 2163 2874 2163 
+C 2342 2163 1958 1843 1958 1043 
+C 1958 243 2342 -77 2874 -77 
+z
+M 2874 442 
+C 2669 442 2547 595 2547 1043 
+C 2547 1498 2669 1645 2874 1645 
+C 3078 1645 3194 1498 3194 1043 
+C 3194 595 3078 442 2874 442 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#PaperMono-Bold-3"/>
+     <use xlink:href="#PaperMono-Bold-7c" transform="translate(60.5 0)"/>
+     <use xlink:href="#PaperMono-Bold-31" transform="translate(121 0)"/>
+     <use xlink:href="#PaperMono-Bold-1" transform="translate(181.5 0)"/>
+     <use xlink:href="#PaperMono-Bold-1" transform="translate(242 0)"/>
+     <use xlink:href="#PaperMono-Bold-190" transform="translate(302.5 0)"/>
+     <use xlink:href="#PaperMono-Bold-137" transform="translate(363 0)"/>
+     <use xlink:href="#PaperMono-Bold-180" transform="translate(423.5 0)"/>
+     <use xlink:href="#PaperMono-Bold-132" transform="translate(484 0)"/>
+     <use xlink:href="#PaperMono-Bold-134" transform="translate(544.5 0)"/>
+     <use xlink:href="#PaperMono-Bold-1dc" transform="translate(605 0)"/>
+    </g>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g clip-path="url(#p6ea394cb5a)">
+    <image xlink:href="data:image/png;base64,
+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" id="imagebd262f1327" transform="scale(1 -1) translate(0 -40.581818)" x="7.2" y="-524.118182" width="40.581818" height="40.581818"/>
+   </g>
+  </g>
+  <g id="patch_6">
+   <path d="M 11.88 51.48 
+L 16.3728 51.48 
+L 16.3728 36.36 
+L 11.88 36.36 
+z
+" style="fill: #2b6ce6"/>
+  </g>
+  <g id="text_26">
+   <!-- Acuity Inc. Total Return Over 1 Year (Nov 24, 2025 to Nov 23, 2026) -->
+   <g style="fill: #1a1a1a" transform="translate(11.88 22.48) scale(0.16 -0.16)">
+    <defs>
+     <path id="PaperMono-Bold-96" d="M 1984 -77 
+C 2854 -77 3398 416 3494 1222 
+L 2675 1222 
+C 2611 851 2381 627 1978 627 
+C 1549 627 1216 947 1216 1626 
+C 1216 2310 1542 2630 1978 2630 
+C 2381 2630 2611 2406 2675 2042 
+L 3494 2042 
+C 3398 2842 2854 3334 1984 3334 
+C 979 3334 378 2662 378 1626 
+C 378 595 979 -77 1984 -77 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-f2" d="M 1574 -77 
+C 2067 -77 2419 141 2605 493 
+L 2624 0 
+L 3379 0 
+L 3379 3258 
+L 2573 3258 
+L 2573 1427 
+C 2573 947 2317 685 1856 685 
+C 1472 685 1293 883 1293 1293 
+L 1293 3258 
+L 480 3258 
+L 480 1107 
+C 480 358 870 -77 1574 -77 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-b7" d="M 2022 3718 
+C 2336 3718 2560 3917 2560 4256 
+C 2560 4595 2336 4800 2022 4800 
+C 1715 4800 1485 4595 1485 4256 
+C 1485 3917 1715 3718 2022 3718 
+z
+M 474 0 
+L 3501 0 
+L 3501 742 
+L 2445 742 
+L 2445 3258 
+L 531 3258 
+L 531 2515 
+L 1638 2515 
+L 1638 742 
+L 474 742 
+L 474 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-ed" d="M 2477 -77 
+C 2803 -77 3206 -38 3309 -13 
+L 3309 736 
+C 3187 704 2861 672 2579 672 
+C 2150 672 1971 819 1971 1261 
+L 1971 2515 
+L 3251 2515 
+L 3251 3258 
+L 1971 3258 
+L 1971 4262 
+L 1158 4262 
+L 1158 3258 
+L 326 3258 
+L 326 2515 
+L 1158 2515 
+L 1158 1158 
+C 1158 282 1523 -77 2477 -77 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-104" d="M 1261 -1242 
+C 1702 -1242 2010 -1101 2202 -557 
+L 3558 3258 
+L 2701 3258 
+L 1965 1069 
+L 1171 3258 
+L 314 3258 
+L 1594 -51 
+L 1517 -294 
+C 1466 -448 1370 -499 1178 -499 
+C 1043 -499 915 -486 838 -467 
+L 838 -1210 
+C 934 -1229 1101 -1242 1261 -1242 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-cf" d="M 499 0 
+L 1312 0 
+L 1312 1837 
+C 1312 2259 1600 2573 2010 2573 
+C 2394 2573 2560 2336 2560 1933 
+L 2560 0 
+L 3373 0 
+L 3373 2163 
+C 3373 2867 3014 3334 2317 3334 
+C 1850 3334 1459 3072 1280 2720 
+L 1267 3258 
+L 499 3258 
+L 499 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-65" d="M 1517 0 
+L 2355 0 
+L 2355 3763 
+L 3546 3763 
+L 3546 4544 
+L 326 4544 
+L 326 3763 
+L 1517 3763 
+L 1517 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-d5" d="M 1939 -77 
+C 2938 -77 3494 557 3494 1626 
+C 3494 2694 2938 3334 1939 3334 
+C 934 3334 378 2694 378 1626 
+C 378 557 934 -77 1939 -77 
+z
+M 1939 627 
+C 1459 627 1216 966 1216 1626 
+C 1216 2291 1459 2630 1939 2630 
+C 2413 2630 2656 2291 2656 1626 
+C 2656 966 2413 627 1939 627 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-89" d="M 1491 -77 
+C 1952 -77 2323 122 2509 416 
+L 2534 0 
+L 3296 0 
+L 3296 2112 
+C 3296 2918 2912 3334 1926 3334 
+C 922 3334 576 2829 538 2208 
+L 1363 2208 
+C 1389 2477 1523 2630 1914 2630 
+C 2336 2630 2490 2464 2490 2086 
+L 2490 1933 
+L 1606 1850 
+C 781 1766 442 1434 442 851 
+C 442 282 845 -77 1491 -77 
+z
+M 1248 934 
+C 1248 1165 1370 1280 1658 1306 
+L 2490 1382 
+L 2490 1274 
+C 2490 870 2189 595 1702 595 
+C 1421 595 1248 698 1248 934 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-c9" d="M 410 0 
+L 3501 0 
+L 3501 742 
+L 2355 742 
+L 2355 4781 
+L 410 4781 
+L 410 4038 
+L 1549 4038 
+L 1549 742 
+L 410 742 
+L 410 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-5a" d="M 454 0 
+L 1286 0 
+L 1286 1786 
+L 1901 1786 
+L 2688 0 
+L 3597 0 
+L 2688 1914 
+C 3181 2099 3501 2509 3501 3162 
+C 3501 4045 2944 4544 1939 4544 
+L 454 4544 
+L 454 0 
+z
+M 1286 2534 
+L 1286 3802 
+L 1907 3802 
+C 2406 3802 2643 3578 2643 3168 
+C 2643 2746 2413 2534 1907 2534 
+L 1286 2534 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-a0" d="M 1952 -77 
+C 2765 -77 3258 326 3430 947 
+L 2605 947 
+C 2541 723 2355 576 1952 576 
+C 1517 576 1248 813 1216 1421 
+L 3494 1421 
+L 3494 1702 
+C 3494 2675 2970 3334 1965 3334 
+C 998 3334 378 2662 378 1626 
+C 378 582 973 -77 1952 -77 
+z
+M 1229 1997 
+C 1293 2438 1574 2682 1965 2682 
+C 2419 2682 2656 2419 2682 1978 
+L 1229 1978 
+L 1229 1997 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-e2" d="M 499 0 
+L 2835 0 
+L 2835 742 
+L 1984 742 
+L 1984 1773 
+C 1984 2208 2310 2528 2816 2528 
+C 3078 2528 3347 2490 3482 2458 
+L 3482 3258 
+C 3373 3296 3130 3334 2874 3334 
+C 2451 3334 2131 3098 1958 2765 
+L 1939 3258 
+L 499 3258 
+L 499 2515 
+L 1178 2515 
+L 1178 742 
+L 499 742 
+L 499 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-4d" d="M 1939 -77 
+C 3002 -77 3546 685 3546 2259 
+C 3546 3853 3002 4621 1939 4621 
+C 870 4621 326 3853 326 2259 
+C 326 685 870 -77 1939 -77 
+z
+M 1939 704 
+C 1440 704 1178 1146 1178 2259 
+C 1178 3379 1440 3840 1939 3840 
+C 2432 3840 2694 3379 2694 2259 
+C 2694 1146 2432 704 1939 704 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-fd" d="M 1466 0 
+L 2406 0 
+L 3578 3258 
+L 2714 3258 
+L 1939 870 
+L 1158 3258 
+L 301 3258 
+L 1466 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-130" d="M 358 0 
+L 3386 0 
+L 3386 781 
+L 2438 781 
+L 2438 4544 
+L 1792 4544 
+L 467 3622 
+L 467 2746 
+L 1606 3520 
+L 1606 781 
+L 358 781 
+L 358 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-195" d="M 2214 -589 
+L 3040 -589 
+C 2106 294 1702 1171 1702 2272 
+C 1702 3373 2106 4256 3040 5139 
+L 2214 5139 
+C 1248 4288 877 3392 877 2272 
+C 877 1152 1248 256 2214 -589 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-47" d="M 480 0 
+L 1299 0 
+L 1299 2995 
+L 2432 0 
+L 3392 0 
+L 3392 4544 
+L 2573 4544 
+L 2573 1555 
+L 1440 4544 
+L 480 4544 
+L 480 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-131" d="M 416 0 
+L 3430 0 
+L 3430 762 
+L 1555 762 
+L 2483 1587 
+C 3066 2112 3373 2477 3373 3219 
+C 3373 4064 2931 4621 1875 4621 
+C 909 4621 371 4070 358 3085 
+L 1197 3085 
+C 1210 3616 1434 3840 1875 3840 
+C 2298 3840 2515 3622 2515 3200 
+C 2515 2733 2336 2509 1786 1997 
+L 416 723 
+L 416 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-133" d="M 2266 0 
+L 3098 0 
+L 3098 1024 
+L 3629 1024 
+L 3629 1786 
+L 3098 1786 
+L 3098 2790 
+L 2266 2790 
+L 2266 1786 
+L 1107 1786 
+L 2682 4544 
+L 1779 4544 
+L 230 1760 
+L 230 1024 
+L 2266 1024 
+L 2266 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-181" d="M 1331 -934 
+L 2054 -934 
+L 2541 960 
+L 1600 960 
+L 1331 -934 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-12f" d="M 1933 -77 
+C 2989 -77 3546 704 3546 2272 
+C 3546 3840 2989 4621 1933 4621 
+C 877 4621 326 3840 326 2272 
+C 326 704 877 -77 1933 -77 
+z
+M 1933 704 
+C 1446 704 1178 1094 1178 2272 
+C 1178 3456 1446 3840 1933 3840 
+C 2419 3840 2688 3456 2688 2272 
+C 2688 1094 2419 704 1933 704 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-135" d="M 1984 -77 
+C 2976 -77 3578 557 3578 1395 
+C 3578 2208 3072 2861 2227 2861 
+C 1734 2861 1440 2547 1325 2387 
+C 1350 2470 1414 2573 1555 2771 
+L 2784 4544 
+L 1798 4544 
+L 890 3142 
+C 538 2592 365 2074 365 1530 
+C 365 499 986 -77 1984 -77 
+z
+M 1984 704 
+C 1542 704 1254 941 1254 1408 
+C 1254 1875 1542 2125 1984 2125 
+C 2432 2125 2720 1875 2720 1408 
+C 2720 941 2432 704 1984 704 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Bold-196" d="M 1658 -589 
+C 2624 256 2995 1152 2995 2272 
+C 2995 3392 2624 4288 1658 5139 
+L 832 5139 
+C 1766 4256 2170 3373 2170 2272 
+C 2170 1171 1766 294 832 -589 
+L 1658 -589 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#PaperMono-Bold-3"/>
+    <use xlink:href="#PaperMono-Bold-96" transform="translate(60.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-f2" transform="translate(121 0)"/>
+    <use xlink:href="#PaperMono-Bold-b7" transform="translate(181.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-ed" transform="translate(242 0)"/>
+    <use xlink:href="#PaperMono-Bold-104" transform="translate(302.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-1" transform="translate(363 0)"/>
+    <use xlink:href="#PaperMono-Bold-31" transform="translate(423.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-cf" transform="translate(484 0)"/>
+    <use xlink:href="#PaperMono-Bold-96" transform="translate(544.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-180" transform="translate(605 0)"/>
+    <use xlink:href="#PaperMono-Bold-1" transform="translate(665.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-65" transform="translate(726 0)"/>
+    <use xlink:href="#PaperMono-Bold-d5" transform="translate(786.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-ed" transform="translate(847 0)"/>
+    <use xlink:href="#PaperMono-Bold-89" transform="translate(907.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-c9" transform="translate(968 0)"/>
+    <use xlink:href="#PaperMono-Bold-1" transform="translate(1028.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-5a" transform="translate(1089 0)"/>
+    <use xlink:href="#PaperMono-Bold-a0" transform="translate(1149.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-ed" transform="translate(1210 0)"/>
+    <use xlink:href="#PaperMono-Bold-f2" transform="translate(1270.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-e2" transform="translate(1331 0)"/>
+    <use xlink:href="#PaperMono-Bold-cf" transform="translate(1391.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-1" transform="translate(1452 0)"/>
+    <use xlink:href="#PaperMono-Bold-4d" transform="translate(1512.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-fd" transform="translate(1573 0)"/>
+    <use xlink:href="#PaperMono-Bold-a0" transform="translate(1633.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-e2" transform="translate(1694 0)"/>
+    <use xlink:href="#PaperMono-Bold-1" transform="translate(1754.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-130" transform="translate(1815 0)"/>
+    <use xlink:href="#PaperMono-Bold-1" transform="translate(1875.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-7c" transform="translate(1936 0)"/>
+    <use xlink:href="#PaperMono-Bold-a0" transform="translate(1996.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-89" transform="translate(2057 0)"/>
+    <use xlink:href="#PaperMono-Bold-e2" transform="translate(2117.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-1" transform="translate(2178 0)"/>
+    <use xlink:href="#PaperMono-Bold-195" transform="translate(2238.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-47" transform="translate(2299 0)"/>
+    <use xlink:href="#PaperMono-Bold-d5" transform="translate(2359.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-fd" transform="translate(2420 0)"/>
+    <use xlink:href="#PaperMono-Bold-1" transform="translate(2480.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-131" transform="translate(2541 0)"/>
+    <use xlink:href="#PaperMono-Bold-133" transform="translate(2601.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-181" transform="translate(2662 0)"/>
+    <use xlink:href="#PaperMono-Bold-1" transform="translate(2722.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-131" transform="translate(2783 0)"/>
+    <use xlink:href="#PaperMono-Bold-12f" transform="translate(2843.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-131" transform="translate(2904 0)"/>
+    <use xlink:href="#PaperMono-Bold-134" transform="translate(2964.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-1" transform="translate(3025 0)"/>
+    <use xlink:href="#PaperMono-Bold-ed" transform="translate(3085.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-d5" transform="translate(3146 0)"/>
+    <use xlink:href="#PaperMono-Bold-1" transform="translate(3206.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-47" transform="translate(3267 0)"/>
+    <use xlink:href="#PaperMono-Bold-d5" transform="translate(3327.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-fd" transform="translate(3388 0)"/>
+    <use xlink:href="#PaperMono-Bold-1" transform="translate(3448.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-131" transform="translate(3509 0)"/>
+    <use xlink:href="#PaperMono-Bold-132" transform="translate(3569.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-181" transform="translate(3630 0)"/>
+    <use xlink:href="#PaperMono-Bold-1" transform="translate(3690.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-131" transform="translate(3751 0)"/>
+    <use xlink:href="#PaperMono-Bold-12f" transform="translate(3811.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-131" transform="translate(3872 0)"/>
+    <use xlink:href="#PaperMono-Bold-135" transform="translate(3932.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-196" transform="translate(3993 0)"/>
+   </g>
+  </g>
+  <g id="text_27">
+   <!-- AYI -->
+   <g style="fill: #1a1a1a" transform="translate(21.24 48.3725) scale(0.095 -0.095)">
+    <use xlink:href="#PaperMono-Bold-3"/>
+    <use xlink:href="#PaperMono-Bold-7c" transform="translate(60.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-31" transform="translate(121 0)"/>
+   </g>
+  </g>
+  <g id="text_28">
+   <!-- Acuity Inc.  -8.35% -->
+   <g style="fill: #3a3a3a" transform="translate(49.74 48.3725) scale(0.095 -0.095)">
+    <defs>
+     <path id="PaperMono-Medium-b7" d="M 2061 3878 
+C 2323 3878 2502 4038 2502 4320 
+C 2502 4608 2323 4774 2061 4774 
+C 1798 4774 1619 4608 1619 4320 
+C 1619 4038 1798 3878 2061 3878 
+z
+M 499 0 
+L 3475 0 
+L 3475 531 
+L 2368 531 
+L 2368 3258 
+L 557 3258 
+L 557 2726 
+L 1760 2726 
+L 1760 531 
+L 499 531 
+L 499 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Medium-31" d="M 678 0 
+L 3194 0 
+L 3194 563 
+L 2246 563 
+L 2246 3987 
+L 3194 3987 
+L 3194 4544 
+L 678 4544 
+L 678 3987 
+L 1626 3987 
+L 1626 563 
+L 678 563 
+L 678 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Medium-132" d="M 1850 -77 
+C 2784 -77 3437 416 3437 1306 
+C 3437 1850 3110 2246 2560 2406 
+C 3040 2566 3283 2899 3283 3379 
+C 3283 4154 2797 4621 1875 4621 
+C 992 4621 486 4173 403 3392 
+L 1050 3392 
+C 1101 3814 1357 4026 1875 4026 
+C 2381 4026 2643 3789 2643 3334 
+C 2643 2842 2291 2675 1856 2675 
+L 1491 2675 
+L 1491 2086 
+L 1856 2086 
+C 2400 2086 2797 1837 2797 1312 
+C 2797 723 2374 518 1856 518 
+C 1363 518 1043 698 1005 1274 
+L 371 1274 
+C 403 403 928 -77 1850 -77 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Medium-134" d="M 1862 -77 
+C 2752 -77 3373 544 3373 1498 
+C 3373 2451 2771 3040 1971 3040 
+C 1613 3040 1331 2912 1133 2694 
+L 1248 3974 
+L 3110 3974 
+L 3110 4544 
+L 691 4544 
+L 461 2029 
+L 1114 2029 
+C 1229 2259 1478 2470 1862 2470 
+C 2381 2470 2726 2131 2726 1498 
+C 2726 845 2381 512 1862 512 
+C 1350 512 1082 717 1037 1210 
+L 397 1210 
+C 448 403 979 -77 1862 -77 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#PaperMono-Medium-3"/>
+    <use xlink:href="#PaperMono-Medium-96" transform="translate(60.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-f2" transform="translate(121 0)"/>
+    <use xlink:href="#PaperMono-Medium-b7" transform="translate(181.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-ed" transform="translate(242 0)"/>
+    <use xlink:href="#PaperMono-Medium-104" transform="translate(302.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-1" transform="translate(363 0)"/>
+    <use xlink:href="#PaperMono-Medium-31" transform="translate(423.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-cf" transform="translate(484 0)"/>
+    <use xlink:href="#PaperMono-Medium-96" transform="translate(544.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-180" transform="translate(605 0)"/>
+    <use xlink:href="#PaperMono-Medium-1" transform="translate(665.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-1" transform="translate(726 0)"/>
+    <use xlink:href="#PaperMono-Medium-190" transform="translate(786.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-137" transform="translate(847 0)"/>
+    <use xlink:href="#PaperMono-Medium-180" transform="translate(907.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-132" transform="translate(968 0)"/>
+    <use xlink:href="#PaperMono-Medium-134" transform="translate(1028.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-1dc" transform="translate(1089 0)"/>
+   </g>
+  </g>
+  <g id="text_29">
+   <!-- Yavapai -->
+   <g style="fill: #1a1a1a" transform="translate(54.252 542.23) scale(0.12 -0.12)">
+    <defs>
+     <path id="PaperMono-Bold-df" d="M 544 -1165 
+L 1357 -1165 
+L 1357 397 
+C 1517 115 1843 -77 2304 -77 
+C 3258 -77 3616 717 3616 1626 
+C 3616 2541 3258 3334 2304 3334 
+C 1811 3334 1498 3117 1325 2746 
+L 1318 3258 
+L 544 3258 
+L 544 -1165 
+z
+M 2086 634 
+C 1619 634 1357 992 1357 1626 
+C 1357 2285 1632 2624 2086 2624 
+C 2534 2624 2778 2272 2778 1626 
+C 2778 979 2534 634 2086 634 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#PaperMono-Bold-7c"/>
+    <use xlink:href="#PaperMono-Bold-89" transform="translate(60.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-fd" transform="translate(121 0)"/>
+    <use xlink:href="#PaperMono-Bold-89" transform="translate(181.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-df" transform="translate(242 0)"/>
+    <use xlink:href="#PaperMono-Bold-89" transform="translate(302.5 0)"/>
+    <use xlink:href="#PaperMono-Bold-b7" transform="translate(363 0)"/>
+   </g>
+  </g>
+  <g id="text_30">
+   <!-- Alternative Management Fund -->
+   <g style="fill: #6b6b6b" transform="translate(54.252 555.745) scale(0.09 -0.09)">
+    <defs>
+     <path id="PaperMono-Medium-ce" d="M 237 0 
+L 826 0 
+L 826 2138 
+C 826 2566 986 2790 1261 2790 
+C 1536 2790 1651 2573 1651 2253 
+L 1651 0 
+L 2227 0 
+L 2227 2138 
+C 2227 2554 2394 2790 2662 2790 
+C 2938 2790 3046 2592 3046 2253 
+L 3046 0 
+L 3635 0 
+L 3635 2381 
+C 3635 2989 3424 3334 2867 3334 
+C 2483 3334 2221 3085 2118 2701 
+C 2042 3123 1850 3334 1485 3334 
+C 1139 3334 902 3104 794 2771 
+L 781 3258 
+L 237 3258 
+L 237 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Medium-9c" d="M 1638 -77 
+C 2125 -77 2490 122 2682 461 
+L 2701 0 
+L 3258 0 
+L 3258 4781 
+L 2650 4781 
+L 2650 2842 
+C 2470 3104 2112 3334 1651 3334 
+C 768 3334 269 2675 269 1626 
+C 269 582 762 -77 1638 -77 
+z
+M 1734 474 
+C 1197 474 902 915 902 1626 
+C 902 2349 1197 2784 1728 2784 
+C 2362 2784 2650 2336 2650 1626 
+C 2650 928 2362 474 1734 474 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#PaperMono-Medium-3"/>
+    <use xlink:href="#PaperMono-Medium-c9" transform="translate(60.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-ed" transform="translate(121 0)"/>
+    <use xlink:href="#PaperMono-Medium-a0" transform="translate(181.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-e2" transform="translate(242 0)"/>
+    <use xlink:href="#PaperMono-Medium-cf" transform="translate(302.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-89" transform="translate(363 0)"/>
+    <use xlink:href="#PaperMono-Medium-ed" transform="translate(423.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-b7" transform="translate(484 0)"/>
+    <use xlink:href="#PaperMono-Medium-fd" transform="translate(544.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-a0" transform="translate(605 0)"/>
+    <use xlink:href="#PaperMono-Medium-1" transform="translate(665.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-46" transform="translate(726 0)"/>
+    <use xlink:href="#PaperMono-Medium-89" transform="translate(786.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-cf" transform="translate(847 0)"/>
+    <use xlink:href="#PaperMono-Medium-89" transform="translate(907.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-ac" transform="translate(968 0)"/>
+    <use xlink:href="#PaperMono-Medium-a0" transform="translate(1028.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-ce" transform="translate(1089 0)"/>
+    <use xlink:href="#PaperMono-Medium-a0" transform="translate(1149.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-cf" transform="translate(1210 0)"/>
+    <use xlink:href="#PaperMono-Medium-ed" transform="translate(1270.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-1" transform="translate(1331 0)"/>
+    <use xlink:href="#PaperMono-Medium-25" transform="translate(1391.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-f2" transform="translate(1452 0)"/>
+    <use xlink:href="#PaperMono-Medium-cf" transform="translate(1512.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-9c" transform="translate(1573 0)"/>
+   </g>
+  </g>
+  <g id="text_31">
+   <!-- Created Nov 23, 2026 -->
+   <g style="fill: #6b6b6b" transform="translate(778.14 541.165) scale(0.09 -0.09)">
+    <defs>
+     <path id="PaperMono-Medium-10" d="M 1990 -77 
+C 2925 -77 3424 518 3533 1421 
+L 2880 1421 
+C 2816 845 2554 518 1990 518 
+C 1363 518 979 1075 979 2259 
+C 979 3456 1363 4026 1990 4026 
+C 2554 4026 2816 3699 2880 3123 
+L 3533 3123 
+C 3424 4038 2931 4621 1990 4621 
+C 915 4621 339 3744 339 2259 
+C 339 794 915 -77 1990 -77 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Medium-181" d="M 1402 -960 
+L 1958 -960 
+L 2470 883 
+L 1696 883 
+L 1402 -960 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#PaperMono-Medium-10"/>
+    <use xlink:href="#PaperMono-Medium-e2" transform="translate(60.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-a0" transform="translate(121 0)"/>
+    <use xlink:href="#PaperMono-Medium-89" transform="translate(181.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-ed" transform="translate(242 0)"/>
+    <use xlink:href="#PaperMono-Medium-a0" transform="translate(302.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-9c" transform="translate(363 0)"/>
+    <use xlink:href="#PaperMono-Medium-1" transform="translate(423.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-47" transform="translate(484 0)"/>
+    <use xlink:href="#PaperMono-Medium-d5" transform="translate(544.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-fd" transform="translate(605 0)"/>
+    <use xlink:href="#PaperMono-Medium-1" transform="translate(665.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-131" transform="translate(726 0)"/>
+    <use xlink:href="#PaperMono-Medium-132" transform="translate(786.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-181" transform="translate(847 0)"/>
+    <use xlink:href="#PaperMono-Medium-1" transform="translate(907.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-131" transform="translate(968 0)"/>
+    <use xlink:href="#PaperMono-Medium-12f" transform="translate(1028.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-131" transform="translate(1089 0)"/>
+    <use xlink:href="#PaperMono-Medium-135" transform="translate(1149.5 0)"/>
+   </g>
+  </g>
+  <g id="text_32">
+   <!-- Source: Yahoo Finance -->
+   <g style="fill: #6b6b6b" transform="translate(772.695 555.745) scale(0.09 -0.09)">
+    <defs>
+     <path id="PaperMono-Medium-182" d="M 1939 2285 
+C 2285 2285 2477 2490 2477 2810 
+C 2477 3123 2285 3334 1939 3334 
+C 1600 3334 1395 3123 1395 2810 
+C 1395 2490 1600 2285 1939 2285 
+z
+M 1939 -77 
+C 2285 -77 2477 141 2477 448 
+C 2477 768 2285 986 1939 986 
+C 1600 986 1395 768 1395 448 
+C 1395 141 1600 -77 1939 -77 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Medium-7c" d="M 1632 0 
+L 2253 0 
+L 2253 1946 
+L 3590 4544 
+L 2899 4544 
+L 1939 2573 
+L 973 4544 
+L 282 4544 
+L 1632 1946 
+L 1632 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="PaperMono-Medium-b4" d="M 614 0 
+L 1222 0 
+L 1222 1958 
+C 1222 2470 1536 2790 2074 2790 
+C 2534 2790 2752 2515 2752 2035 
+L 2752 0 
+L 3354 0 
+L 3354 2176 
+C 3354 2842 2995 3334 2246 3334 
+C 1760 3334 1389 3136 1222 2746 
+L 1222 4781 
+L 614 4781 
+L 614 0 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#PaperMono-Medium-5e"/>
+    <use xlink:href="#PaperMono-Medium-d5" transform="translate(60.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-f2" transform="translate(121 0)"/>
+    <use xlink:href="#PaperMono-Medium-e2" transform="translate(181.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-96" transform="translate(242 0)"/>
+    <use xlink:href="#PaperMono-Medium-a0" transform="translate(302.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-182" transform="translate(363 0)"/>
+    <use xlink:href="#PaperMono-Medium-1" transform="translate(423.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-7c" transform="translate(484 0)"/>
+    <use xlink:href="#PaperMono-Medium-89" transform="translate(544.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-b4" transform="translate(605 0)"/>
+    <use xlink:href="#PaperMono-Medium-d5" transform="translate(665.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-d5" transform="translate(726 0)"/>
+    <use xlink:href="#PaperMono-Medium-1" transform="translate(786.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-25" transform="translate(847 0)"/>
+    <use xlink:href="#PaperMono-Medium-b7" transform="translate(907.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-cf" transform="translate(968 0)"/>
+    <use xlink:href="#PaperMono-Medium-89" transform="translate(1028.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-cf" transform="translate(1089 0)"/>
+    <use xlink:href="#PaperMono-Medium-96" transform="translate(1149.5 0)"/>
+    <use xlink:href="#PaperMono-Medium-a0" transform="translate(1210 0)"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p565dd0a470">
+   <rect x="25.92" y="63.9" width="748.8" height="432"/>
+  </clipPath>
+  <clipPath id="p6ea394cb5a">
+   <rect x="7.2" y="524.2" width="40.5" height="40.5"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="680" viewBox="0 0 960 680" role="img" aria-labelledby="title desc" font-family="Arial, Helvetica, sans-serif">
+<title id="title">Price Elasticity of AI Demand</title>
+<desc id="desc">A price fall from PA to PB increases quantity demanded from QA to QB along demand curve D. The diagram shows the magnitude of price elasticity as the percent change in quantity demanded divided by the percent change in price.</desc>
+<defs>
+<marker id="ink" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#172437"/></marker>
+<marker id="note" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#46596e"/></marker>
+<marker id="demand" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#225789"/></marker>
+<marker id="supply" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#a33439"/></marker>
+</defs>
+<rect width="960" height="680" fill="white"/>
+<text x="56" y="66" font-size="36" fill="#172437" font-weight="700" text-anchor="start">Price Elasticity of AI Demand</text>
+<text x="57" y="101" font-size="19" fill="#46596e" font-weight="400" text-anchor="start">A lower price increases quantity demanded along the same curve</text>
+<path d="M120 275H400V550" fill="none" stroke="#74859a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<path d="M120 395H610V550" fill="none" stroke="#74859a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<path d="M212 476L715 158" fill="none" stroke="#a33439" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<path d="M233.75 180L785 495" fill="none" stroke="#225789" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M120 550V147" fill="none" stroke="#172437" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ink)"/>
+<path d="M120 550H854" fill="none" stroke="#172437" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ink)"/>
+<text x="44" y="350" font-size="19" fill="#172437" font-weight="600" text-anchor="middle" transform="rotate(-90 44 350)">Price of AI services (P)</text>
+<text x="485" y="613" font-size="21" fill="#172437" font-weight="600" text-anchor="middle">Quantity of AI services (Q)</text>
+<text x="106" y="281" font-size="20" fill="#172437" font-weight="400" text-anchor="end" font-style="italic">P<tspan baseline-shift="sub" font-size="13" dy="3">a</tspan></text>
+<text x="400" y="576" font-size="20" fill="#172437" font-weight="400" text-anchor="middle" font-style="italic">Q<tspan baseline-shift="sub" font-size="13" dy="3">a</tspan></text>
+<text x="106" y="401" font-size="20" fill="#172437" font-weight="400" text-anchor="end" font-style="italic">P<tspan baseline-shift="sub" font-size="13" dy="3">b</tspan></text>
+<text x="610" y="576" font-size="20" fill="#172437" font-weight="400" text-anchor="middle" font-style="italic">Q<tspan baseline-shift="sub" font-size="13" dy="3">b</tspan></text>
+<circle cx="400" cy="275" r="6" fill="#172437" stroke="white" stroke-width="1.8"/>
+<circle cx="610" cy="395" r="6" fill="#172437" stroke="white" stroke-width="1.8"/>
+<text x="412" y="264" font-size="22" fill="#172437" font-weight="700" text-anchor="start">A</text>
+<text x="620" y="386" font-size="22" fill="#172437" font-weight="700" text-anchor="start">B</text>
+<text x="724" y="159" font-size="21" fill="#a33439" font-weight="700" text-anchor="start">S₁</text>
+<text x="797" y="501" font-size="21" fill="#225789" font-weight="700" text-anchor="start">D</text>
+<path d="M167 285V383" fill="none" stroke="#46596e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#note)"/>
+<text x="182" y="318" font-size="17" fill="#46596e" font-weight="600" text-anchor="start">Price falls</text>
+<text x="182" y="340" font-size="16" fill="#46596e" font-weight="400" text-anchor="start">ΔP</text>
+<path d="M413 492H597" fill="none" stroke="#46596e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#note)"/>
+<text x="507" y="474" font-size="17" fill="#46596e" font-weight="600" text-anchor="middle">Quantity rises (ΔQ)</text>
+<path d="M490 301L531 324" fill="none" stroke="#225789" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#demand)"/>
+<text x="648" y="241" font-size="17" fill="#46596e" font-weight="600" text-anchor="start">Elasticity magnitude</text>
+<text x="648" y="269" font-size="19" fill="#172437" font-weight="400" text-anchor="start">|Eᴅ| = |%ΔQ / %ΔP|</text>
+<path d="M56 635H904" fill="none" stroke="#d9e0e8" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="56" y="660" font-size="14" fill="#46596e" font-weight="400" text-anchor="start">Illustrative schematic based on the supplied figure</text>
+</svg>

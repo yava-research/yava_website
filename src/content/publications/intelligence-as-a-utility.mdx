@@ -1,0 +1,143 @@
+import { Callout } from "@/components/article";
+
+<Callout title="Publication Update" tone="note">
+  Revised November 24, 2026.
+</Callout>
+
+The thesis that **"the future of models is fungible to compute"** holds that AI models themselves are becoming interchangeable commodities, while raw computing power—GPUs, TPUs, high-bandwidth memory, electrical power, and data-center capacity—remains the scarce, value-generating asset.
+
+In economics, an asset is **fungible** when one unit can be readily substituted for another of equal value, like barrels of crude oil or dollars. Applied to AI, this means that as model architectures converge and training recipes diffuse across the industry, any organization with sufficient compute and data can produce roughly comparable frontier intelligence.
+
+<Callout title="The thesis" tone="thesis">
+  As open-weight parity, distillation, and multi-model routers compress switching costs, standalone AI models behave increasingly like metered utilities. Durable economic rent accrues to scarce physical compute and to downstream enterprises with proprietary data, distribution, and pricing power—not to undifferentiated model APIs.
+</Callout>
+
+## Models are fungible to compute
+
+<Mermaid
+  caption="How physical compute mints interchangeable models for enterprise routers"
+  chart={`flowchart LR
+  C["Compute<br/>GPUs, power, data centers"] -->|training + inference| M1["Frontier lab model"]
+  C --> M2["Open-weight model"]
+  C --> M3["Distilled model"]
+  M1 & M2 & M3 --> R{"Model router"}
+  R -->|best intelligence per dollar| A["Enterprise application"]`}
+/>
+
+### Why models are becoming fungible
+
+- **Architectural convergence:** Almost every major frontier model relies on variations of the Transformer architecture and similar training paradigms—next-token prediction, reinforcement learning from human feedback (RLHF), and test-time reasoning. New training techniques are routinely reverse-engineered or published in open research within months.
+- **Open-weights parity:** Open-weight model families (such as Llama, DeepSeek, Qwen, and Mistral) consistently narrow the capability gap with closed, proprietary frontier models. When open models perform nearly as well as proprietary APIs, switching costs fall toward zero.
+- **Synthetic data and distillation:** Smaller, cheaper models can be trained on the outputs of larger frontier models. Capability can therefore be compressed and replicated across model families without reinventing the underlying breakthroughs.
+- **Standardized APIs and routers:** Enterprise AI stacks increasingly sit behind routing layers that dynamically swap between providers (OpenAI, Anthropic, Google, and self-hosted open-weight endpoints) based on latency, price, and availability—treating models as interchangeable utilities.
+
+### Why compute remains the bottleneck
+
+- **Scaling laws across training and inference:** Both pre-training larger models and running test-time compute (allowing reasoning models to spend more cycles before answering) scale predictably with raw FLOPs. Software optimizations help, but they do not eliminate physical and energy limits at the frontier.
+- **Physical supply constraints:** Unlike model weights—which are software and can be copied at near-zero marginal cost—compute is gated by physical supply chains: extreme ultraviolet (EUV) lithography, advanced chip packaging (CoWoS), high-bandwidth memory (HBM), and gigawatts of grid-connected power.
+- **Convertibility of compute:** A cluster of accelerators is not locked to a single model. Today it can train a video generator; tomorrow it can serve inference for a coding agent; next quarter it can generate synthetic training data. Compute is the underlying industrial capacity that can be converted into whatever form of intelligence the market demands.
+
+### Strategic implications
+
+- **Value accrual shifts:** If models commoditize, standalone model labs face margin compression unless they build proprietary consumer distribution, exclusive data flywheels, or deep workflow lock-in. Meanwhile, bottleneck hardware suppliers, power infrastructure providers, and hyperscalers with scale advantages retain stronger pricing power.
+- **Enterprises should avoid model lock-in:** Building a product around the quirks of a single model version is fragile. The durable architecture is **model-agnostic**—investing in clean data pipelines, retrieval (RAG), evaluation harnesses, and agentic scaffolding so teams can route to whichever model delivers the best intelligence per dollar next quarter.
+- **Intelligence as a utility:** Just as businesses buy electricity off the grid rather than building power plants, AI capability is evolving into metered compute—where an application dials up the compute budget spent on a problem to get a proportionally stronger result.
+
+## Empirical check: Ramp AI Index (October 2026)
+
+The enterprise spending data from [Ramp Economics Lab](https://ramp.com/data/ai-index-oct-2026) illustrates both sides of this utility dynamic in practice: blended token prices are falling even as total AI spend reaches new highs among top adopters.
+
+Read the original report for methodology, definitions, and accessible chart data. These are third-party embeds; if a chart does not load, use its source link below.
+
+### Model adoption: have we hit the top of the S-curve?
+
+<details className="embedded-chart">
+<summary>Show interactive chart</summary>
+<iframe scrolling="no" frameBorder="0" width="100%" loading="lazy" title="AI model adoption" src="https://datawrapper.dwcdn.net/bFQzW" height="500"></iframe>
+</details>
+
+[Open this chart at the source](https://datawrapper.dwcdn.net/bFQzW/)
+
+### Per-employee AI spend (top 1% of firms)
+
+<details className="embedded-chart">
+<summary>Show interactive chart</summary>
+<iframe scrolling="no" frameBorder="0" width="100%" loading="lazy" title="AI spending per employee" src="https://datawrapper.dwcdn.net/Djt5y" height="500"></iframe>
+</details>
+
+[Open this chart at the source](https://datawrapper.dwcdn.net/Djt5y/)
+
+### Token spend stalls
+
+<details className="embedded-chart">
+<summary>Show interactive chart</summary>
+<iframe scrolling="no" frameBorder="0" width="100%" loading="lazy" title="Token spending" src="https://datawrapper.dwcdn.net/Baat4" height="500"></iframe>
+</details>
+
+[Open this chart at the source](https://datawrapper.dwcdn.net/Baat4/)
+
+### AI spend rises to a new peak in October
+
+<details className="embedded-chart">
+<summary>Show interactive chart</summary>
+<iframe scrolling="no" frameBorder="0" width="100%" loading="lazy" title="Total AI spending" src="https://datawrapper.dwcdn.net/qWoIn" height="500"></iframe>
+</details>
+
+[Open this chart at the source](https://datawrapper.dwcdn.net/qWoIn/)
+
+### Blended price per million tokens declines
+
+<details className="embedded-chart">
+<summary>Show interactive chart</summary>
+<iframe scrolling="no" frameBorder="0" width="100%" loading="lazy" title="Blended price per million tokens" src="https://datawrapper.dwcdn.net/DUO9V" height="500"></iframe>
+</details>
+
+[Open this chart at the source](https://datawrapper.dwcdn.net/DUO9V/)
+
+## Who captures the productivity gains?
+
+As token prices decline, the next question shifts from model providers to the businesses deploying AI. On X, *Financial Times* data journalist John Burn-Murdoch highlighted how uneven that adoption and value capture can look in practice:
+
+<Tweet url="https://x.com/jburnmurdoch/status/2116909316556877975" />
+
+### Productivity versus profit retention
+
+Businesses adopt AI to produce goods and services faster and at lower cost, but productivity gains do not automatically translate into higher corporate profits. When every competitor gains access to the same low-cost models, competition tends to push prices down, passing much of the surplus to customers.
+
+Firms with differentiated data, entrenched customer relationships, distribution, or regulatory moats are better positioned to keep a meaningful share of those savings. Consider a **hypothetical** illustration of a service business cutting operating costs by \$10 with AI:
+
+| | Before AI | After AI: company retains savings | After AI: savings passed to customers |
+| --- | ---: | ---: | ---: |
+| Revenue | \$100 | \$100 | \$90 |
+| Operating costs | \$80 | \$70 | \$70 |
+| **Operating profit** | **\$20** | **\$30** | **\$20** |
+
+In the middle column, pricing power holds and operating margin expands from 20% to 30%. In the right column, competition forces a 10% price cut, leaving operating profit flat in dollar terms even though the business became more efficient.
+
+### Beneficiaries of cheaper AI
+
+Businesses that stand to benefit most as intelligence becomes affordable and reliable share at least one of four traits:
+
+- **Labor-intensive workflows** where AI meaningfully lowers delivery cost without eroding quality.
+- **Embedded software platforms** that already own distribution and daily customer workflows.
+- **Proprietary data assets** that make general-purpose models measurably more accurate or useful in a specific domain.
+- **Pricing power or switching costs** that let the firm deliver a better product at lower cost while retaining part of the margin expansion.
+
+<Callout title="The core investment question" tone="note">
+  Can the business keep the productivity gains from cheaper intelligence, or will competition force it to pass those savings on to customers?
+</Callout>
+
+## Risks and what would change our mind
+
+The "models are fungible" thesis would be challenged if model providers establish durable moats above the raw compute layer. Specifically, we would reconsider if:
+
+1. **Proprietary post-training and RL environments** create a persistent capability gap that open-weight models and distillation fail to close within 6–12 months.
+2. **Stateful memory, tool ecosystems, and consumer distribution** lock users into a single model surface—turning the assistant itself into the switching cost, much like a mobile operating system.
+3. **Custom silicon and software co-design** allow vertically integrated labs to serve frontier workloads at unit costs that third-party cloud and open-weight stacks cannot match.
+
+## Sources
+
+- [Ramp Economics Lab, *Ramp AI Index — October 2026*](https://ramp.com/data/ai-index-oct-2026)
+- [Databricks, *AI Index: Token Share*](https://developers.databricks.com/ai-index/share/token-share?v=1e312mu)
+- [Databricks, *Everyone's Adopting AI Agents—Almost No One Can Prove ROI. Here's Why*](https://www.databricks.com/blog/everyones-adopting-ai-agents-almost-no-one-can-prove-roi-heres-why)
+- [John Burn-Murdoch (*Financial Times*) on X](https://x.com/jburnmurdoch/status/2116909316556877975)

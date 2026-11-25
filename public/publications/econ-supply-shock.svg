@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="680" viewBox="0 0 960 680" role="img" aria-labelledby="title desc" font-family="Arial, Helvetica, sans-serif">
+<title id="title">Supply Shock and Commoditization</title>
+<desc id="desc">Supply shifts right from S1 to S2, and demand shifts right by a smaller amount. Equilibrium moves from E1 to E2 as price falls and quantity rises. At the old price, the new curves show excess supply.</desc>
+<defs>
+<marker id="ink" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#172437"/></marker>
+<marker id="note" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#46596e"/></marker>
+<marker id="demand" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#225789"/></marker>
+<marker id="supply" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#a33439"/></marker>
+</defs>
+<rect width="960" height="680" fill="white"/>
+<text x="56" y="66" font-size="36" fill="#172437" font-weight="700" text-anchor="start">Supply Shock and Commoditization</text>
+<text x="57" y="101" font-size="19" fill="#46596e" font-weight="400" text-anchor="start">Infrastructure capacity expands faster than paying demand</text>
+<path d="M120 290H420V550" fill="none" stroke="#74859a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<path d="M120 355H540V550" fill="none" stroke="#74859a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<path d="M463.5 290H616.5L540 355Z" fill="#f7ebd6" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M420 290H616.5" fill="none" stroke="#976a25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<path d="M200 477L560 171" fill="none" stroke="#a33439" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<path d="M310 550.5L751 175.65" fill="none" stroke="#a33439" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M250 145.5L704 531.4" fill="none" stroke="#225789" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<path d="M308 157.8L760 542" fill="none" stroke="#225789" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M120 550V147" fill="none" stroke="#172437" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ink)"/>
+<path d="M120 550H854" fill="none" stroke="#172437" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ink)"/>
+<text x="44" y="350" font-size="19" fill="#172437" font-weight="600" text-anchor="middle" transform="rotate(-90 44 350)">Price of infrastructure services (P)</text>
+<text x="485" y="613" font-size="21" fill="#172437" font-weight="600" text-anchor="middle">Quantity of infrastructure services (Q)</text>
+<text x="106" y="296" font-size="20" fill="#172437" font-weight="400" text-anchor="end" font-style="italic">P₁</text>
+<text x="420" y="576" font-size="20" fill="#172437" font-weight="400" text-anchor="middle" font-style="italic">Q₁</text>
+<text x="106" y="361" font-size="20" fill="#172437" font-weight="400" text-anchor="end" font-style="italic">P₂</text>
+<text x="540" y="576" font-size="20" fill="#172437" font-weight="400" text-anchor="middle" font-style="italic">Q₂</text>
+<circle cx="420" cy="290" r="6" fill="#172437" stroke="white" stroke-width="1.8"/>
+<circle cx="540" cy="355" r="6" fill="#172437" stroke="white" stroke-width="1.8"/>
+<text x="410" y="266" font-size="21" fill="#172437" font-weight="700" text-anchor="start">E₁</text>
+<text x="553" y="373" font-size="21" fill="#172437" font-weight="700" text-anchor="start">E₂</text>
+<text x="568" y="173" font-size="21" fill="#a33439" font-weight="700" text-anchor="start">S₁</text>
+<text x="760" y="179" font-size="21" fill="#a33439" font-weight="700" text-anchor="start">S₂</text>
+<text x="708" y="535" font-size="21" fill="#225789" font-weight="700" text-anchor="start">D₁</text>
+<text x="772" y="542" font-size="21" fill="#225789" font-weight="700" text-anchor="start">D₂</text>
+<path d="M480 239H675" fill="none" stroke="#a33439" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#supply)"/>
+<text x="577" y="225" font-size="16" fill="#a33439" font-weight="600" text-anchor="middle">Larger supply shift</text>
+<path d="M284 182H334" fill="none" stroke="#225789" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#demand)"/>
+<text x="218" y="229" font-size="16" fill="#225789" font-weight="600" text-anchor="middle">Smaller demand shift</text>
+<path d="M691 296L579 304" fill="none" stroke="#46596e" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#note)"/>
+<text x="702" y="300" font-size="17" fill="#46596e" font-weight="600" text-anchor="start">Surplus at P₁</text>
+<path d="M151 302V343" fill="none" stroke="#46596e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#note)"/>
+<path d="M56 635H904" fill="none" stroke="#d9e0e8" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="56" y="660" font-size="14" fill="#46596e" font-weight="400" text-anchor="start">Illustrative schematic based on the supplied figure</text>
+</svg>

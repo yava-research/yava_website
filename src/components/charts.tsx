@@ -2,10 +2,11 @@
 
 import Chart from "react-apexcharts";
 import type { ApexOptions } from "apexcharts";
+import { Expandable, useExpanded } from "@/components/lightbox";
 
 // Chart widgets for MDX articles. Import inside .mdx, e.g.
 //   import { LineChartCard } from "@/components/charts";
-// Data is inline JS — see src/content/publications/README.md.
+// Data is inline JS — see src/content/publications/_README.md.
 // Palette mirrors the site tokens (navy / sandstone / ochre).
 //
 // Reader-focused charts with an accessible tabular data alternative.
@@ -28,7 +29,7 @@ type ChartCardProps = {
 };
 
 const PALETTE = ["#00043A", "#C9A57A", "#A67F52", "#141A63", "#6B6A7E"];
-const MONO = "'Fira Mono', ui-monospace, monospace";
+const MONO = "var(--font-sans), system-ui, sans-serif"; // figure labels: sans with tabular numerals
 
 function withColors(series: Series[]): (Series & { color: string })[] {
   return series.map((s, i) => ({ ...s, color: s.color ?? PALETTE[i % PALETTE.length] }));
@@ -50,13 +51,18 @@ function trim(n: number): string {
   return String(Math.round(n * 10) / 10);
 }
 
-function chartShell(type: "line" | "bar"): ApexOptions["chart"] {
+// In the expanded view, line charts get Apex's zoom/pan toolbar so readers
+// can explore a date range. Inline charts stay static.
+function chartShell(type: "line" | "bar", explore = false): ApexOptions["chart"] {
   return {
     type,
-    toolbar: { show: false },
-    zoom: { enabled: false },
+    toolbar: {
+      show: explore,
+      tools: { download: false, selection: false, zoom: explore, zoomin: explore, zoomout: explore, pan: explore, reset: explore },
+    },
+    zoom: { enabled: explore, type: "x" },
     animations: { enabled: false },
-    fontFamily: "'Fira Sans', system-ui, sans-serif",
+    fontFamily: "var(--font-sans), system-ui, sans-serif",
     foreColor: "#6B6A7E",
     background: "transparent",
   };
@@ -69,20 +75,21 @@ function baseOptions(categories: string[], colors: string[]): ApexOptions {
     grid: { borderColor: "#E0D6C5", strokeDashArray: 3 },
     xaxis: {
       categories,
-      labels: { style: { colors: "#6B6A7E", fontFamily: MONO, fontSize: "12px" } },
+      labels: { style: { colors: "#6B6A7E", fontFamily: MONO, fontSize: "13px" } },
       axisBorder: { color: "#D8CCB8" },
       axisTicks: { color: "#D8CCB8" },
     },
     yaxis: {
       labels: {
         formatter: (v: number) => compact(v),
-        style: { colors: "#6B6A7E", fontFamily: MONO, fontSize: "12px" },
+        style: { colors: "#6B6A7E", fontFamily: MONO, fontSize: "13px" },
       },
     },
     legend: {
       position: "top",
       horizontalAlign: "left",
       showForSingleSeries: false,
+      fontSize: "13px",
       labels: { colors: "#2A2B4A" },
     },
     tooltip: { theme: "light" },
@@ -107,7 +114,9 @@ function ChartFrame({
   return (
     <figure className="chart-card">
       <figcaption>{title && <p className="chart-card__title">{title}</p>}{caption && <p className="chart-card__caption">{caption}</p>}</figcaption>
-      <div aria-hidden="true">{children}</div>
+      <Expandable title={title} caption={caption}>
+        <div aria-hidden="true">{children}</div>
+      </Expandable>
       <details className="chart-data"><summary>View chart data</summary><div className="article-table-wrap"><table>
         <caption className="sr-only">{title ?? "Chart data"}</caption>
         <thead><tr><th scope="col">{xKey}</th>{series.map((item) => <th key={item.key} scope="col">{item.label ?? item.key}</th>)}</tr></thead>
@@ -117,7 +126,14 @@ function ChartFrame({
   );
 }
 
-export function LineChartCard({ data, xKey, series, title, caption, height = 320 }: ChartCardProps) {
+/** Inline height, or most of the viewport when expanded. */
+function useChartHeight(height: number) {
+  const expanded = useExpanded();
+  return { expanded, height: expanded ? Math.max(height, window.innerHeight - 300) : height };
+}
+
+function LineChartBody({ data, xKey, series, height: inlineHeight = 320 }: ChartCardProps) {
+  const { expanded, height } = useChartHeight(inlineHeight);
   const colored = withColors(series);
   const categories = data.map((d) => String(d[xKey] ?? ""));
   const apexSeries = colored.map((s) => ({
@@ -126,21 +142,20 @@ export function LineChartCard({ data, xKey, series, title, caption, height = 320
   }));
   const options: ApexOptions = {
     ...baseOptions(categories, colored.map((s) => s.color)),
-    chart: chartShell("line"),
+    chart: chartShell("line", expanded),
     stroke: { width: 3, curve: "smooth" },
     markers: { size: 4, strokeColors: "#FFFDF9", strokeWidth: 2 },
   };
   return (
-    <ChartFrame title={title} caption={caption} data={data} xKey={xKey} series={series}>
-      {/* minHeight reserves space server-side so hydration doesn't shift layout. */}
-      <div style={{ minHeight: height }}>
-        <Chart options={options} series={apexSeries} type="line" height={height} width="100%" />
-      </div>
-    </ChartFrame>
+    // minHeight reserves space server-side so hydration doesn't shift layout.
+    <div style={{ minHeight: height }}>
+      <Chart options={options} series={apexSeries} type="line" height={height} width="100%" />
+    </div>
   );
 }
 
-export function BarChartCard({ data, xKey, series, title, caption, height = 320 }: ChartCardProps) {
+function BarChartBody({ data, xKey, series, height: inlineHeight = 320 }: ChartCardProps) {
+  const { height } = useChartHeight(inlineHeight);
   const colored = withColors(series);
   const categories = data.map((d) => String(d[xKey] ?? ""));
   const apexSeries = colored.map((s) => ({
@@ -155,14 +170,30 @@ export function BarChartCard({ data, xKey, series, title, caption, height = 320 
       enabled: true,
       formatter: (v: number) => trim(v),
       offsetY: -22,
-      style: { colors: ["#2A2B4A"], fontFamily: MONO, fontSize: "12px", fontWeight: 400 },
+      style: { colors: ["#2A2B4A"], fontFamily: MONO, fontSize: "13px", fontWeight: 400 },
     },
   };
   return (
+    <div style={{ minHeight: height }}>
+      <Chart options={options} series={apexSeries} type="bar" height={height} width="100%" />
+    </div>
+  );
+}
+
+export function LineChartCard(props: ChartCardProps) {
+  const { data, xKey, series, title, caption } = props;
+  return (
     <ChartFrame title={title} caption={caption} data={data} xKey={xKey} series={series}>
-      <div style={{ minHeight: height }}>
-        <Chart options={options} series={apexSeries} type="bar" height={height} width="100%" />
-      </div>
+      <LineChartBody {...props} />
+    </ChartFrame>
+  );
+}
+
+export function BarChartCard(props: ChartCardProps) {
+  const { data, xKey, series, title, caption } = props;
+  return (
+    <ChartFrame title={title} caption={caption} data={data} xKey={xKey} series={series}>
+      <BarChartBody {...props} />
     </ChartFrame>
   );
 }

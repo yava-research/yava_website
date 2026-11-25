@@ -25,7 +25,7 @@ export default function TeamPage() {
         <section key={group.name} className="container team-group" aria-label={group.name}>
           <div className="section-head">
             <h2 className="section-head__title">{group.name}</h2>
-            <span className="section-head__meta mono-label">{group.meta}</span>
+            <span className="section-head__meta meta-label">{group.meta}</span>
           </div>
           <div className="team-grid">
             {members
@@ -40,15 +40,15 @@ export default function TeamPage() {
                   </div>
                   <dl className="facts">
                     <div className="facts__row">
-                      <dt className="mono-label">Major</dt>
+                      <dt className="meta-label">Major</dt>
                       <dd>{m.major}</dd>
                     </div>
                     <div className="facts__row">
-                      <dt className="mono-label">Class</dt>
+                      <dt className="meta-label">Class</dt>
                       <dd>{m.classYear}</dd>
                     </div>
                     {!m.synthetic && m.previous && <div className="facts__row">
-                      <dt className="mono-label">Previous</dt>
+                      <dt className="meta-label">Previous</dt>
                       <dd>{m.previous}</dd>
                     </div>}
                   </dl>

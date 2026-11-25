@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="680" viewBox="0 0 960 680" role="img" aria-labelledby="title desc" font-family="Arial, Helvetica, sans-serif">
+<title id="title">Demand Growth for AI</title>
+<desc id="desc">An unchanged upward-sloping supply curve intersects initial demand at E1 and higher demand at E2. Price increases from P1 to P2, and quantity increases from Q1 to Q2.</desc>
+<defs>
+<marker id="ink" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#172437"/></marker>
+<marker id="note" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#46596e"/></marker>
+<marker id="demand" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#225789"/></marker>
+<marker id="supply" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#a33439"/></marker>
+</defs>
+<rect width="960" height="680" fill="white"/>
+<text x="56" y="66" font-size="36" fill="#172437" font-weight="700" text-anchor="start">Demand Growth for AI</text>
+<text x="57" y="101" font-size="19" fill="#46596e" font-weight="400" text-anchor="start">An outward demand shift raises equilibrium price and quantity</text>
+<path d="M120 355H420V550" fill="none" stroke="#74859a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<path d="M120 267H550V550" fill="none" stroke="#74859a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<path d="M222 489L713 156.66" fill="none" stroke="#a33439" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M231 203.8L631 523.8" fill="none" stroke="#225789" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6"/>
+<path d="M402.5 149L822 484.6" fill="none" stroke="#225789" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M120 550V147" fill="none" stroke="#172437" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ink)"/>
+<path d="M120 550H854" fill="none" stroke="#172437" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ink)"/>
+<text x="44" y="350" font-size="19" fill="#172437" font-weight="600" text-anchor="middle" transform="rotate(-90 44 350)">Price of AI services (P)</text>
+<text x="485" y="613" font-size="21" fill="#172437" font-weight="600" text-anchor="middle">Quantity of AI services (Q)</text>
+<text x="106" y="361" font-size="20" fill="#172437" font-weight="400" text-anchor="end" font-style="italic">P₁</text>
+<text x="420" y="576" font-size="20" fill="#172437" font-weight="400" text-anchor="middle" font-style="italic">Q₁</text>
+<text x="106" y="273" font-size="20" fill="#172437" font-weight="400" text-anchor="end" font-style="italic">P₂</text>
+<text x="550" y="576" font-size="20" fill="#172437" font-weight="400" text-anchor="middle" font-style="italic">Q₂</text>
+<circle cx="420" cy="355" r="6" fill="#172437" stroke="white" stroke-width="1.8"/>
+<circle cx="550" cy="267" r="6" fill="#172437" stroke="white" stroke-width="1.8"/>
+<text x="414" y="332" font-size="21" fill="#172437" font-weight="700" text-anchor="start">E₁</text>
+<text x="544" y="244" font-size="21" fill="#172437" font-weight="700" text-anchor="start">E₂</text>
+<text x="723" y="159" font-size="21" fill="#a33439" font-weight="700" text-anchor="start">S₁</text>
+<text x="644" y="530" font-size="21" fill="#225789" font-weight="700" text-anchor="start">D₁</text>
+<text x="830" y="492" font-size="21" fill="#225789" font-weight="700" text-anchor="start">D₂</text>
+<path d="M567 425H735" fill="none" stroke="#225789" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#demand)"/>
+<text x="620" y="408" font-size="17" fill="#225789" font-weight="600" text-anchor="middle">Demand increases</text>
+<text x="660" y="284" font-size="17" fill="#46596e" font-weight="400" text-anchor="start">New capabilities, adoption,</text>
+<text x="660" y="305" font-size="17" fill="#46596e" font-weight="400" text-anchor="start">and applications</text>
+<path d="M56 635H904" fill="none" stroke="#d9e0e8" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="56" y="660" font-size="14" fill="#46596e" font-weight="400" text-anchor="start">Illustrative schematic based on the supplied figure</text>
+</svg>

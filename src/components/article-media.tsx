@@ -67,7 +67,7 @@ export function Pdf({ src, title = "PDF", caption, children }: { src: string; ti
     <figure className="exhibit pdf-exhibit">
       <div className="exhibit__bar">
         <div className="exhibit__copy">
-          <p className="mono-label">PDF</p>
+          <p className="meta-label">PDF</p>
           <p className="exhibit__title">{title}</p>
           <p className="exhibit__size">{formatBytes(info.bytes)}</p>
         </div>
@@ -91,7 +91,7 @@ export function Video({ src, title = "Video", caption, children }: { src: string
       <figure className="exhibit video-exhibit">
         <div className="exhibit__bar">
           <div className="exhibit__copy">
-            <p className="mono-label">{remote.provider}</p>
+            <p className="meta-label">{remote.provider}</p>
             <p className="exhibit__title">{title}</p>
           </div>
           <FileActions title={title} watch={{ href: src, provider: remote.provider }} />
@@ -116,7 +116,7 @@ export function Video({ src, title = "Video", caption, children }: { src: string
       <figure className="exhibit video-exhibit">
         <div className="exhibit__bar">
           <div className="exhibit__copy">
-            <p className="mono-label">Video</p>
+            <p className="meta-label">Video</p>
             <p className="exhibit__title">{title}</p>
             <p className="exhibit__size">{formatBytes(info.bytes)}</p>
           </div>
@@ -200,7 +200,7 @@ function FileRow({ href, title, detail }: { href: string; title: string; detail?
   return (
     <div className="attachment">
       <div className="exhibit__copy">
-        <p className="mono-label">{file.label}</p>
+        <p className="meta-label">{file.label}</p>
         <p className="exhibit__title">{title}</p>
         {detail ? <div className="attachment__detail">{detail}</div> : null}
         <p className="exhibit__size">{formatBytes(info.bytes)}</p>

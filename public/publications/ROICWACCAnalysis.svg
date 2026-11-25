@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="680" viewBox="0 0 960 680" role="img" aria-labelledby="title desc" font-family="Arial, Helvetica, sans-serif">
+<title id="title">Financial Performance Divergence</title>
+<desc id="desc">Revenue rises over five years. Return on invested capital and operating margin decline. A constant weighted average cost of capital is shown, and the shaded area marks ROIC below WACC.</desc>
+<defs>
+<marker id="ink" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#172437"/></marker>
+<marker id="note" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#46596e"/></marker>
+<marker id="demand" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#225789"/></marker>
+<marker id="supply" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#a33439"/></marker>
+</defs>
+<rect width="960" height="680" fill="white"/>
+<text x="56" y="66" font-size="36" fill="#172437" font-weight="700" text-anchor="start">Financial Performance Divergence</text>
+<text x="57" y="101" font-size="19" fill="#46596e" font-weight="400" text-anchor="start">Revenue rises while returns and operating margins decline</text>
+<path d="M259.67 318H720V468L585 426L450 400L315 343Z" fill="#f9e9e8" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M120 318H790" fill="none" stroke="#82621c" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 6"/>
+<path d="M180 305L315 267L450 230L585 194L720 154" fill="none" stroke="#225789" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M180 282L315 343L450 400L585 426L720 468" fill="none" stroke="#a33439" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M180 292L315 372L450 449L585 483L720 515" fill="none" stroke="#555f6c" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M120 550V147" fill="none" stroke="#172437" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ink)"/>
+<path d="M120 550H790" fill="none" stroke="#172437" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M790 550V147" fill="none" stroke="#172437" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ink)"/>
+<text x="865" y="349" font-size="18" fill="#172437" font-weight="600" text-anchor="middle" transform="rotate(90 865 349)">Revenue index</text>
+<text x="44" y="350" font-size="19" fill="#172437" font-weight="600" text-anchor="middle" transform="rotate(-90 44 350)">ROIC, margin, and cost of capital (%)</text>
+<text x="455" y="613" font-size="21" fill="#172437" font-weight="600" text-anchor="middle">Year</text>
+<path d="M180 550v6" fill="none" stroke="#172437" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="180" y="578" font-size="18" fill="#172437" font-weight="400" text-anchor="middle">Y1</text>
+<path d="M315 550v6" fill="none" stroke="#172437" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="315" y="578" font-size="18" fill="#172437" font-weight="400" text-anchor="middle">Y2</text>
+<path d="M450 550v6" fill="none" stroke="#172437" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="450" y="578" font-size="18" fill="#172437" font-weight="400" text-anchor="middle">Y3</text>
+<path d="M585 550v6" fill="none" stroke="#172437" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="585" y="578" font-size="18" fill="#172437" font-weight="400" text-anchor="middle">Y4</text>
+<path d="M720 550v6" fill="none" stroke="#172437" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="720" y="578" font-size="18" fill="#172437" font-weight="400" text-anchor="middle">Y5</text>
+<text x="617" y="158" font-size="19" fill="#225789" font-weight="700" text-anchor="end">Total revenue</text>
+<text x="777" y="306" font-size="17" fill="#82621c" font-weight="700" text-anchor="end">Cost of capital (WACC)</text>
+<text x="727" y="473" font-size="18" fill="#a33439" font-weight="700" text-anchor="start">ROIC</text>
+<text x="709" y="535" font-size="17" fill="#555f6c" font-weight="700" text-anchor="end">Operating margin</text>
+<text x="500" y="352" font-size="18" fill="#a33439" font-weight="700" text-anchor="start">ROIC below WACC</text>
+<text x="500" y="376" font-size="16" fill="#46596e" font-weight="400" text-anchor="start">Value destruction</text>
+<path d="M56 635H904" fill="none" stroke="#d9e0e8" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="56" y="660" font-size="14" fill="#46596e" font-weight="400" text-anchor="start">Illustrative schematic based on the supplied figure</text>
+</svg>
