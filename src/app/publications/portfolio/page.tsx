@@ -13,6 +13,7 @@ import { pickHoldings } from "@/data/publication-picks";
 import { getArticleSlugs } from "@/lib/articles";
 import { getPicksPerformance, PICKS_BENCHMARK } from "@/lib/picks-performance";
 import { formatPriceDate, getPortfolio, getPriceReturn } from "@/lib/portfolio";
+import { ExUsPicks } from "./page-ex-us";
 
 export const metadata: Metadata = {
   title: "Publication portfolio",
@@ -194,6 +195,8 @@ export default async function PublicationPortfolioPage() {
           Nothing on this page is investment advice.
         </p>
       </section>
+
+      <ExUsPicks articleSlugs={articleSlugs} />
     </>
   );
 }

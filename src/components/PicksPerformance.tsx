@@ -14,7 +14,7 @@ const PAPER = "#FFFDF9";
 const RULE = "#C9A57A";
 const NARROW = "(max-width: 700px)";
 
-type SeriesKey = "picks" | "sp500" | "sp500Matched";
+type SeriesKey = "picks" | "benchmark" | "benchmarkMatched";
 type Line = { key: SeriesKey; label: string; color: string; width: number; dashed: boolean };
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -103,26 +103,48 @@ function Publications({ initiation, articleSlugs }: { initiation: PickInitiation
   ));
 }
 
+/** Benchmark wording; defaults to the S&P 500. */
+export type PicksBenchmark = {
+  /** Plain-text name, e.g. "S&P 500". */
+  name: string;
+  /** Plain-text description of the Yahoo Finance series, for the method note. */
+  source: string;
+};
+
+const SP500: PicksBenchmark = {
+  name: "S&P 500",
+  source: "^GSPC, the S&P 500 quoted elsewhere as ^SPX",
+};
+
 export function PicksPerformance({
   performance,
   articleSlugs,
+  benchmark = SP500,
+  picksLabel = "Publication picks",
+  id = "picks-performance",
 }: {
   performance: PicksPerformanceData | null;
   articleSlugs: string[];
+  benchmark?: PicksBenchmark;
+  picksLabel?: string;
+  /** Prefix for element ids, unique per chart on the page. */
+  id?: string;
 }) {
+  const indexName = benchmark.name;
+  const titleId = `${id}-title`;
   const [hidden, setHidden] = useState<ReadonlySet<SeriesKey>>(() => new Set<SeriesKey>());
   const narrow = useNarrow();
 
   if (!performance || performance.points.length < 2) {
     return (
-      <section className="container portfolio-performance" aria-labelledby="picks-performance-title">
+      <section className="container portfolio-performance" aria-labelledby={titleId}>
         <div className="section-head performance-head">
-          <h2 id="picks-performance-title" className="section-head__title">
+          <h2 id={titleId} className="section-head__title">
             Performance
           </h2>
         </div>
         <p className="performance-chart__empty">
-          The chart is unavailable because Yahoo Finance did not return S&amp;P 500 prices. It will
+          The chart is unavailable because Yahoo Finance did not return {indexName} prices. It will
           return on the next refresh.
         </p>
       </section>
@@ -136,9 +158,9 @@ export function PicksPerformance({
   const initiationByDate = new Map(initiations.map((item, index) => [item.date, { ...item, number: index + 1 }]));
 
   const lines: Line[] = [
-    { key: "picks", label: "Publication picks", color: performanceColors.fund, width: 3, dashed: false },
-    { key: "sp500", label: `S&P 500 since ${shortDate(start)}`, color: performanceColors.sp500, width: 2, dashed: false },
-    { key: "sp500Matched", label: "S&P 500, matched buys", color: performanceColors.russell3000, width: 2, dashed: true },
+    { key: "picks", label: picksLabel, color: performanceColors.fund, width: 3, dashed: false },
+    { key: "benchmark", label: `${indexName} since ${shortDate(start)}`, color: performanceColors.sp500, width: 2, dashed: false },
+    { key: "benchmarkMatched", label: `${indexName}, matched buys`, color: performanceColors.russell3000, width: 2, dashed: true },
   ];
   const visible = lines.filter((line) => !hidden.has(line.key));
   const series = visible.map((line) => ({
@@ -281,17 +303,19 @@ export function PicksPerformance({
     ],
   };
 
-  const caption = `S&P 500 base · ${formatMarkDate(baseDate)} close = 0% · picks from cost`;
-  const excess = picksPoint?.picks != null && picksPoint.sp500Matched != null ? picksPoint.picks - picksPoint.sp500Matched : null;
+  const caption = `${indexName} base · ${formatMarkDate(baseDate)} close = 0% · picks from cost`;
+  const title = `${picksLabel} vs the ${indexName}`;
+  const excess =
+    picksPoint?.picks != null && picksPoint.benchmarkMatched != null ? picksPoint.picks - picksPoint.benchmarkMatched : null;
 
   return (
-    <section className="container portfolio-performance" aria-labelledby="picks-performance-title">
+    <section className="container portfolio-performance" aria-labelledby={titleId}>
       <div className="section-head performance-head">
-        <h2 id="picks-performance-title" className="section-head__title">
+        <h2 id={titleId} className="section-head__title">
           Performance
         </h2>
         <span className="section-head__meta meta-label">
-          Picks vs S&amp;P 500 · since {formatMarkDate(start)}
+          Picks vs {indexName} · since {formatMarkDate(start)}
         </span>
       </div>
 
@@ -299,7 +323,7 @@ export function PicksPerformance({
         <li>
           <span className="performance-summary__label">
             <SeriesSwatch color={lines[0].color} dashed={false} />
-            Publication picks
+            {picksLabel}
           </span>
           <span className="performance-summary__value">
             {picksPoint?.picks == null ? "—" : formatReturn(picksPoint.picks)}
@@ -315,18 +339,18 @@ export function PicksPerformance({
         <li>
           <span className="performance-summary__label">
             <SeriesSwatch color={lines[1].color} dashed={false} />
-            S&amp;P 500 since {shortDate(start)}
+            {indexName} since {shortDate(start)}
           </span>
-          <span className="performance-summary__value">{formatReturn(latest.sp500)}</span>
+          <span className="performance-summary__value">{formatReturn(latest.benchmark)}</span>
           <span className="performance-summary__note">From the {formatMarkDate(baseDate)} close</span>
         </li>
         <li>
           <span className="performance-summary__label">
             <SeriesSwatch color={lines[2].color} dashed />
-            S&amp;P 500, matched buys
+            {indexName}, matched buys
           </span>
           <span className="performance-summary__value">
-            {latest.sp500Matched == null ? "—" : formatReturn(latest.sp500Matched)}
+            {latest.benchmarkMatched == null ? "—" : formatReturn(latest.benchmarkMatched)}
           </span>
           <span className="performance-summary__note">
             {excess == null ? "Same dollars, same closes as the picks" : `Picks ${formatPoints(excess)} vs matched index`}
@@ -337,7 +361,7 @@ export function PicksPerformance({
       <figure className="performance-plate">
         <figcaption className="performance-plate__head">
           <div>
-            <p className="performance-plate__title">Publication picks vs the S&amp;P 500</p>
+            <p className="performance-plate__title">{title}</p>
             <p className="meta-label performance-plate__meta">{caption}</p>
           </div>
           <ul className="performance-legend" aria-label="Chart series">
@@ -369,7 +393,7 @@ export function PicksPerformance({
 
         <div className="performance-chart picks-chart" aria-hidden="true">
           {visible.length > 0 ? (
-            <Expandable title="Publication picks vs the S&P 500" caption={caption}>
+            <Expandable title={title} caption={caption}>
               <PicksChart options={options} series={series} />
             </Expandable>
           ) : (
@@ -403,8 +427,8 @@ export function PicksPerformance({
           <div className="performance-table-wrap">
             <table className="performance-table">
               <caption className="sr-only">
-                Daily gain on cost of the publication picks, the S&amp;P 500 price return since{" "}
-                {formatMarkDate(start)}, and the S&amp;P 500 bought with the same dollars on the same days.
+                Daily gain on cost of the {picksLabel.charAt(0).toLowerCase() + picksLabel.slice(1)}, the {indexName} price return since{" "}
+                {formatMarkDate(start)}, and the {indexName} bought with the same dollars on the same days.
               </caption>
               <thead>
                 <tr>
@@ -434,14 +458,14 @@ export function PicksPerformance({
         </details>
 
         <p className="performance-note">
-          Publication picks shows the unrealized gain of every pick initiated so far over its cost
+          {picksLabel} shows the unrealized gain of every pick initiated so far over its cost
           basis at each day&rsquo;s close; a pick enters at the close on its publication date, or
           the next session if the market was shut. Dashed rules and rings mark those initiation
-          closes. The S&amp;P 500 line is the index&rsquo;s price return from the{" "}
+          closes. The {indexName} line is the index&rsquo;s price return from the{" "}
           {formatMarkDate(baseDate)} close, the last before {formatMarkDate(start)}. Matched buys
           puts each pick&rsquo;s cost into the index at the same close, the basis of the
-          &ldquo;vs S&amp;P 500&rdquo; figure above. Price returns only, from Yahoo Finance daily
-          closes (^GSPC, the S&amp;P 500 quoted elsewhere as ^SPX), through{" "}
+          &ldquo;vs {indexName}&rdquo; figure above. Price returns only, from Yahoo Finance daily
+          closes ({benchmark.source}), through{" "}
           {formatMarkDate(latest.date)}.
         </p>
       </figure>
