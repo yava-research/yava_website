@@ -147,7 +147,7 @@ export function GoodReadsGrid({ reads }: { reads: GoodRead[] }) {
 
             <footer className="read-panel__footer">
               <a className="btn btn--solid btn--sm" href={active.href} target="_blank" rel="noreferrer">
-                {readAction(active.kind)} ↗<span className="sr-only"> (opens in a new tab)</span>
+                {readAction(active.kind, active.href)} ↗<span className="sr-only"> (opens in a new tab)</span>
               </a>
               <span className="read-panel__domain">{readDomain(active.href)}</span>
             </footer>
